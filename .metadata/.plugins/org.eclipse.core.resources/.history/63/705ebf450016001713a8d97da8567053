@@ -1,0 +1,12 @@
+public class Test {
+
+// A comment
+public static int test() {
+}
+	
+
+    public static void main(String[] args) {
+            System.out.println("Hello");
+    }
+
+}

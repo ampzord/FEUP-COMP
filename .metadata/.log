@@ -18,3 +18,19 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.apache.ivyde.eclipse 1 0 2017-03-31 11:42:27.711
 !MESSAGE IvyDE plugin started
+
+!ENTRY JavaCC 4 0 2017-03-31 12:17:00.210
+!MESSAGE Sorry for this bug; submit to support your grammar file and this message (Properties or Right-Click then Copy)
+ Plugin JavaCC, version 1.5.33
+ context data : <32>, <35>,
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.TreeLineTracker.fail(TreeLineTracker.java:1055)
+	at org.eclipse.jface.text.TreeLineTracker.offsetByLine(TreeLineTracker.java:334)
+	at org.eclipse.jface.text.TreeLineTracker.getLineOffset(TreeLineTracker.java:1122)
+	at org.eclipse.jface.text.AbstractLineTracker.getLineOffset(AbstractLineTracker.java:169)
+	at org.eclipse.jface.text.AbstractDocument.getLineOffset(AbstractDocument.java:922)
+	at org.eclipse.core.internal.filebuffers.SynchronizableDocument.getLineOffset(SynchronizableDocument.java:382)
+	at sf.eclipse.javacc.editors.TextHover.getHoverInfo2(TextHover.java:104)
+	at sf.eclipse.javacc.editors.TextHover.getHoverInfo2(TextHover.java:1)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)

@@ -1,12 +1,21 @@
 PARSER_BEGIN(Parser)
 	
-	// código Java que invoca o parser
+	
 	public class Parser {
  		public static void main(String args[]) throws ParseException {
-		// criação do objecto utilizando o constructor com argumento para
-		// ler do standard input (teclado)
- 		Exemplo parser = new Exemplo(System.in);
- 		parser.Aritm();
+			/* criação do objecto utilizando o constructor com argumento para
+			ler do standard input (teclado)
+ 			Parser parser = new Parser(System.in);
+ 			parser.Aritm();*/
+
+			InputStream fis = new FileInputStream("C:\\input.txt");
+			java.io.StringReader sr = new java.io.StringReader(fis);
+			SimpleCharStream scs = new SimpleCharStream(sr);
+			LexicalStatesSpacesTokenManager mgr = new LexicalStatesSpacesTokenManager(scs);
+
+
+
+
  		}
 	}
 	
@@ -16,7 +25,7 @@ PARSER_END(Parser)
 
 SKIP :
 {
-	" " | "\t" | "\r"
+	" " | "\t" | "\r" | "\n"
 }
 
 // definição dos tokens (símbolos terminais)
@@ -25,6 +34,7 @@ TOKEN :
 {
 	< INTEGER : (["0" - "9"])+ >
 	| < LF : "\n" >
+
 }
 
 // definição da produção
