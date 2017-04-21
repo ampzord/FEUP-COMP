@@ -1,0 +1,63 @@
+options
+{
+  LOOKAHEAD= 1;
+}
+
+ 
+PARSER_BEGIN(PatternParser)
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+ 
+public class PatternParser
+{
+  public static void main(String [] args) throws ParseException,
+  FileNotFoundException
+  {
+//    if (args.length < 1)
+//    {
+//      System.out.println("Write the filename of the pattern file.");
+//      System.exit(1);
+//    }
+//    System.out.println("Reading from the file " + args[0]);
+//    PatternParser patParser = new PatternParser(new FileInputStream(args[0]));
+
+
+	PatternParser patParser = new PatternParser(System.in);
+    SimpleNode root = PatternParser.Expression();
+    root.dump("");
+  }
+}
+
+PARSER_END(PatternParser)
+
+SKIP :
+{
+  	" "
+	| "\r"
+	| "\t"
+	| "\n"
+}
+
+TOKEN :
+{
+  	< IF   : "if" >
+	| < PARANTHESIS_OPEN  : "(" >
+	| < PARANTHESIS_CLOSE : ")" >
+	| < BRACKETS_OPEN	  : "{" >
+	| < BRACKETS_CLOSE    : "}" >
+	| < ELSE              : "else" >
+	| < EQUALS			  : "==" >
+	| < INTEGER           : (["0"-"9"])+ >
+	| < IDENTIFIER         : ([ "a"-"z", "A"-"Z" ]) ([ "a"-"z", "A"-"Z", "0"-"9" ])* >
+	| < VARIABLE          : ("@" <IDENTIFIER > )>  
+ }
+
+SimpleNode Expression() : {}
+{
+   < IF >
+}
+
+//void Expr1() : {}
+//{
+//}
