@@ -24,7 +24,7 @@ public class PatternParser
 
 
 	PatternParser patParser = new PatternParser(System.in);
-    SimpleNode root = PatternParser.IF_Expression();
+    SimpleNode root = PatternParser.Start();
     root.dump("");
   }
 }
@@ -51,15 +51,49 @@ TOKEN :
 	| < NOT_EQUALS		  : "|=" >
 	| < INTEGER           : (["0"-"9"])+ >
 	| < IDENTIFIER        : ([ "a"-"z", "A"-"Z" ]) ([ "a"-"z", "A"-"Z", "0"-"9" ])* >
-	| < VARIABLE          : ("@" <IDENTIFIER> )>  
+	| < VARIABLE          : ("@" <IDENTIFIER> )>
+	| < PATTERN      	  : "Pattern" >
  }
 
-SimpleNode IF_Expression() : {}
+SimpleNode Start() : {}
 {
-   < IF >
-   { return jjtThis; }
+	Pattern()*
+	{
+	  return jjThis;
+	}
 }
 
-//void Expr1() : {}
-//{
-//}
+void Pattern(): { }
+{
+	< PATTERN > < IDENTIFIER > < BRACKETS_OPEN > Statement()* < BRACKETS_CLOSE >
+}
+
+void Statement() : { }
+{
+	IfStatement() | WhileStatement() | Assigment()
+}
+
+void IfStatement() : { }
+{
+	< IF > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()   
+}
+
+void Expression() : { }
+{
+	BinaryExpression() | UnaryExpression() | Assignment()
+}
+
+void UnaryExpression() : { }
+{
+  Op() Expression()
+}
+
+void Block() : { }
+{
+	< BRACKETS_OPEN > Expression()* < BRACKETS_CLOSE >
+}
+
+void Op() : { }
+{
+	< PLUS > | < MINUS > | < INCREMENT > | < DECREMENT > | < NEGATION >
+}
