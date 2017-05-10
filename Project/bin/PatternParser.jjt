@@ -1,17 +1,21 @@
 options
 {
+<<<<<<< HEAD
   LOOKAHEAD= 1;
   MULTI=true;
+=======
+	LOOKAHEAD = 1;
+>>>>>>> d7b430e4a67ff1e90bd519c5fb73b659620188c2
 }
 
- 
 PARSER_BEGIN(PatternParser)
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
- 
+
 public class PatternParser
 {
+<<<<<<< HEAD
   public static void main(String [] args) throws ParseException,
   FileNotFoundException
   {
@@ -30,18 +34,31 @@ public class PatternParser
     String code = root.generateJava();
     System.out.println(code);
   }
+=======
+	public static void main(String args[]) throws ParseException, FileNotFoundException{
+	  
+		PatternParser patparser = new PatternParser(System.in);
+		//SimpleNode root = patparser.Expression();
+		//^ devolve referencia para o no raiz da arvore
+
+		SimpleNode root = PatternParser.Start();
+
+		root.dump(""); //imprime no ecra a arvore
+	}
+>>>>>>> d7b430e4a67ff1e90bd519c5fb73b659620188c2
 }
 
 PARSER_END(PatternParser)
 
-SKIP :
+SKIP:
 {
-  	" "
+	" "
 	| "\r"
 	| "\t"
 	| "\n"
 }
 
+<<<<<<< HEAD
 TOKEN :
 {
   	< IF   : "if" >
@@ -65,12 +82,49 @@ ASTStart Start() : {}
 	{
 	  return jjtThis;
 	}
+=======
+TOKEN:
+{
+	  < IF	: "if" >
+	| < PARENTHESIS_OPEN      : "(" >
+	| < PARENTHESIS_CLOSE     : ")" >
+	| < BRACKETS_OPEN	      : " { " >
+	| < BRACKETS_CLOSE	      : " }" >
+	| < ELSE				  : "else" >
+	| < EQUALS				  : "==" >
+	| < NOT_EQUALS			  : "!=" >
+	| < INTEGER				  : (["0"-"9"])+ >
+	| < IDENTIFIER			  : (["a"-"z", "A"-"Z"]) (["a"-"z", "A"-"Z", "0"-"9"])* >
+	| <  VARIABLE			  : ("@" < IDENTIFIER > ) >
+	| < PATTERN				  : "Pattern" >
+
+	| < WHILE				  : "while" > 
+	| < PLUS 				  : "+" >
+	| < MINUS				  : "-" >
+	| < INCREMENT			  : "++" >
+	| < DECREMENT			  : "--" >
+
+}
+
+
+
+SimpleNode Start() : { }
+{
+  	(Pattern())*
+  	{
+    	return jjtThis;
+ 	}
+>>>>>>> d7b430e4a67ff1e90bd519c5fb73b659620188c2
 }
 
 void Pattern(): { Token t;}
 {
+<<<<<<< HEAD
   < PATTERN > t=< IDENTIFIER > { jjtThis.jjtSetValue(t.image); } Variable()
 	//< PATTERN > < IDENTIFIER > < BRACKETS_OPEN > (Statement())* < BRACKETS_CLOSE >
+=======
+  < PATTERN > < IDENTIFIER > < BRACKETS_OPEN > (Statement())* < BRACKETS_CLOSE >
+>>>>>>> d7b430e4a67ff1e90bd519c5fb73b659620188c2
 }
 
 void Variable(): { Token t; }
@@ -80,12 +134,27 @@ void Variable(): { Token t; }
 /*
 void Statement() : { }
 {
+<<<<<<< HEAD
 	If_Statement() | While_Statement() | Assigment()
+=======
+	IfStatement() | WhileStatement() | Assignment()
+>>>>>>> d7b430e4a67ff1e90bd519c5fb73b659620188c2
 }
 
 void If_Statement() : { }
 {
-	< IF > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()   
+	< IF > < PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()
+}
+
+void WhileStatement() : { }
+{
+	< WHILE > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()
+}
+
+
+void Assignment() : { }
+{
+	< VARIABLE > < EQUALS > < INTEGER >
 }
 
 void Expression() : { }
@@ -95,7 +164,12 @@ void Expression() : { }
 
 void UnaryExpression() : { }
 {
-  Op() Expression()
+	Operand () Operator() //Expression()
+}
+
+void BinaryExpression() : { }
+{
+	Operand() Operator() Operand()
 }
 
 void Block() : { }
@@ -103,10 +177,11 @@ void Block() : { }
 	< BRACKETS_OPEN > (Expression())* < BRACKETS_CLOSE >
 }
 
-void Op() : { }
+void Operand(): { }
 {
-	< PLUS > | < MINUS > | < INCREMENT > | < DECREMENT > | < NEGATION >
+	< VARIABLE > 
 }
+<<<<<<< HEAD
 */
 // --------------------------------------------------------------------------------
 
@@ -130,3 +205,10 @@ void Op() : { }
 //		
 //	}
 //}
+=======
+
+void Operator(): { }
+{
+	< PLUS > | < MINUS > | < INCREMENT > | < DECREMENT > | < NOT_EQUALS > //< NEGATION >
+}
+>>>>>>> d7b430e4a67ff1e90bd519c5fb73b659620188c2
