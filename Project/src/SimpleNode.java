@@ -41,6 +41,11 @@ class SimpleNode implements Node {
   public Node jjtGetChild(int i) {
     return children[i];
   }
+  
+  public String generateJava(){
+	  throw new RuntimeException("Should not be here: "+toString());
+
+  }
 
   public int jjtGetNumChildren() {
     return (children == null) ? 0 : children.length;

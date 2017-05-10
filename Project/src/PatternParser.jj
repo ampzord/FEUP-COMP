@@ -2,6 +2,7 @@
 /*@egen*/options
 {
   LOOKAHEAD= 1;
+             
 }
 
  
@@ -28,8 +29,10 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
 
 
 	PatternParser patParser = new PatternParser(System.in);
-    SimpleNode root = PatternParser.IF_Expression();
-    root.dump("");
+    ASTStart root = PatternParser.Start();
+    // root.dump("");
+    String code = root.generateJava();
+    System.out.println(code);
   }
 }
 
@@ -46,6 +49,7 @@ SKIP :
 TOKEN :
 {
   	< IF   : "if" >
+  	| < PATTERN      	  : "Pattern" >
 	| < PARENTHESIS_OPEN  : "(" >
 	| < PARENTHESIS_CLOSE : ")" >
 	| < BRACKETS_OPEN	  : "{" >
@@ -55,32 +59,152 @@ TOKEN :
 	| < NOT_EQUALS		  : "|=" >
 	| < INTEGER           : (["0"-"9"])+ >
 	| < IDENTIFIER        : ([ "a"-"z", "A"-"Z" ]) ([ "a"-"z", "A"-"Z", "0"-"9" ])* >
-	| < VARIABLE          : ("@" <IDENTIFIER> )>  
+	| < VARIABLE          : ("@" <IDENTIFIER> )>
+
  }
 
-SimpleNode IF_Expression() : {/*@bgen(jjtree) IF_Expression */
-  SimpleNode jjtn000 = new SimpleNode(JJTIF_EXPRESSION);
+ASTStart Start() : {/*@bgen(jjtree) Start */
+  ASTStart jjtn000 = new ASTStart(JJTSTART);
   boolean jjtc000 = true;
   jjtree.openNodeScope(jjtn000);
 /*@egen*/}
-{/*@bgen(jjtree) IF_Expression */
-   try {
+{/*@bgen(jjtree) Start */
+        try {
 /*@egen*/
-   < IF >/*@bgen(jjtree)*/
-   {
-     jjtree.closeNodeScope(jjtn000, true);
-     jjtc000 = false;
-   }
-/*@egen*/
-   { return jjtn000; }/*@bgen(jjtree)*/
-   } finally {
-     if (jjtc000) {
-       jjtree.closeNodeScope(jjtn000, true);
-     }
-   }
+	(Pattern())/*@bgen(jjtree)*/
+        {
+          jjtree.closeNodeScope(jjtn000, true);
+          jjtc000 = false;
+        }
+/*@egen*//***/
+	{
+	  return jjtn000;
+	}/*@bgen(jjtree)*/
+        } catch (Throwable jjte000) {
+          if (jjtc000) {
+            jjtree.clearNodeScope(jjtn000);
+            jjtc000 = false;
+          } else {
+            jjtree.popNode();
+          }
+          if (jjte000 instanceof RuntimeException) {
+            throw (RuntimeException)jjte000;
+          }
+          if (jjte000 instanceof ParseException) {
+            throw (ParseException)jjte000;
+          }
+          throw (Error)jjte000;
+        } finally {
+          if (jjtc000) {
+            jjtree.closeNodeScope(jjtn000, true);
+          }
+        }
 /*@egen*/
 }
 
-//void Expr1() : {}
-//{
+void Pattern(): {/*@bgen(jjtree) Pattern */
+                  ASTPattern jjtn000 = new ASTPattern(JJTPATTERN);
+                  boolean jjtc000 = true;
+                  jjtree.openNodeScope(jjtn000);
+/*@egen*/ Token t;}
+{/*@bgen(jjtree) Pattern */
+  try {
+/*@egen*/
+  < PATTERN > t=< IDENTIFIER > { jjtn000.jjtSetValue(t.image); } Variable()/*@bgen(jjtree)*/
+  } catch (Throwable jjte000) {
+    if (jjtc000) {
+      jjtree.clearNodeScope(jjtn000);
+      jjtc000 = false;
+    } else {
+      jjtree.popNode();
+    }
+    if (jjte000 instanceof RuntimeException) {
+      throw (RuntimeException)jjte000;
+    }
+    if (jjte000 instanceof ParseException) {
+      throw (ParseException)jjte000;
+    }
+    throw (Error)jjte000;
+  } finally {
+    if (jjtc000) {
+      jjtree.closeNodeScope(jjtn000, true);
+    }
+  }
+/*@egen*/
+	//< PATTERN > < IDENTIFIER > < BRACKETS_OPEN > (Statement())* < BRACKETS_CLOSE >
+}
+
+void Variable(): {/*@bgen(jjtree) Variable */
+                   ASTVariable jjtn000 = new ASTVariable(JJTVARIABLE);
+                   boolean jjtc000 = true;
+                   jjtree.openNodeScope(jjtn000);
+/*@egen*/ Token t; }
+{/*@bgen(jjtree) Variable */
+  try {
+/*@egen*/
+  t=< VARIABLE >/*@bgen(jjtree)*/
+                 {
+                   jjtree.closeNodeScope(jjtn000, true);
+                   jjtc000 = false;
+                 }
+/*@egen*/ { jjtn000.jjtSetValue(t.image); }/*@bgen(jjtree)*/
+  } finally {
+    if (jjtc000) {
+      jjtree.closeNodeScope(jjtn000, true);
+    }
+  }
+/*@egen*/ 
+}
+/*
+void Statement() : { }
+{
+	If_Statement() | While_Statement() | Assigment()
+}
+
+void If_Statement() : { }
+{
+	< IF > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()   
+}
+
+void Expression() : { }
+{
+	BinaryExpression() | UnaryExpression() | Assignment()
+}
+
+void UnaryExpression() : { }
+{
+  Op() Expression()
+}
+
+void Block() : { }
+{
+	< BRACKETS_OPEN > (Expression())* < BRACKETS_CLOSE >
+}
+
+void Op() : { }
+{
+	< PLUS > | < MINUS > | < INCREMENT > | < DECREMENT > | < NEGATION >
+}
+*/
+// --------------------------------------------------------------------------------
+
+//void SimpleNode() {
+//  String generateJava() {
+//
+//  }
+//}
+//
+//void AST_Start() {
+//	@override
+//	String generateJava() {
+//	  String s = "public class Pattern {";
+//	  
+//}
+//
+//
+//void AST_Pattern() {
+//	@override
+//	String generateJava() {
+//		
+//	}
 //}

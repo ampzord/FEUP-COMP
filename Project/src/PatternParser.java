@@ -16,26 +16,90 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
 
 
         PatternParser patParser = new PatternParser(System.in);
-    SimpleNode root = PatternParser.IF_Expression();
-    root.dump("");
+    ASTStart root = PatternParser.Start();
+    // root.dump("");
+    String code = root.generateJava();
+    System.out.println(code);
   }
 
-  static final public SimpleNode IF_Expression() throws ParseException {
-                              /*@bgen(jjtree) IF_Expression */
-  SimpleNode jjtn000 = new SimpleNode(JJTIF_EXPRESSION);
+  static final public ASTStart Start() throws ParseException {
+                    /*@bgen(jjtree) Start */
+  ASTStart jjtn000 = new ASTStart(JJTSTART);
   boolean jjtc000 = true;
   jjtree.openNodeScope(jjtn000);
     try {
-      jj_consume_token(IF);
-     jjtree.closeNodeScope(jjtn000, true);
-     jjtc000 = false;
-     {if (true) return jjtn000;}
+      Pattern();
+          jjtree.closeNodeScope(jjtn000, true);
+          jjtc000 = false;
+          {if (true) return jjtn000;}
+    } catch (Throwable jjte000) {
+          if (jjtc000) {
+            jjtree.clearNodeScope(jjtn000);
+            jjtc000 = false;
+          } else {
+            jjtree.popNode();
+          }
+          if (jjte000 instanceof RuntimeException) {
+            {if (true) throw (RuntimeException)jjte000;}
+          }
+          if (jjte000 instanceof ParseException) {
+            {if (true) throw (ParseException)jjte000;}
+          }
+          {if (true) throw (Error)jjte000;}
     } finally {
-     if (jjtc000) {
-       jjtree.closeNodeScope(jjtn000, true);
-     }
+          if (jjtc000) {
+            jjtree.closeNodeScope(jjtn000, true);
+          }
     }
     throw new Error("Missing return statement in function");
+  }
+
+  static final public void Pattern() throws ParseException {
+                 /*@bgen(jjtree) Pattern */
+                  ASTPattern jjtn000 = new ASTPattern(JJTPATTERN);
+                  boolean jjtc000 = true;
+                  jjtree.openNodeScope(jjtn000);Token t;
+    try {
+      jj_consume_token(PATTERN);
+      t = jj_consume_token(IDENTIFIER);
+                                 jjtn000.jjtSetValue(t.image);
+      Variable();
+    } catch (Throwable jjte000) {
+    if (jjtc000) {
+      jjtree.clearNodeScope(jjtn000);
+      jjtc000 = false;
+    } else {
+      jjtree.popNode();
+    }
+    if (jjte000 instanceof RuntimeException) {
+      {if (true) throw (RuntimeException)jjte000;}
+    }
+    if (jjte000 instanceof ParseException) {
+      {if (true) throw (ParseException)jjte000;}
+    }
+    {if (true) throw (Error)jjte000;}
+    } finally {
+    if (jjtc000) {
+      jjtree.closeNodeScope(jjtn000, true);
+    }
+    }
+  }
+
+  static final public void Variable() throws ParseException {
+                  /*@bgen(jjtree) Variable */
+                   ASTVariable jjtn000 = new ASTVariable(JJTVARIABLE);
+                   boolean jjtc000 = true;
+                   jjtree.openNodeScope(jjtn000);Token t;
+    try {
+      t = jj_consume_token(VARIABLE);
+                   jjtree.closeNodeScope(jjtn000, true);
+                   jjtc000 = false;
+                   jjtn000.jjtSetValue(t.image);
+    } finally {
+    if (jjtc000) {
+      jjtree.closeNodeScope(jjtn000, true);
+    }
+    }
   }
 
   static private boolean jj_initialized_once = false;
@@ -195,7 +259,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
   /** Generate ParseException. */
   static public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[16];
+    boolean[] la1tokens = new boolean[17];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
@@ -209,7 +273,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
         }
       }
     }
-    for (int i = 0; i < 16; i++) {
+    for (int i = 0; i < 17; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;

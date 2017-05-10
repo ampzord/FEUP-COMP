@@ -11,25 +11,27 @@ public interface PatternParserConstants {
   /** RegularExpression Id. */
   int IF = 5;
   /** RegularExpression Id. */
-  int PARENTHESIS_OPEN = 6;
+  int PATTERN = 6;
   /** RegularExpression Id. */
-  int PARENTHESIS_CLOSE = 7;
+  int PARENTHESIS_OPEN = 7;
   /** RegularExpression Id. */
-  int BRACKETS_OPEN = 8;
+  int PARENTHESIS_CLOSE = 8;
   /** RegularExpression Id. */
-  int BRACKETS_CLOSE = 9;
+  int BRACKETS_OPEN = 9;
   /** RegularExpression Id. */
-  int ELSE = 10;
+  int BRACKETS_CLOSE = 10;
   /** RegularExpression Id. */
-  int EQUALS = 11;
+  int ELSE = 11;
   /** RegularExpression Id. */
-  int NOT_EQUALS = 12;
+  int EQUALS = 12;
   /** RegularExpression Id. */
-  int INTEGER = 13;
+  int NOT_EQUALS = 13;
   /** RegularExpression Id. */
-  int IDENTIFIER = 14;
+  int INTEGER = 14;
   /** RegularExpression Id. */
-  int VARIABLE = 15;
+  int IDENTIFIER = 15;
+  /** RegularExpression Id. */
+  int VARIABLE = 16;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -42,6 +44,7 @@ public interface PatternParserConstants {
     "\"\\t\"",
     "\"\\n\"",
     "\"if\"",
+    "\"Pattern\"",
     "\"(\"",
     "\")\"",
     "\"{\"",

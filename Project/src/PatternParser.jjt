@@ -1,6 +1,7 @@
 options
 {
   LOOKAHEAD= 1;
+  MULTI=true;
 }
 
  
@@ -24,8 +25,10 @@ public class PatternParser
 
 
 	PatternParser patParser = new PatternParser(System.in);
-    SimpleNode root = PatternParser.Start();
-    root.dump("");
+    ASTStart root = PatternParser.Start();
+    // root.dump("");
+    String code = root.generateJava();
+    System.out.println(code);
   }
 }
 
@@ -42,6 +45,7 @@ SKIP :
 TOKEN :
 {
   	< IF   : "if" >
+  	| < PATTERN      	  : "Pattern" >
 	| < PARENTHESIS_OPEN  : "(" >
 	| < PARENTHESIS_CLOSE : ")" >
 	| < BRACKETS_OPEN	  : "{" >
@@ -52,28 +56,34 @@ TOKEN :
 	| < INTEGER           : (["0"-"9"])+ >
 	| < IDENTIFIER        : ([ "a"-"z", "A"-"Z" ]) ([ "a"-"z", "A"-"Z", "0"-"9" ])* >
 	| < VARIABLE          : ("@" <IDENTIFIER> )>
-	| < PATTERN      	  : "Pattern" >
+
  }
 
-SimpleNode Start() : {}
+ASTStart Start() : {}
 {
-	Pattern()*
+	(Pattern())/***/
 	{
-	  return jjThis;
+	  return jjtThis;
 	}
 }
 
-void Pattern(): { }
+void Pattern(): { Token t;}
 {
-	< PATTERN > < IDENTIFIER > < BRACKETS_OPEN > Statement()* < BRACKETS_CLOSE >
+  < PATTERN > t=< IDENTIFIER > { jjtThis.jjtSetValue(t.image); } Variable()
+	//< PATTERN > < IDENTIFIER > < BRACKETS_OPEN > (Statement())* < BRACKETS_CLOSE >
 }
 
+void Variable(): { Token t; }
+{
+  t=< VARIABLE > { jjtThis.jjtSetValue(t.image); } 
+}
+/*
 void Statement() : { }
 {
-	IfStatement() | WhileStatement() | Assigment()
+	If_Statement() | While_Statement() | Assigment()
 }
 
-void IfStatement() : { }
+void If_Statement() : { }
 {
 	< IF > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()   
 }
@@ -90,10 +100,33 @@ void UnaryExpression() : { }
 
 void Block() : { }
 {
-	< BRACKETS_OPEN > Expression()* < BRACKETS_CLOSE >
+	< BRACKETS_OPEN > (Expression())* < BRACKETS_CLOSE >
 }
 
 void Op() : { }
 {
 	< PLUS > | < MINUS > | < INCREMENT > | < DECREMENT > | < NEGATION >
 }
+*/
+// --------------------------------------------------------------------------------
+
+//void SimpleNode() {
+//  String generateJava() {
+//
+//  }
+//}
+//
+//void AST_Start() {
+//	@override
+//	String generateJava() {
+//	  String s = "public class Pattern {";
+//	  
+//}
+//
+//
+//void AST_Pattern() {
+//	@override
+//	String generateJava() {
+//		
+//	}
+//}
