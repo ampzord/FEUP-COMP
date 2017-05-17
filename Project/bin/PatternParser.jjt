@@ -1,214 +1,137 @@
 options
 {
-<<<<<<< HEAD
   LOOKAHEAD= 1;
   MULTI=true;
-=======
-	LOOKAHEAD = 1;
->>>>>>> d7b430e4a67ff1e90bd519c5fb73b659620188c2
 }
-
+ 
 PARSER_BEGIN(PatternParser)
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
+ 
 public class PatternParser
 {
-<<<<<<< HEAD
   public static void main(String [] args) throws ParseException,
   FileNotFoundException
   {
-//    if (args.length < 1)
-//    {
-//      System.out.println("Write the filename of the pattern file.");
-//      System.exit(1);
-//    }
-//    System.out.println("Reading from the file " + args[0]);
-//    PatternParser patParser = new PatternParser(new FileInputStream(args[0]));
+    if (args.length < 1)
+    {
+      System.out.println("Write the filename of the pattern file.");
+      System.exit(1);
+    }
+    System.out.println("Reading from the file " + args[0] + "...\n");
+    PatternParser patParser = new PatternParser(new FileInputStream(args[0]));
 
-
-	PatternParser patParser = new PatternParser(System.in);
     ASTStart root = PatternParser.Start();
     // root.dump("");
     String code = root.generateJava();
     System.out.println(code);
   }
-=======
-	public static void main(String args[]) throws ParseException, FileNotFoundException{
-	  
-		PatternParser patparser = new PatternParser(System.in);
-		//SimpleNode root = patparser.Expression();
-		//^ devolve referencia para o no raiz da arvore
-
-		SimpleNode root = PatternParser.Start();
-
-		root.dump(""); //imprime no ecra a arvore
-	}
->>>>>>> d7b430e4a67ff1e90bd519c5fb73b659620188c2
 }
 
 PARSER_END(PatternParser)
 
-SKIP:
+SKIP :
 {
-	" "
+  	" "
 	| "\r"
 	| "\t"
 	| "\n"
 }
 
-<<<<<<< HEAD
 TOKEN :
 {
-  	< IF   : "if" >
+  	  < IF   : "if" >
   	| < PATTERN      	  : "Pattern" >
+    | < WHILE             : "while" >
 	| < PARENTHESIS_OPEN  : "(" >
 	| < PARENTHESIS_CLOSE : ")" >
 	| < BRACKETS_OPEN	  : "{" >
 	| < BRACKETS_CLOSE    : "}" >
 	| < ELSE              : "else" >
 	| < EQUALS			  : "==" >
-	| < NOT_EQUALS		  : "|=" >
+	| < NOT_EQUALS		  : "!=" >
+	| < PLUS              : "+" >
+    | < MINUS             : "-" >
+    | < INCREMENT         : "++" >
+    | < DECREMENT         : "--" >
+	
 	| < INTEGER           : (["0"-"9"])+ >
 	| < IDENTIFIER        : ([ "a"-"z", "A"-"Z" ]) ([ "a"-"z", "A"-"Z", "0"-"9" ])* >
 	| < VARIABLE          : ("@" <IDENTIFIER> )>
+
+
 
  }
 
 ASTStart Start() : {}
 {
-	(Pattern())/***/
+	(Pattern())*
+	< EOF >
 	{
 	  return jjtThis;
 	}
-=======
-TOKEN:
-{
-	  < IF	: "if" >
-	| < PARENTHESIS_OPEN      : "(" >
-	| < PARENTHESIS_CLOSE     : ")" >
-	| < BRACKETS_OPEN	      : " { " >
-	| < BRACKETS_CLOSE	      : " }" >
-	| < ELSE				  : "else" >
-	| < EQUALS				  : "==" >
-	| < NOT_EQUALS			  : "!=" >
-	| < INTEGER				  : (["0"-"9"])+ >
-	| < IDENTIFIER			  : (["a"-"z", "A"-"Z"]) (["a"-"z", "A"-"Z", "0"-"9"])* >
-	| <  VARIABLE			  : ("@" < IDENTIFIER > ) >
-	| < PATTERN				  : "Pattern" >
-
-	| < WHILE				  : "while" > 
-	| < PLUS 				  : "+" >
-	| < MINUS				  : "-" >
-	| < INCREMENT			  : "++" >
-	| < DECREMENT			  : "--" >
-
-}
-
-
-
-SimpleNode Start() : { }
-{
-  	(Pattern())*
-  	{
-    	return jjtThis;
- 	}
->>>>>>> d7b430e4a67ff1e90bd519c5fb73b659620188c2
 }
 
 void Pattern(): { Token t;}
 {
-<<<<<<< HEAD
-  < PATTERN > t=< IDENTIFIER > { jjtThis.jjtSetValue(t.image); } Variable()
-	//< PATTERN > < IDENTIFIER > < BRACKETS_OPEN > (Statement())* < BRACKETS_CLOSE >
-=======
-  < PATTERN > < IDENTIFIER > < BRACKETS_OPEN > (Statement())* < BRACKETS_CLOSE >
->>>>>>> d7b430e4a67ff1e90bd519c5fb73b659620188c2
+  	< PATTERN > t=< IDENTIFIER > { jjtThis.jjtSetValue(t.image); } Block()
 }
 
 void Variable(): { Token t; }
 {
-  t=< VARIABLE > { jjtThis.jjtSetValue(t.image); } 
-}
-/*
-void Statement() : { }
-{
-<<<<<<< HEAD
-	If_Statement() | While_Statement() | Assigment()
-=======
-	IfStatement() | WhileStatement() | Assignment()
->>>>>>> d7b430e4a67ff1e90bd519c5fb73b659620188c2
+  	t=< VARIABLE > { jjtThis.jjtSetValue(t.image); } 
 }
 
-void If_Statement() : { }
+void Assignment() : { }
 {
-	< IF > < PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()
+    < VARIABLE > < EQUALS > < INTEGER >
+}
+
+void Statement() #void : { }
+{
+	IfStatement() | WhileStatement() | Assignment()
+}
+
+void IfStatement() : { }
+{
+	< IF > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()  [<ELSE > Block()]
 }
 
 void WhileStatement() : { }
 {
-	< WHILE > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()
+    < WHILE > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()
 }
 
-
-void Assignment() : { }
+void Expression() #void: { }
 {
-	< VARIABLE > < EQUALS > < INTEGER >
+    LOOKAHEAD(BinaryExpression()) BinaryExpression() |  LOOKAHEAD(UnaryExpression()) UnaryExpression() | Operand()
 }
-
-void Expression() : { }
+ 
+void UnaryExpression() : { } //DO BETTER STRUCTURE, ON MY BOOK OPERATOR NEW MEANING
 {
-	BinaryExpression() | UnaryExpression() | Assignment()
+    Operand() Operator()
 }
-
-void UnaryExpression() : { }
-{
-	Operand () Operator() //Expression()
-}
-
+ 
 void BinaryExpression() : { }
 {
-	Operand() Operator() Operand()
+    Operand() Operator() Operand()
 }
 
 void Block() : { }
 {
-	< BRACKETS_OPEN > (Expression())* < BRACKETS_CLOSE >
+	< BRACKETS_OPEN > (Statement())* < BRACKETS_CLOSE >
 }
 
-void Operand(): { }
+void Operand(): { Token t;}
 {
-	< VARIABLE > 
+    (      t=< VARIABLE > | t=< IDENTIFIER >
+    )
+      { jjtThis.jjtSetValue(t.image); }
+    
 }
-<<<<<<< HEAD
-*/
-// --------------------------------------------------------------------------------
-
-//void SimpleNode() {
-//  String generateJava() {
-//
-//  }
-//}
-//
-//void AST_Start() {
-//	@override
-//	String generateJava() {
-//	  String s = "public class Pattern {";
-//	  
-//}
-//
-//
-//void AST_Pattern() {
-//	@override
-//	String generateJava() {
-//		
-//	}
-//}
-=======
-
+ 
 void Operator(): { }
 {
-	< PLUS > | < MINUS > | < INCREMENT > | < DECREMENT > | < NOT_EQUALS > //< NEGATION >
+    < PLUS > | < MINUS > | < INCREMENT > | < DECREMENT > | < NOT_EQUALS >
 }
->>>>>>> d7b430e4a67ff1e90bd519c5fb73b659620188c2

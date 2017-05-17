@@ -13,12 +13,13 @@ class ASTBlock extends SimpleNode {
 	@Override
 	public String generateJava() {
 		// TODO Auto-generated method stub
-		String s= " {\n";
+		//String s= " {\n";
+		String s = "\n";
 		for(int i = 0; i < jjtGetNumChildren(); i++){
 			SimpleNode n = (SimpleNode) jjtGetChild(i);
 			s += "\t\t" + n.generateJava();
 		}
-		s += "\t\t}\n";
+		//s += "\t\t}\n";
 		return s;
 	}
 }
