@@ -9,6 +9,10 @@ class ASTOperand extends SimpleNode {
   public ASTOperand(PatternParser p, int id) {
     super(p, id);
   }
-
+  @Override
+ 	public String generateJava() {
+ 		// TODO Auto-generated method stub
+ 		return this.value.toString();
+ 	}
 }
 /* JavaCC - OriginalChecksum=13ac268ce6b682e543ca115e6be65ab8 (do not edit this line) */

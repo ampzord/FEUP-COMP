@@ -12,7 +12,7 @@ class ASTVariable extends SimpleNode {
 
   @Override
 	public String generateJava() {
-	return value.toString().replace("@","_at_");
+	  return value.toString().replace("@","_at_");
 	}
 }
 /* JavaCC - OriginalChecksum=1295d2313ed57dcf9596685179de4356 (do not edit this line) */

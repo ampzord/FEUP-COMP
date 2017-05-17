@@ -4,7 +4,6 @@
   LOOKAHEAD= 1;
              
 }
-
  
 PARSER_BEGIN(PatternParser)
 
@@ -19,16 +18,14 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
   public static void main(String [] args) throws ParseException,
   FileNotFoundException
   {
-//    if (args.length < 1)
-//    {
-//      System.out.println("Write the filename of the pattern file.");
-//      System.exit(1);
-//    }
-//    System.out.println("Reading from the file " + args[0]);
-//    PatternParser patParser = new PatternParser(new FileInputStream(args[0]));
+    if (args.length < 1)
+    {
+      System.out.println("Write the filename of the pattern file.");
+      System.exit(1);
+    }
+    System.out.println("Reading from the file " + args[0] + "...\n");
+    PatternParser patParser = new PatternParser(new FileInputStream(args[0]));
 
-
-	PatternParser patParser = new PatternParser(System.in);
     ASTStart root = PatternParser.Start();
     // root.dump("");
     String code = root.generateJava();
@@ -50,6 +47,7 @@ TOKEN :
 {
   	  < IF   : "if" >
   	| < PATTERN      	  : "Pattern" >
+    | < WHILE             : "while" >
 	| < PARENTHESIS_OPEN  : "(" >
 	| < PARENTHESIS_CLOSE : ")" >
 	| < BRACKETS_OPEN	  : "{" >
@@ -57,16 +55,16 @@ TOKEN :
 	| < ELSE              : "else" >
 	| < EQUALS			  : "==" >
 	| < NOT_EQUALS		  : "!=" >
+	| < PLUS              : "+" >
+    | < MINUS             : "-" >
+    | < INCREMENT         : "++" >
+    | < DECREMENT         : "--" >
+	
 	| < INTEGER           : (["0"-"9"])+ >
 	| < IDENTIFIER        : ([ "a"-"z", "A"-"Z" ]) ([ "a"-"z", "A"-"Z", "0"-"9" ])* >
 	| < VARIABLE          : ("@" <IDENTIFIER> )>
 
-    | < WHILE                 : "while" >
-    | < PLUS                  : "+" >
-    | < MINUS                 : "-" >
-    | < INCREMENT             : "++" >
-    | < DECREMENT             : "--" >
-	
+
 
  }
 
@@ -78,12 +76,13 @@ ASTStart Start() : {/*@bgen(jjtree) Start */
 {/*@bgen(jjtree) Start */
         try {
 /*@egen*/
-	(Pattern())/*@bgen(jjtree)*/
+	(Pattern())*
+	< EOF >/*@bgen(jjtree)*/
         {
           jjtree.closeNodeScope(jjtn000, true);
           jjtc000 = false;
         }
-/*@egen*//***/
+/*@egen*/
 	{
 	  return jjtn000;
 	}/*@bgen(jjtree)*/
@@ -115,30 +114,29 @@ void Pattern(): {/*@bgen(jjtree) Pattern */
                   jjtree.openNodeScope(jjtn000);
 /*@egen*/ Token t;}
 {/*@bgen(jjtree) Pattern */
-  try {
+        try {
 /*@egen*/
-  < PATTERN > t=< IDENTIFIER > { jjtn000.jjtSetValue(t.image); } Variable()/*@bgen(jjtree)*/
-  } catch (Throwable jjte000) {
-    if (jjtc000) {
-      jjtree.clearNodeScope(jjtn000);
-      jjtc000 = false;
-    } else {
-      jjtree.popNode();
-    }
-    if (jjte000 instanceof RuntimeException) {
-      throw (RuntimeException)jjte000;
-    }
-    if (jjte000 instanceof ParseException) {
-      throw (ParseException)jjte000;
-    }
-    throw (Error)jjte000;
-  } finally {
-    if (jjtc000) {
-      jjtree.closeNodeScope(jjtn000, true);
-    }
-  }
+  	< PATTERN > t=< IDENTIFIER > { jjtn000.jjtSetValue(t.image); } Block()/*@bgen(jjtree)*/
+        } catch (Throwable jjte000) {
+          if (jjtc000) {
+            jjtree.clearNodeScope(jjtn000);
+            jjtc000 = false;
+          } else {
+            jjtree.popNode();
+          }
+          if (jjte000 instanceof RuntimeException) {
+            throw (RuntimeException)jjte000;
+          }
+          if (jjte000 instanceof ParseException) {
+            throw (ParseException)jjte000;
+          }
+          throw (Error)jjte000;
+        } finally {
+          if (jjtc000) {
+            jjtree.closeNodeScope(jjtn000, true);
+          }
+        }
 /*@egen*/
-	//< PATTERN > < IDENTIFIER > < BRACKETS_OPEN > (Statement())* < BRACKETS_CLOSE >
 }
 
 void Variable(): {/*@bgen(jjtree) Variable */
@@ -147,22 +145,21 @@ void Variable(): {/*@bgen(jjtree) Variable */
                    jjtree.openNodeScope(jjtn000);
 /*@egen*/ Token t; }
 {/*@bgen(jjtree) Variable */
-  try {
+        try {
 /*@egen*/
-  t=< VARIABLE >/*@bgen(jjtree)*/
-                 {
-                   jjtree.closeNodeScope(jjtn000, true);
-                   jjtc000 = false;
-                 }
+  	t=< VARIABLE >/*@bgen(jjtree)*/
+                       {
+                         jjtree.closeNodeScope(jjtn000, true);
+                         jjtc000 = false;
+                       }
 /*@egen*/ { jjtn000.jjtSetValue(t.image); }/*@bgen(jjtree)*/
-  } finally {
-    if (jjtc000) {
-      jjtree.closeNodeScope(jjtn000, true);
-    }
-  }
+        } finally {
+          if (jjtc000) {
+            jjtree.closeNodeScope(jjtn000, true);
+          }
+        }
 /*@egen*/ 
 }
-
 
 void Assignment() : {/*@bgen(jjtree) Assignment */
   ASTAssignment jjtn000 = new ASTAssignment(JJTASSIGNMENT);
@@ -181,15 +178,20 @@ void Assignment() : {/*@bgen(jjtree) Assignment */
 /*@egen*/
 }
 
-void Statement() : {/*@bgen(jjtree) Statement */
-  ASTStatement jjtn000 = new ASTStatement(JJTSTATEMENT);
+void Statement()       : { }
+{
+	IfStatement() | WhileStatement() | Assignment()
+}
+
+void IfStatement() : {/*@bgen(jjtree) IfStatement */
+  ASTIfStatement jjtn000 = new ASTIfStatement(JJTIFSTATEMENT);
   boolean jjtc000 = true;
   jjtree.openNodeScope(jjtn000);
 /*@egen*/ }
-{/*@bgen(jjtree) Statement */
+{/*@bgen(jjtree) IfStatement */
         try {
 /*@egen*/
-	If_Statement() | While_Statement() | Assignment()/*@bgen(jjtree)*/
+	< IF > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()  [<ELSE > Block()]/*@bgen(jjtree)*/
         } catch (Throwable jjte000) {
           if (jjtc000) {
             jjtree.clearNodeScope(jjtn000);
@@ -212,43 +214,12 @@ void Statement() : {/*@bgen(jjtree) Statement */
 /*@egen*/
 }
 
-void If_Statement() : {/*@bgen(jjtree) If_Statement */
-  ASTIf_Statement jjtn000 = new ASTIf_Statement(JJTIF_STATEMENT);
+void WhileStatement() : {/*@bgen(jjtree) WhileStatement */
+  ASTWhileStatement jjtn000 = new ASTWhileStatement(JJTWHILESTATEMENT);
   boolean jjtc000 = true;
   jjtree.openNodeScope(jjtn000);
 /*@egen*/ }
-{/*@bgen(jjtree) If_Statement */
-        try {
-/*@egen*/
-	< IF > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()/*@bgen(jjtree)*/
-        } catch (Throwable jjte000) {
-          if (jjtc000) {
-            jjtree.clearNodeScope(jjtn000);
-            jjtc000 = false;
-          } else {
-            jjtree.popNode();
-          }
-          if (jjte000 instanceof RuntimeException) {
-            throw (RuntimeException)jjte000;
-          }
-          if (jjte000 instanceof ParseException) {
-            throw (ParseException)jjte000;
-          }
-          throw (Error)jjte000;
-        } finally {
-          if (jjtc000) {
-            jjtree.closeNodeScope(jjtn000, true);
-          }
-        }
-/*@egen*/   
-}
-
-void While_Statement() : {/*@bgen(jjtree) While_Statement */
-  ASTWhile_Statement jjtn000 = new ASTWhile_Statement(JJTWHILE_STATEMENT);
-  boolean jjtc000 = true;
-  jjtree.openNodeScope(jjtn000);
-/*@egen*/ }
-{/*@bgen(jjtree) While_Statement */
+{/*@bgen(jjtree) WhileStatement */
     try {
 /*@egen*/
     < WHILE > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()/*@bgen(jjtree)*/
@@ -274,42 +245,16 @@ void While_Statement() : {/*@bgen(jjtree) While_Statement */
 /*@egen*/
 }
 
-void Expression() : {/*@bgen(jjtree) Expression */
-  ASTExpression jjtn000 = new ASTExpression(JJTEXPRESSION);
-  boolean jjtc000 = true;
-  jjtree.openNodeScope(jjtn000);
-/*@egen*/ }
-{/*@bgen(jjtree) Expression */
-    try {
-/*@egen*/
-    BinaryExpression() | UnaryExpression() | Assignment()/*@bgen(jjtree)*/
-    } catch (Throwable jjte000) {
-      if (jjtc000) {
-        jjtree.clearNodeScope(jjtn000);
-        jjtc000 = false;
-      } else {
-        jjtree.popNode();
-      }
-      if (jjte000 instanceof RuntimeException) {
-        throw (RuntimeException)jjte000;
-      }
-      if (jjte000 instanceof ParseException) {
-        throw (ParseException)jjte000;
-      }
-      throw (Error)jjte000;
-    } finally {
-      if (jjtc000) {
-        jjtree.closeNodeScope(jjtn000, true);
-      }
-    }
-/*@egen*/
+void Expression()      : { }
+{
+    LOOKAHEAD(BinaryExpression()) BinaryExpression() |  LOOKAHEAD(UnaryExpression()) UnaryExpression() | Operand()
 }
  
 void UnaryExpression() : {/*@bgen(jjtree) UnaryExpression */
   ASTUnaryExpression jjtn000 = new ASTUnaryExpression(JJTUNARYEXPRESSION);
   boolean jjtc000 = true;
   jjtree.openNodeScope(jjtn000);
-/*@egen*/ }
+/*@egen*/ } //DO BETTER STRUCTURE, ON MY BOOK OPERATOR NEW MEANING
 {/*@bgen(jjtree) UnaryExpression */
     try {
 /*@egen*/
@@ -333,7 +278,7 @@ void UnaryExpression() : {/*@bgen(jjtree) UnaryExpression */
         jjtree.closeNodeScope(jjtn000, true);
       }
     }
-/*@egen*/ //Expression()
+/*@egen*/
 }
  
 void BinaryExpression() : {/*@bgen(jjtree) BinaryExpression */
@@ -375,7 +320,7 @@ void Block() : {/*@bgen(jjtree) Block */
 {/*@bgen(jjtree) Block */
         try {
 /*@egen*/
-	< BRACKETS_OPEN > (Expression())* < BRACKETS_CLOSE >/*@bgen(jjtree)*/
+	< BRACKETS_OPEN > (Statement())* < BRACKETS_CLOSE >/*@bgen(jjtree)*/
         } catch (Throwable jjte000) {
           if (jjtc000) {
             jjtree.clearNodeScope(jjtn000);
@@ -399,20 +344,28 @@ void Block() : {/*@bgen(jjtree) Block */
 }
 
 void Operand(): {/*@bgen(jjtree) Operand */
-  ASTOperand jjtn000 = new ASTOperand(JJTOPERAND);
-  boolean jjtc000 = true;
-  jjtree.openNodeScope(jjtn000);
-/*@egen*/ }
+                  ASTOperand jjtn000 = new ASTOperand(JJTOPERAND);
+                  boolean jjtc000 = true;
+                  jjtree.openNodeScope(jjtn000);
+/*@egen*/ Token t;}
 {/*@bgen(jjtree) Operand */
     try {
 /*@egen*/
-    < VARIABLE >/*@bgen(jjtree)*/
+    (      t=< VARIABLE > | t=< IDENTIFIER >
+    )/*@bgen(jjtree)*/
+      {
+        jjtree.closeNodeScope(jjtn000, true);
+        jjtc000 = false;
+      }
+/*@egen*/
+      { jjtn000.jjtSetValue(t.image); }/*@bgen(jjtree)*/
     } finally {
       if (jjtc000) {
         jjtree.closeNodeScope(jjtn000, true);
       }
     }
 /*@egen*/
+    
 }
  
 void Operator(): {/*@bgen(jjtree) Operator */

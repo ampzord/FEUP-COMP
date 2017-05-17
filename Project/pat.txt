@@ -1,1 +1,9 @@
-if (@x == 2)
+Pattern p1 {
+	if(@x) {
+	}
+}
+
+Pattern p2 {
+	if (@y) {
+	}
+}

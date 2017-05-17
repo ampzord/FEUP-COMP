@@ -13,35 +13,35 @@ public interface PatternParserConstants {
   /** RegularExpression Id. */
   int PATTERN = 6;
   /** RegularExpression Id. */
-  int PARENTHESIS_OPEN = 7;
+  int WHILE = 7;
   /** RegularExpression Id. */
-  int PARENTHESIS_CLOSE = 8;
+  int PARENTHESIS_OPEN = 8;
   /** RegularExpression Id. */
-  int BRACKETS_OPEN = 9;
+  int PARENTHESIS_CLOSE = 9;
   /** RegularExpression Id. */
-  int BRACKETS_CLOSE = 10;
+  int BRACKETS_OPEN = 10;
   /** RegularExpression Id. */
-  int ELSE = 11;
+  int BRACKETS_CLOSE = 11;
   /** RegularExpression Id. */
-  int EQUALS = 12;
+  int ELSE = 12;
   /** RegularExpression Id. */
-  int NOT_EQUALS = 13;
+  int EQUALS = 13;
   /** RegularExpression Id. */
-  int INTEGER = 14;
+  int NOT_EQUALS = 14;
   /** RegularExpression Id. */
-  int IDENTIFIER = 15;
+  int PLUS = 15;
   /** RegularExpression Id. */
-  int VARIABLE = 16;
+  int MINUS = 16;
   /** RegularExpression Id. */
-  int WHILE = 17;
+  int INCREMENT = 17;
   /** RegularExpression Id. */
-  int PLUS = 18;
+  int DECREMENT = 18;
   /** RegularExpression Id. */
-  int MINUS = 19;
+  int INTEGER = 19;
   /** RegularExpression Id. */
-  int INCREMENT = 20;
+  int IDENTIFIER = 20;
   /** RegularExpression Id. */
-  int DECREMENT = 21;
+  int VARIABLE = 21;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -55,6 +55,7 @@ public interface PatternParserConstants {
     "\"\\n\"",
     "\"if\"",
     "\"Pattern\"",
+    "\"while\"",
     "\"(\"",
     "\")\"",
     "\"{\"",
@@ -62,14 +63,13 @@ public interface PatternParserConstants {
     "\"else\"",
     "\"==\"",
     "\"!=\"",
-    "<INTEGER>",
-    "<IDENTIFIER>",
-    "<VARIABLE>",
-    "\"while\"",
     "\"+\"",
     "\"-\"",
     "\"++\"",
     "\"--\"",
+    "<INTEGER>",
+    "<IDENTIFIER>",
+    "<VARIABLE>",
   };
 
 }

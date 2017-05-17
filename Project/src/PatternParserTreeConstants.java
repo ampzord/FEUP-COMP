@@ -5,15 +5,14 @@ public interface PatternParserTreeConstants
   public int JJTPATTERN = 1;
   public int JJTVARIABLE = 2;
   public int JJTASSIGNMENT = 3;
-  public int JJTSTATEMENT = 4;
-  public int JJTIF_STATEMENT = 5;
-  public int JJTWHILE_STATEMENT = 6;
-  public int JJTEXPRESSION = 7;
-  public int JJTUNARYEXPRESSION = 8;
-  public int JJTBINARYEXPRESSION = 9;
-  public int JJTBLOCK = 10;
-  public int JJTOPERAND = 11;
-  public int JJTOPERATOR = 12;
+  public int JJTVOID = 4;
+  public int JJTIFSTATEMENT = 5;
+  public int JJTWHILESTATEMENT = 6;
+  public int JJTUNARYEXPRESSION = 7;
+  public int JJTBINARYEXPRESSION = 8;
+  public int JJTBLOCK = 9;
+  public int JJTOPERAND = 10;
+  public int JJTOPERATOR = 11;
 
 
   public String[] jjtNodeName = {
@@ -21,10 +20,9 @@ public interface PatternParserTreeConstants
     "Pattern",
     "Variable",
     "Assignment",
-    "Statement",
-    "If_Statement",
-    "While_Statement",
-    "Expression",
+    "void",
+    "IfStatement",
+    "WhileStatement",
     "UnaryExpression",
     "BinaryExpression",
     "Block",
@@ -32,4 +30,4 @@ public interface PatternParserTreeConstants
     "Operator",
   };
 }
-/* JavaCC - OriginalChecksum=6bf757de485f90c0b881688f09496d50 (do not edit this line) */
+/* JavaCC - OriginalChecksum=36f6ebe6cc780eb547c1fc62c2994e2d (do not edit this line) */

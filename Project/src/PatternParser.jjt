@@ -3,7 +3,6 @@ options
   LOOKAHEAD= 1;
   MULTI=true;
 }
-
  
 PARSER_BEGIN(PatternParser)
 
@@ -15,16 +14,14 @@ public class PatternParser
   public static void main(String [] args) throws ParseException,
   FileNotFoundException
   {
-//    if (args.length < 1)
-//    {
-//      System.out.println("Write the filename of the pattern file.");
-//      System.exit(1);
-//    }
-//    System.out.println("Reading from the file " + args[0]);
-//    PatternParser patParser = new PatternParser(new FileInputStream(args[0]));
+    if (args.length < 1)
+    {
+      System.out.println("Write the filename of the pattern file.");
+      System.exit(1);
+    }
+    System.out.println("Reading from the file " + args[0] + "...\n");
+    PatternParser patParser = new PatternParser(new FileInputStream(args[0]));
 
-
-	PatternParser patParser = new PatternParser(System.in);
     ASTStart root = PatternParser.Start();
     // root.dump("");
     String code = root.generateJava();
@@ -46,6 +43,7 @@ TOKEN :
 {
   	  < IF   : "if" >
   	| < PATTERN      	  : "Pattern" >
+    | < WHILE             : "while" >
 	| < PARENTHESIS_OPEN  : "(" >
 	| < PARENTHESIS_CLOSE : ")" >
 	| < BRACKETS_OPEN	  : "{" >
@@ -53,22 +51,23 @@ TOKEN :
 	| < ELSE              : "else" >
 	| < EQUALS			  : "==" >
 	| < NOT_EQUALS		  : "!=" >
+	| < PLUS              : "+" >
+    | < MINUS             : "-" >
+    | < INCREMENT         : "++" >
+    | < DECREMENT         : "--" >
+	
 	| < INTEGER           : (["0"-"9"])+ >
 	| < IDENTIFIER        : ([ "a"-"z", "A"-"Z" ]) ([ "a"-"z", "A"-"Z", "0"-"9" ])* >
 	| < VARIABLE          : ("@" <IDENTIFIER> )>
 
-    | < WHILE                 : "while" >
-    | < PLUS                  : "+" >
-    | < MINUS                 : "-" >
-    | < INCREMENT             : "++" >
-    | < DECREMENT             : "--" >
-	
+
 
  }
 
 ASTStart Start() : {}
 {
-	(Pattern())/***/
+	(Pattern())*
+	< EOF >
 	{
 	  return jjtThis;
 	}
@@ -76,44 +75,42 @@ ASTStart Start() : {}
 
 void Pattern(): { Token t;}
 {
-  < PATTERN > t=< IDENTIFIER > { jjtThis.jjtSetValue(t.image); } Variable()
-	//< PATTERN > < IDENTIFIER > < BRACKETS_OPEN > (Statement())* < BRACKETS_CLOSE >
+  	< PATTERN > t=< IDENTIFIER > { jjtThis.jjtSetValue(t.image); } Block()
 }
 
 void Variable(): { Token t; }
 {
-  t=< VARIABLE > { jjtThis.jjtSetValue(t.image); } 
+  	t=< VARIABLE > { jjtThis.jjtSetValue(t.image); } 
 }
-
 
 void Assignment() : { }
 {
     < VARIABLE > < EQUALS > < INTEGER >
 }
 
-void Statement() : { }
+void Statement() #void : { }
 {
-	If_Statement() | While_Statement() | Assignment()
+	IfStatement() | WhileStatement() | Assignment()
 }
 
-void If_Statement() : { }
+void IfStatement() : { }
 {
-	< IF > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()   
+	< IF > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()  [<ELSE > Block()]
 }
 
-void While_Statement() : { }
+void WhileStatement() : { }
 {
     < WHILE > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()
 }
 
-void Expression() : { }
+void Expression() #void: { }
 {
-    BinaryExpression() | UnaryExpression() | Assignment()
+    LOOKAHEAD(BinaryExpression()) BinaryExpression() |  LOOKAHEAD(UnaryExpression()) UnaryExpression() | Operand()
 }
  
-void UnaryExpression() : { }
+void UnaryExpression() : { } //DO BETTER STRUCTURE, ON MY BOOK OPERATOR NEW MEANING
 {
-    Operand() Operator() //Expression()
+    Operand() Operator()
 }
  
 void BinaryExpression() : { }
@@ -123,12 +120,15 @@ void BinaryExpression() : { }
 
 void Block() : { }
 {
-	< BRACKETS_OPEN > (Expression())* < BRACKETS_CLOSE >
+	< BRACKETS_OPEN > (Statement())* < BRACKETS_CLOSE >
 }
 
-void Operand(): { }
+void Operand(): { Token t;}
 {
-    < VARIABLE >
+    (      t=< VARIABLE > | t=< IDENTIFIER >
+    )
+      { jjtThis.jjtSetValue(t.image); }
+    
 }
  
 void Operator(): { }

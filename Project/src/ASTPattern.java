@@ -2,24 +2,31 @@
 /* JavaCCOptions:MULTI=true,NODE_USES_PARSER=false,VISITOR=false,TRACK_TOKENS=false,NODE_PREFIX=AST,NODE_EXTENDS=,NODE_FACTORY=,SUPPORT_CLASS_VISIBILITY_PUBLIC=true */
 public
 class ASTPattern extends SimpleNode {
-  public ASTPattern(int id) {
-    super(id);
-  }
+	public ASTPattern(int id) {
+		super(id);
+	}
 
-  public ASTPattern(PatternParser p, int id) {
-    super(p, id);
-  }
+	public ASTPattern(PatternParser p, int id) {
+		super(p, id);
+	}
 
-  @Override
+	@Override
 	public String generateJava() {
 		// TODO Auto-generated method stub
-		String s= "\tvoid " + this.value + " {\n";
+		String s= "\tvoid " + this.value + "()";
 		for(int i = 0; i < jjtGetNumChildren(); i++){
-			  SimpleNode n = (SimpleNode) jjtGetChild(i);
-			  s += "\t\t" + n.generateJava();
-		  }
-		  s+="\n\t}\n";
-		  return s;
+			SimpleNode n = (SimpleNode) jjtGetChild(i);
+			if (i == 0) {
+				s += n.generateJava();
+			}
+			else if (i == jjtGetNumChildren()) {
+				s += n.generateJava();
+			}
+			else {
+				s += "\t" + n.generateJava();
+			}
+		}
+		return s;
 	}
 }
 /* JavaCC - OriginalChecksum=bff851e3bedcd756fc6bba5920ef5d11 (do not edit this line) */
