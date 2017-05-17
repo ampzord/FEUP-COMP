@@ -13,13 +13,12 @@ class ASTStart extends SimpleNode {
   
   @Override
 	public String generateJava() {
-	  String s = "public class Patterns {\n";
+	  String s = "public class Pattern {\n";
 	  for(int i = 0; i < jjtGetNumChildren(); i++){
-		  SimpleNode n = (SimpleNode)jjtGetChild(i);
-		  s+=n.generateJava();
+		  SimpleNode n = (SimpleNode) jjtGetChild(i);
+		  s += n.generateJava();
 	  }
-	  s+="}\n";
-	  
+	  s += "}\n";
 	  return s;
 	}
 

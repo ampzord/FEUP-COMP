@@ -13,12 +13,12 @@ class ASTPattern extends SimpleNode {
   @Override
 	public String generateJava() {
 		// TODO Auto-generated method stub
-		String s= "\tvoid "+this.value+"{\n";
+		String s= "\tvoid " + this.value + " {\n";
 		for(int i = 0; i < jjtGetNumChildren(); i++){
-			  SimpleNode n = (SimpleNode)jjtGetChild(i);
-			  s+="\t\t"+n.generateJava();
+			  SimpleNode n = (SimpleNode) jjtGetChild(i);
+			  s += "\t\t" + n.generateJava();
 		  }
-		  s+="\t}\n";
+		  s+="\n\t}\n";
 		  return s;
 	}
 }

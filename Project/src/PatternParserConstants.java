@@ -32,6 +32,16 @@ public interface PatternParserConstants {
   int IDENTIFIER = 15;
   /** RegularExpression Id. */
   int VARIABLE = 16;
+  /** RegularExpression Id. */
+  int WHILE = 17;
+  /** RegularExpression Id. */
+  int PLUS = 18;
+  /** RegularExpression Id. */
+  int MINUS = 19;
+  /** RegularExpression Id. */
+  int INCREMENT = 20;
+  /** RegularExpression Id. */
+  int DECREMENT = 21;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -51,10 +61,15 @@ public interface PatternParserConstants {
     "\"}\"",
     "\"else\"",
     "\"==\"",
-    "\"|=\"",
+    "\"!=\"",
     "<INTEGER>",
     "<IDENTIFIER>",
     "<VARIABLE>",
+    "\"while\"",
+    "\"+\"",
+    "\"-\"",
+    "\"++\"",
+    "\"--\"",
   };
 
 }

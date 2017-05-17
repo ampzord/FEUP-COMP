@@ -44,7 +44,7 @@ SKIP :
 
 TOKEN :
 {
-  	< IF   : "if" >
+  	  < IF   : "if" >
   	| < PATTERN      	  : "Pattern" >
 	| < PARENTHESIS_OPEN  : "(" >
 	| < PARENTHESIS_CLOSE : ")" >
@@ -52,10 +52,17 @@ TOKEN :
 	| < BRACKETS_CLOSE    : "}" >
 	| < ELSE              : "else" >
 	| < EQUALS			  : "==" >
-	| < NOT_EQUALS		  : "|=" >
+	| < NOT_EQUALS		  : "!=" >
 	| < INTEGER           : (["0"-"9"])+ >
 	| < IDENTIFIER        : ([ "a"-"z", "A"-"Z" ]) ([ "a"-"z", "A"-"Z", "0"-"9" ])* >
 	| < VARIABLE          : ("@" <IDENTIFIER> )>
+
+    | < WHILE                 : "while" >
+    | < PLUS                  : "+" >
+    | < MINUS                 : "-" >
+    | < INCREMENT             : "++" >
+    | < DECREMENT             : "--" >
+	
 
  }
 
@@ -77,10 +84,16 @@ void Variable(): { Token t; }
 {
   t=< VARIABLE > { jjtThis.jjtSetValue(t.image); } 
 }
-/*
+
+
+void Assignment() : { }
+{
+    < VARIABLE > < EQUALS > < INTEGER >
+}
+
 void Statement() : { }
 {
-	If_Statement() | While_Statement() | Assigment()
+	If_Statement() | While_Statement() | Assignment()
 }
 
 void If_Statement() : { }
@@ -88,14 +101,24 @@ void If_Statement() : { }
 	< IF > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()   
 }
 
-void Expression() : { }
+void While_Statement() : { }
 {
-	BinaryExpression() | UnaryExpression() | Assignment()
+    < WHILE > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()
 }
 
+void Expression() : { }
+{
+    BinaryExpression() | UnaryExpression() | Assignment()
+}
+ 
 void UnaryExpression() : { }
 {
-  Op() Expression()
+    Operand() Operator() //Expression()
+}
+ 
+void BinaryExpression() : { }
+{
+    Operand() Operator() Operand()
 }
 
 void Block() : { }
@@ -103,30 +126,12 @@ void Block() : { }
 	< BRACKETS_OPEN > (Expression())* < BRACKETS_CLOSE >
 }
 
-void Op() : { }
+void Operand(): { }
 {
-	< PLUS > | < MINUS > | < INCREMENT > | < DECREMENT > | < NEGATION >
+    < VARIABLE >
 }
-*/
-// --------------------------------------------------------------------------------
-
-//void SimpleNode() {
-//  String generateJava() {
-//
-//  }
-//}
-//
-//void AST_Start() {
-//	@override
-//	String generateJava() {
-//	  String s = "public class Pattern {";
-//	  
-//}
-//
-//
-//void AST_Pattern() {
-//	@override
-//	String generateJava() {
-//		
-//	}
-//}
+ 
+void Operator(): { }
+{
+    < PLUS > | < MINUS > | < INCREMENT > | < DECREMENT > | < NOT_EQUALS >
+}
