@@ -21,7 +21,7 @@ public class forFind {
 		this.fileToParse = fileToParse;
 	}
 	
-	public ArrayList<String> getAllIfs() throws IOException{
+	public ArrayList<String> getAllFors() throws IOException{
 		ArrayList<String> allReturnText = new ArrayList<String>();
 		
 		try {

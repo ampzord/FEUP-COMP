@@ -21,7 +21,7 @@ public class whileFind {
 		this.fileToParse = fileToParse;
 	}
 	
-	public ArrayList<String> getAllIfs() throws IOException{
+	public ArrayList<String> getAllWhiles() throws IOException{
 		ArrayList<String> allReturnText = new ArrayList<String>();
 		
 		try {
