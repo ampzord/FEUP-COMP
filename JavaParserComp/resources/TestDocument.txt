@@ -1,0 +1,45 @@
+
+ [Lines 63 - 74 ] while (true) {
+    System.out.println(currmsg);
+    //currmsg +=1;
+    try {
+        DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+        this.socket.receive(packet);
+        message = packet;
+        conductPacket();
+    } catch (IOException | InterruptedException e) {
+        e.printStackTrace();
+    }
+}
+ [Lines 165 - 167 ] for (int i = 0; i < bodySize; i++) {
+    bodyBytes[i] = pack.getData()[bodyIndex + i];
+}
+ [Lines 142 - 151 ] if (Integer.parseInt(part[1]) != Peer.getPeerID()) {
+    if (this.nreps.containsKey(part[3])) {
+        ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+        HashSet<Integer> nS = nmap.get(part[4]);
+        int rep = nS.size();
+        nS.remove(part[2]);
+        this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+    }
+}
+ [Lines 143 - 150 ] if (this.nreps.containsKey(part[3])) {
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+    HashSet<Integer> nS = nmap.get(part[4]);
+    int rep = nS.size();
+    nS.remove(part[2]);
+    this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+}
+ [Lines 247 - 259 ] if (this.nreps.containsKey(id)) {
+    System.out.println("HAS A KEY");
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(id);
+    HashSet<Integer> nS = new HashSet<Integer>();
+    nmap.put(chunkNo, nS);
+    this.nreps.put(id, nmap);
+} else {
+    System.out.println("HAS NO KEY");
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = new ConcurrentHashMap<String, HashSet<Integer>>();
+    HashSet<Integer> nS = new HashSet<Integer>();
+    nmap.put(chunkNo, nS);
+    this.nreps.put(id, nmap);
+}
