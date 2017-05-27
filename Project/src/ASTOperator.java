@@ -9,6 +9,12 @@ class ASTOperator extends SimpleNode {
   public ASTOperator(PatternParser p, int id) {
     super(p, id);
   }
+  
+  @Override
+ 	public String generateJava() {
+ 		// TODO Auto-generated method stub
+ 		return this.value.toString();
+ 	}
 
 }
 /* JavaCC - OriginalChecksum=53598755986a8eae494432c7da8a2d10 (do not edit this line) */

@@ -10,9 +10,8 @@ class ASTOperand extends SimpleNode {
     super(p, id);
   }
   @Override
- 	public String generateJava() {
- 		// TODO Auto-generated method stub
- 		return this.value.toString();
- 	}
+	public String generateJava() {
+	  return value.toString().replace("@","_at_");
+	}
 }
 /* JavaCC - OriginalChecksum=13ac268ce6b682e543ca115e6be65ab8 (do not edit this line) */

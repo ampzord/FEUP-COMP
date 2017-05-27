@@ -19,7 +19,7 @@ public class PatternParser
       System.out.println("Write the filename of the pattern file.");
       System.exit(1);
     }
-    System.out.println("Reading from the file " + args[0] + "...\n");
+    //System.out.println("Reading from the file " + args[0] + "...\n");
     PatternParser patParser = new PatternParser(new FileInputStream(args[0]));
 
     ASTStart root = PatternParser.Start();
@@ -55,13 +55,13 @@ TOKEN :
     | < MINUS             : "-" >
     | < INCREMENT         : "++" >
     | < DECREMENT         : "--" >
-	
+    | < GREATER_EQUAL	  : ">=" >
+    | < GREATER		      : ">" >
+    | < LESSER_EQUAL      : "<=" >
+    | < LESSER			  : "<" >
 	| < INTEGER           : (["0"-"9"])+ >
 	| < IDENTIFIER        : ([ "a"-"z", "A"-"Z" ]) ([ "a"-"z", "A"-"Z", "0"-"9" ])* >
 	| < VARIABLE          : ("@" <IDENTIFIER> )>
-
-
-
  }
 
 ASTStart Start() : {}
@@ -76,11 +76,6 @@ ASTStart Start() : {}
 void Pattern(): { Token t;}
 {
   	< PATTERN > t=< IDENTIFIER > { jjtThis.jjtSetValue(t.image); } Block()
-}
-
-void Variable(): { Token t; }
-{
-  	t=< VARIABLE > { jjtThis.jjtSetValue(t.image); } 
 }
 
 void Assignment() : { }
@@ -108,7 +103,7 @@ void Expression() #void: { }
     LOOKAHEAD(BinaryExpression()) BinaryExpression() |  LOOKAHEAD(UnaryExpression()) UnaryExpression() | Operand()
 }
  
-void UnaryExpression() : { } //DO BETTER STRUCTURE, ON MY BOOK OPERATOR NEW MEANING
+void UnaryExpression() : { } //DO BETTER STRUCTURE, check my book later to fix this
 {
     Operand() Operator()
 }
@@ -125,13 +120,13 @@ void Block() : { }
 
 void Operand(): { Token t;}
 {
-    (      t=< VARIABLE > | t=< IDENTIFIER >
+    (      t=< VARIABLE > | t=< IDENTIFIER > | t=< INTEGER >
     )
       { jjtThis.jjtSetValue(t.image); }
-    
 }
  
 void Operator(): { }
 {
-    < PLUS > | < MINUS > | < INCREMENT > | < DECREMENT > | < NOT_EQUALS >
+    < PLUS > | < MINUS > | < INCREMENT > | < DECREMENT > | < NOT_EQUALS > | < EQUALS >
+  | < GREATER > |< GREATER_EQUAL > | <LESSER > | < LESSER_EQUAL > 
 }

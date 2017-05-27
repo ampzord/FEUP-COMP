@@ -1,5 +1,5 @@
 Pattern p1 {
-	if(@x) {
+	if(@x == j) {
 	}
 }
 

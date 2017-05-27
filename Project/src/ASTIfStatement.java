@@ -17,6 +17,7 @@ public class ASTIfStatement extends SimpleNode {
 		s += ") {";
 		SimpleNode then = (SimpleNode) jjtGetChild(1);
 		s += then.generateJava();
+		
 		if (jjtGetNumChildren() > 2) {
 			SimpleNode _else = (SimpleNode) jjtGetChild(2);
 			s += _else.generateJava();

@@ -11,7 +11,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
       System.out.println("Write the filename of the pattern file.");
       System.exit(1);
     }
-    System.out.println("Reading from the file " + args[0] + "...\u005cn");
+    //System.out.println("Reading from the file " + args[0] + "...\n");
     PatternParser patParser = new PatternParser(new FileInputStream(args[0]));
 
     ASTStart root = PatternParser.Start();
@@ -88,23 +88,6 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
             {if (true) throw (ParseException)jjte000;}
           }
           {if (true) throw (Error)jjte000;}
-    } finally {
-          if (jjtc000) {
-            jjtree.closeNodeScope(jjtn000, true);
-          }
-    }
-  }
-
-  static final public void Variable() throws ParseException {
-                  /*@bgen(jjtree) Variable */
-                   ASTVariable jjtn000 = new ASTVariable(JJTVARIABLE);
-                   boolean jjtc000 = true;
-                   jjtree.openNodeScope(jjtn000);Token t;
-    try {
-      t = jj_consume_token(VARIABLE);
-                         jjtree.closeNodeScope(jjtn000, true);
-                         jjtc000 = false;
-                         jjtn000.jjtSetValue(t.image);
     } finally {
           if (jjtc000) {
             jjtree.closeNodeScope(jjtn000, true);
@@ -226,6 +209,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
       UnaryExpression();
     } else {
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case INTEGER:
       case IDENTIFIER:
       case VARIABLE:
         Operand();
@@ -353,6 +337,9 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
       case IDENTIFIER:
         t = jj_consume_token(IDENTIFIER);
         break;
+      case INTEGER:
+        t = jj_consume_token(INTEGER);
+        break;
       default:
         jj_la1[5] = jj_gen;
         jj_consume_token(-1);
@@ -390,6 +377,21 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
       case NOT_EQUALS:
         jj_consume_token(NOT_EQUALS);
         break;
+      case EQUALS:
+        jj_consume_token(EQUALS);
+        break;
+      case GREATER:
+        jj_consume_token(GREATER);
+        break;
+      case GREATER_EQUAL:
+        jj_consume_token(GREATER_EQUAL);
+        break;
+      case LESSER:
+        jj_consume_token(LESSER);
+        break;
+      case LESSER_EQUAL:
+        jj_consume_token(LESSER_EQUAL);
+        break;
       default:
         jj_la1[6] = jj_gen;
         jj_consume_token(-1);
@@ -416,36 +418,6 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
     finally { jj_save(1, xla); }
   }
 
-  static private boolean jj_3R_6() {
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_scan_token(15)) {
-    jj_scanpos = xsp;
-    if (jj_scan_token(16)) {
-    jj_scanpos = xsp;
-    if (jj_scan_token(17)) {
-    jj_scanpos = xsp;
-    if (jj_scan_token(18)) {
-    jj_scanpos = xsp;
-    if (jj_scan_token(14)) return true;
-    }
-    }
-    }
-    }
-    return false;
-  }
-
-  static private boolean jj_3_2() {
-    if (jj_3R_4()) return true;
-    return false;
-  }
-
-  static private boolean jj_3R_4() {
-    if (jj_3R_5()) return true;
-    if (jj_3R_6()) return true;
-    return false;
-  }
-
   static private boolean jj_3R_3() {
     if (jj_3R_5()) return true;
     if (jj_3R_6()) return true;
@@ -461,10 +433,58 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
   static private boolean jj_3R_5() {
     Token xsp;
     xsp = jj_scanpos;
-    if (jj_scan_token(21)) {
+    if (jj_scan_token(25)) {
     jj_scanpos = xsp;
-    if (jj_scan_token(20)) return true;
+    if (jj_scan_token(24)) {
+    jj_scanpos = xsp;
+    if (jj_scan_token(23)) return true;
     }
+    }
+    return false;
+  }
+
+  static private boolean jj_3_2() {
+    if (jj_3R_4()) return true;
+    return false;
+  }
+
+  static private boolean jj_3R_6() {
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_scan_token(15)) {
+    jj_scanpos = xsp;
+    if (jj_scan_token(16)) {
+    jj_scanpos = xsp;
+    if (jj_scan_token(17)) {
+    jj_scanpos = xsp;
+    if (jj_scan_token(18)) {
+    jj_scanpos = xsp;
+    if (jj_scan_token(14)) {
+    jj_scanpos = xsp;
+    if (jj_scan_token(13)) {
+    jj_scanpos = xsp;
+    if (jj_scan_token(20)) {
+    jj_scanpos = xsp;
+    if (jj_scan_token(19)) {
+    jj_scanpos = xsp;
+    if (jj_scan_token(22)) {
+    jj_scanpos = xsp;
+    if (jj_scan_token(21)) return true;
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    return false;
+  }
+
+  static private boolean jj_3R_4() {
+    if (jj_3R_5()) return true;
+    if (jj_3R_6()) return true;
     return false;
   }
 
@@ -486,7 +506,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
       jj_la1_init_0();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x40,0x2000a0,0x1000,0x300000,0x2000a0,0x300000,0x7c000,};
+      jj_la1_0 = new int[] {0x40,0x20000a0,0x1000,0x3800000,0x20000a0,0x3800000,0x7fe000,};
    }
   static final private JJCalls[] jj_2_rtns = new JJCalls[2];
   static private boolean jj_rescan = false;
@@ -696,7 +716,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
   /** Generate ParseException. */
   static public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[22];
+    boolean[] la1tokens = new boolean[26];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
@@ -710,7 +730,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
         }
       }
     }
-    for (int i = 0; i < 22; i++) {
+    for (int i = 0; i < 26; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;

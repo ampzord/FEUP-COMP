@@ -37,11 +37,19 @@ public interface PatternParserConstants {
   /** RegularExpression Id. */
   int DECREMENT = 18;
   /** RegularExpression Id. */
-  int INTEGER = 19;
+  int GREATER_EQUAL = 19;
   /** RegularExpression Id. */
-  int IDENTIFIER = 20;
+  int GREATER = 20;
   /** RegularExpression Id. */
-  int VARIABLE = 21;
+  int LESSER_EQUAL = 21;
+  /** RegularExpression Id. */
+  int LESSER = 22;
+  /** RegularExpression Id. */
+  int INTEGER = 23;
+  /** RegularExpression Id. */
+  int IDENTIFIER = 24;
+  /** RegularExpression Id. */
+  int VARIABLE = 25;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -67,6 +75,10 @@ public interface PatternParserConstants {
     "\"-\"",
     "\"++\"",
     "\"--\"",
+    "\">=\"",
+    "\">\"",
+    "\"<=\"",
+    "\"<\"",
     "<INTEGER>",
     "<IDENTIFIER>",
     "<VARIABLE>",

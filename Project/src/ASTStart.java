@@ -10,7 +10,6 @@ class ASTStart extends SimpleNode {
     super(p, id);
   }
 
-  
   @Override
 	public String generateJava() {
 	  String s = "public class Pattern {\n";
