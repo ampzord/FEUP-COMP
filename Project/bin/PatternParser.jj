@@ -45,7 +45,7 @@ SKIP :
 
 TOKEN :
 {
-  	  < IF   : "if" >
+  	  < IF                : "if" >
   	| < PATTERN      	  : "Pattern" >
     | < WHILE             : "while" >
 	| < PARENTHESIS_OPEN  : "(" >
@@ -53,6 +53,8 @@ TOKEN :
 	| < BRACKETS_OPEN	  : "{" >
 	| < BRACKETS_CLOSE    : "}" >
 	| < ELSE              : "else" >
+	| < SEMI_COLON        : ";" >
+	| < ASSIGN			  : "=" >
 	| < EQUALS			  : "==" >
 	| < NOT_EQUALS		  : "!=" >
 	| < PLUS              : "+" >
@@ -140,14 +142,31 @@ void Pattern(): {/*@bgen(jjtree) Pattern */
 }
 
 void Assignment() : {/*@bgen(jjtree) Assignment */
-  ASTAssignment jjtn000 = new ASTAssignment(JJTASSIGNMENT);
-  boolean jjtc000 = true;
-  jjtree.openNodeScope(jjtn000);
-/*@egen*/ }
+                     ASTAssignment jjtn000 = new ASTAssignment(JJTASSIGNMENT);
+                     boolean jjtc000 = true;
+                     jjtree.openNodeScope(jjtn000);
+/*@egen*/Token t; }
 {/*@bgen(jjtree) Assignment */
     try {
 /*@egen*/
-    < VARIABLE > < EQUALS > < INTEGER >/*@bgen(jjtree)*/
+    (      t = < VARIABLE > | t= < IDENTIFIER >
+    ) < ASSIGN >  
+    { jjtn000.jjtSetValue(t.image); }
+     Expression() < SEMI_COLON >/*@bgen(jjtree)*/
+    } catch (Throwable jjte000) {
+      if (jjtc000) {
+        jjtree.clearNodeScope(jjtn000);
+        jjtc000 = false;
+      } else {
+        jjtree.popNode();
+      }
+      if (jjte000 instanceof RuntimeException) {
+        throw (RuntimeException)jjte000;
+      }
+      if (jjte000 instanceof ParseException) {
+        throw (ParseException)jjte000;
+      }
+      throw (Error)jjte000;
     } finally {
       if (jjtc000) {
         jjtree.closeNodeScope(jjtn000, true);
@@ -232,7 +251,7 @@ void UnaryExpression() : {/*@bgen(jjtree) UnaryExpression */
   ASTUnaryExpression jjtn000 = new ASTUnaryExpression(JJTUNARYEXPRESSION);
   boolean jjtc000 = true;
   jjtree.openNodeScope(jjtn000);
-/*@egen*/ } //DO BETTER STRUCTURE, ON MY BOOK OPERATOR NEW MEANING
+/*@egen*/ } //TODO DO BETTER STRUCTURE, check my book later to fix this
 {/*@bgen(jjtree) UnaryExpression */
     try {
 /*@egen*/
@@ -329,7 +348,7 @@ void Operand(): {/*@bgen(jjtree) Operand */
 {/*@bgen(jjtree) Operand */
     try {
 /*@egen*/
-    (      t=< VARIABLE > | t=< IDENTIFIER > | t=< INTEGER >
+    (      t=< VARIABLE > | t=< IDENTIFIER > | t= < INTEGER >
     )/*@bgen(jjtree)*/
       {
         jjtree.closeNodeScope(jjtn000, true);
@@ -343,22 +362,33 @@ void Operand(): {/*@bgen(jjtree) Operand */
       }
     }
 /*@egen*/
+
+    
 }
  
 void Operator(): {/*@bgen(jjtree) Operator */
-  ASTOperator jjtn000 = new ASTOperator(JJTOPERATOR);
-  boolean jjtc000 = true;
-  jjtree.openNodeScope(jjtn000);
-/*@egen*/ }
+                   ASTOperator jjtn000 = new ASTOperator(JJTOPERATOR);
+                   boolean jjtc000 = true;
+                   jjtree.openNodeScope(jjtn000);
+/*@egen*/ Token t; }
 {/*@bgen(jjtree) Operator */
-    try {
+  try {
 /*@egen*/
-    < PLUS > | < MINUS > | < INCREMENT > | < DECREMENT > | < NOT_EQUALS > | < EQUALS >
-  | < GREATER > |< GREATER_EQUAL > | <LESSER > | < LESSER_EQUAL >/*@bgen(jjtree)*/
-    } finally {
-      if (jjtc000) {
+  (
+   t= < PLUS > | t=< MINUS > | t=< INCREMENT > | t=< DECREMENT > | t=< NOT_EQUALS > | t=< EQUALS >
+  | t=< GREATER > |t=< GREATER_EQUAL > | t=<LESSER > | t=< LESSER_EQUAL > )/*@bgen(jjtree)*/
+      {
         jjtree.closeNodeScope(jjtn000, true);
+        jjtc000 = false;
       }
+/*@egen*/
+      { jjtn000.jjtSetValue(t.image); }/*@bgen(jjtree)*/
+  } finally {
+    if (jjtc000) {
+      jjtree.closeNodeScope(jjtn000, true);
     }
-/*@egen*/ 
+  }
+/*@egen*/
+	
+	  
 }

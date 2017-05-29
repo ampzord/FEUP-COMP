@@ -25,35 +25,31 @@ public interface PatternParserConstants {
   /** RegularExpression Id. */
   int ELSE = 12;
   /** RegularExpression Id. */
-  int SEMI_COLON = 13;
+  int EQUALS = 13;
   /** RegularExpression Id. */
-  int ASSIGN = 14;
+  int NOT_EQUALS = 14;
   /** RegularExpression Id. */
-  int EQUALS = 15;
+  int PLUS = 15;
   /** RegularExpression Id. */
-  int NOT_EQUALS = 16;
+  int MINUS = 16;
   /** RegularExpression Id. */
-  int PLUS = 17;
+  int INCREMENT = 17;
   /** RegularExpression Id. */
-  int MINUS = 18;
+  int DECREMENT = 18;
   /** RegularExpression Id. */
-  int INCREMENT = 19;
+  int GREATER_EQUAL = 19;
   /** RegularExpression Id. */
-  int DECREMENT = 20;
+  int GREATER = 20;
   /** RegularExpression Id. */
-  int GREATER_EQUAL = 21;
+  int LESSER_EQUAL = 21;
   /** RegularExpression Id. */
-  int GREATER = 22;
+  int LESSER = 22;
   /** RegularExpression Id. */
-  int LESSER_EQUAL = 23;
+  int INTEGER = 23;
   /** RegularExpression Id. */
-  int LESSER = 24;
+  int IDENTIFIER = 24;
   /** RegularExpression Id. */
-  int INTEGER = 25;
-  /** RegularExpression Id. */
-  int IDENTIFIER = 26;
-  /** RegularExpression Id. */
-  int VARIABLE = 27;
+  int VARIABLE = 25;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -73,8 +69,6 @@ public interface PatternParserConstants {
     "\"{\"",
     "\"}\"",
     "\"else\"",
-    "\";\"",
-    "\"=\"",
     "\"==\"",
     "\"!=\"",
     "\"+\"",

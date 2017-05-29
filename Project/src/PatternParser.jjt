@@ -41,7 +41,7 @@ SKIP :
 
 TOKEN :
 {
-  	  < IF   : "if" >
+  	  < IF                : "if" >
   	| < PATTERN      	  : "Pattern" >
     | < WHILE             : "while" >
 	| < PARENTHESIS_OPEN  : "(" >
@@ -49,6 +49,8 @@ TOKEN :
 	| < BRACKETS_OPEN	  : "{" >
 	| < BRACKETS_CLOSE    : "}" >
 	| < ELSE              : "else" >
+	| < SEMI_COLON        : ";" >
+	| < ASSIGN			  : "=" >
 	| < EQUALS			  : "==" >
 	| < NOT_EQUALS		  : "!=" >
 	| < PLUS              : "+" >
@@ -64,6 +66,8 @@ TOKEN :
 	| < VARIABLE          : ("@" <IDENTIFIER> )>
  }
 
+//TODO add functions - "(" [Expression()("," Expression())*] ")"
+
 ASTStart Start() : {}
 {
 	(Pattern())*
@@ -78,9 +82,12 @@ void Pattern(): { Token t;}
   	< PATTERN > t=< IDENTIFIER > { jjtThis.jjtSetValue(t.image); } Block()
 }
 
-void Assignment() : { }
+void Assignment() : {Token t; }
 {
-    < VARIABLE > < EQUALS > < INTEGER >
+    (      t = < VARIABLE > | t= < IDENTIFIER >
+    ) < ASSIGN >  
+    { jjtThis.jjtSetValue(t.image); }
+     Expression() < SEMI_COLON >
 }
 
 void Statement() #void : { }
@@ -103,7 +110,7 @@ void Expression() #void: { }
     LOOKAHEAD(BinaryExpression()) BinaryExpression() |  LOOKAHEAD(UnaryExpression()) UnaryExpression() | Operand()
 }
  
-void UnaryExpression() : { } //DO BETTER STRUCTURE, check my book later to fix this
+void UnaryExpression() : { } //TODO DO BETTER STRUCTURE, check my book later to fix this
 {
     Operand() Operator()
 }
@@ -120,13 +127,19 @@ void Block() : { }
 
 void Operand(): { Token t;}
 {
-    (      t=< VARIABLE > | t=< IDENTIFIER > | t=< INTEGER >
+    (      t=< VARIABLE > | t=< IDENTIFIER > | t= < INTEGER >
     )
       { jjtThis.jjtSetValue(t.image); }
+
+    
 }
  
-void Operator(): { }
+void Operator(): { Token t; }
 {
-    < PLUS > | < MINUS > | < INCREMENT > | < DECREMENT > | < NOT_EQUALS > | < EQUALS >
-  | < GREATER > |< GREATER_EQUAL > | <LESSER > | < LESSER_EQUAL > 
+  (
+   t= < PLUS > | t=< MINUS > | t=< INCREMENT > | t=< DECREMENT > | t=< NOT_EQUALS > | t=< EQUALS >
+  | t=< GREATER > |t=< GREATER_EQUAL > | t=<LESSER > | t=< LESSER_EQUAL > )
+      { jjtThis.jjtSetValue(t.image); }
+	
+	  
 }
