@@ -12,15 +12,10 @@ class ASTBinaryExpression extends SimpleNode {
 
 	@Override
 	public String generateJava() {
-//		String s = "";
 		SimpleNode left = (SimpleNode) jjtGetChild(0);
 		SimpleNode op = (SimpleNode) jjtGetChild(1);
 		SimpleNode right = (SimpleNode) jjtGetChild(2);
-//		for (int i = 0; i < jjtGetNumChildren(); i++) {
-//			s += n.generateJava();
-//		}
-		//return value.toString().replace("@","_at_");
-		return left.generateJava()+op.generateJava()+right.generateJava();
+		return left.generateJava() + " " + op.generateJava() + " " + right.generateJava();
 	}
 	/* JavaCC - OriginalChecksum=db40cf98cbb5ad6a19da0b28cdb1489b (do not edit this line) */
 }

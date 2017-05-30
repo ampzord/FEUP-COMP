@@ -12,7 +12,6 @@ class ASTOperator extends SimpleNode {
   
   @Override
  	public String generateJava() {
- 		// TODO Auto-generated method stub
  		return this.value.toString();
  	}
 

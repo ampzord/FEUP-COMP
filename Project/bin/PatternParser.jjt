@@ -50,6 +50,7 @@ TOKEN :
 	| < BRACKETS_CLOSE    : "}" >
 	| < ELSE              : "else" >
 	| < SEMI_COLON        : ";" >
+	| < NEGATION          : "!" >
 	| < ASSIGN			  : "=" >
 	| < EQUALS			  : "==" >
 	| < NOT_EQUALS		  : "!=" >
@@ -66,7 +67,7 @@ TOKEN :
 	| < VARIABLE          : ("@" <IDENTIFIER> )>
  }
 
-//TODO add functions - "(" [Expression()("," Expression())*] ")"
+
 
 ASTStart Start() : {}
 {
@@ -77,17 +78,24 @@ ASTStart Start() : {}
 	}
 }
 
+//TODO add functions foo(arg1,arg2) - "(" [Expression()("," Expression())*] ")"
+/*void Function(): { }
+{
+  
+}*/
+
 void Pattern(): { Token t;}
 {
-  	< PATTERN > t=< IDENTIFIER > { jjtThis.jjtSetValue(t.image); } Block()
+  	< PATTERN > t=< IDENTIFIER > { jjtThis.jjtSetValue(t.image); }
+  	Block()
 }
 
 void Assignment() : {Token t; }
 {
     (      t = < VARIABLE > | t= < IDENTIFIER >
-    ) < ASSIGN >  
+    )  
     { jjtThis.jjtSetValue(t.image); }
-     Expression() < SEMI_COLON >
+    < ASSIGN > Expression() < SEMI_COLON >
 }
 
 void Statement() #void : { }
@@ -110,9 +118,9 @@ void Expression() #void: { }
     LOOKAHEAD(BinaryExpression()) BinaryExpression() |  LOOKAHEAD(UnaryExpression()) UnaryExpression() | Operand()
 }
  
-void UnaryExpression() : { } //TODO DO BETTER STRUCTURE, check my book later to fix this
-{
-    Operand() Operator()
+void UnaryExpression() : { } //TODO Is there any problem that we can do INTEGER + Operator ?
+							 // Because Operator includes integer also - 5++ would be a valid operation and it isn't..
+    Operand() Operator() //| Operator() Operand()
 }
  
 void BinaryExpression() : { }
@@ -130,16 +138,13 @@ void Operand(): { Token t;}
     (      t=< VARIABLE > | t=< IDENTIFIER > | t= < INTEGER >
     )
       { jjtThis.jjtSetValue(t.image); }
-
-    
 }
  
 void Operator(): { Token t; }
 {
   (
    t= < PLUS > | t=< MINUS > | t=< INCREMENT > | t=< DECREMENT > | t=< NOT_EQUALS > | t=< EQUALS >
-  | t=< GREATER > |t=< GREATER_EQUAL > | t=<LESSER > | t=< LESSER_EQUAL > )
+   | t=< GREATER > |t=< GREATER_EQUAL > | t=<LESSER > | t=< LESSER_EQUAL > | t=< NEGATION >
+  )
       { jjtThis.jjtSetValue(t.image); }
-	
-	  
 }

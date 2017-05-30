@@ -1,12 +1,17 @@
 Pattern p1 {
 	if(@x == 2) {
-	
 		@x = a;
-		@y = @x;
 	}
 }
 
 Pattern p2 {
 	if (@y) {
+		@a = @a + 1;
+	}
+}
+
+Pattern p3 {
+	while(@z == @h) {
+		@a = i;
 	}
 }

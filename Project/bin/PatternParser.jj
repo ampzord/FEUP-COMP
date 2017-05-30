@@ -70,6 +70,8 @@ TOKEN :
 	| < VARIABLE          : ("@" <IDENTIFIER> )>
  }
 
+//TODO add functions foo(arg1,arg2) - "(" [Expression()("," Expression())*] ")"
+
 ASTStart Start() : {/*@bgen(jjtree) Start */
   ASTStart jjtn000 = new ASTStart(JJTSTART);
   boolean jjtc000 = true;
@@ -150,9 +152,9 @@ void Assignment() : {/*@bgen(jjtree) Assignment */
     try {
 /*@egen*/
     (      t = < VARIABLE > | t= < IDENTIFIER >
-    ) < ASSIGN >  
+    )  
     { jjtn000.jjtSetValue(t.image); }
-     Expression() < SEMI_COLON >/*@bgen(jjtree)*/
+    < ASSIGN > Expression() < SEMI_COLON >/*@bgen(jjtree)*/
     } catch (Throwable jjte000) {
       if (jjtc000) {
         jjtree.clearNodeScope(jjtn000);
@@ -362,8 +364,6 @@ void Operand(): {/*@bgen(jjtree) Operand */
       }
     }
 /*@egen*/
-
-    
 }
  
 void Operator(): {/*@bgen(jjtree) Operator */
@@ -389,6 +389,4 @@ void Operator(): {/*@bgen(jjtree) Operator */
     }
   }
 /*@egen*/
-	
-	  
 }

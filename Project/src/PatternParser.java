@@ -20,6 +20,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
     System.out.println(code);
   }
 
+//TODO add functions foo(arg1,arg2) - "(" [Expression()("," Expression())*] ")"
   static final public ASTStart Start() throws ParseException {
                     /*@bgen(jjtree) Start */
   ASTStart jjtn000 = new ASTStart(JJTSTART);
@@ -113,8 +114,8 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
         jj_consume_token(-1);
         throw new ParseException();
       }
-      jj_consume_token(ASSIGN);
       jjtn000.jjtSetValue(t.image);
+      jj_consume_token(ASSIGN);
       Expression();
       jj_consume_token(SEMI_COLON);
     } catch (Throwable jjte000) {
@@ -484,12 +485,6 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
     return false;
   }
 
-  static private boolean jj_3R_4() {
-    if (jj_3R_5()) return true;
-    if (jj_3R_6()) return true;
-    return false;
-  }
-
   static private boolean jj_3R_3() {
     if (jj_3R_5()) return true;
     if (jj_3R_6()) return true;
@@ -517,6 +512,12 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
 
   static private boolean jj_3_2() {
     if (jj_3R_4()) return true;
+    return false;
+  }
+
+  static private boolean jj_3R_4() {
+    if (jj_3R_5()) return true;
+    if (jj_3R_6()) return true;
     return false;
   }
 
