@@ -18,6 +18,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
     // root.dump("");
     String code = root.generateJava();
     System.out.println(code);
+    
   }
 
 //TODO add functions foo(arg1,arg2) - "(" [Expression()("," Expression())*] ")"
