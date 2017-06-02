@@ -43,3 +43,1496 @@
     nmap.put(chunkNo, nS);
     this.nreps.put(id, nmap);
 }
+ [Lines 142 - 151 ] if (Integer.parseInt(part[1]) != Peer.getPeerID()) {
+    if (this.nreps.containsKey(part[3])) {
+        ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+        HashSet<Integer> nS = nmap.get(part[4]);
+        int rep = nS.size();
+        nS.remove(part[2]);
+        this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+    }
+}
+ [Lines 142 - 142 ] level3Integer.parseInt(part[1])
+ [Lines 142 - 142 ] level3Integer
+ [Lines 142 - 142 ] level3Integer
+ [Lines 142 - 142 ] level3parseInt
+ [Lines 142 - 142 ] level3part[1]
+ [Lines 142 - 142 ] level3part
+ [Lines 142 - 142 ] level3part
+ [Lines 142 - 142 ] level31
+ [Lines 142 - 142 ] level3Peer.getPeerID()
+ [Lines 142 - 142 ] level3Peer
+ [Lines 142 - 142 ] level3Peer
+ [Lines 142 - 142 ] level3getPeerID
+ [Lines 143 - 150 ] level3if (this.nreps.containsKey(part[3])) {
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+    HashSet<Integer> nS = nmap.get(part[4]);
+    int rep = nS.size();
+    nS.remove(part[2]);
+    this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+}
+ [Lines 143 - 143 ] level3this.nreps.containsKey(part[3])
+ [Lines 143 - 143 ] level3this.nreps
+ [Lines 143 - 143 ] level3this
+ [Lines 143 - 143 ] level3nreps
+ [Lines 143 - 143 ] level3containsKey
+ [Lines 143 - 143 ] level3part[3]
+ [Lines 143 - 143 ] level3part
+ [Lines 143 - 143 ] level3part
+ [Lines 143 - 143 ] level33
+ [Lines 143 - 150 ] level3{
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+    HashSet<Integer> nS = nmap.get(part[4]);
+    int rep = nS.size();
+    nS.remove(part[2]);
+    this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+}
+ [Lines 144 - 144 ] level3ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+ [Lines 144 - 144 ] level3ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3])
+ [Lines 144 - 144 ] level3nmap = this.nreps.get(part[3])
+ [Lines 144 - 144 ] level3ConcurrentHashMap<String, HashSet<Integer>>
+ [Lines 144 - 144 ] level3ConcurrentHashMap
+ [Lines 144 - 144 ] level3String
+ [Lines 144 - 144 ] level3String
+ [Lines 144 - 144 ] level3HashSet<Integer>
+ [Lines 144 - 144 ] level3HashSet
+ [Lines 144 - 144 ] level3Integer
+ [Lines 144 - 144 ] level3Integer
+ [Lines 144 - 144 ] level3nmap
+ [Lines 144 - 144 ] level3this.nreps.get(part[3])
+ [Lines 144 - 144 ] level3this.nreps
+ [Lines 144 - 144 ] level3this
+ [Lines 144 - 144 ] level3nreps
+ [Lines 144 - 144 ] level3get
+ [Lines 144 - 144 ] level3part[3]
+ [Lines 144 - 144 ] level3part
+ [Lines 144 - 144 ] level3part
+ [Lines 144 - 144 ] level33
+ [Lines 145 - 145 ] level3HashSet<Integer> nS = nmap.get(part[4]);
+ [Lines 145 - 145 ] level3HashSet<Integer> nS = nmap.get(part[4])
+ [Lines 145 - 145 ] level3nS = nmap.get(part[4])
+ [Lines 145 - 145 ] level3HashSet<Integer>
+ [Lines 145 - 145 ] level3HashSet
+ [Lines 145 - 145 ] level3Integer
+ [Lines 145 - 145 ] level3Integer
+ [Lines 145 - 145 ] level3nS
+ [Lines 145 - 145 ] level3nmap.get(part[4])
+ [Lines 145 - 145 ] level3nmap
+ [Lines 145 - 145 ] level3nmap
+ [Lines 145 - 145 ] level3get
+ [Lines 145 - 145 ] level3part[4]
+ [Lines 145 - 145 ] level3part
+ [Lines 145 - 145 ] level3part
+ [Lines 145 - 145 ] level34
+ [Lines 146 - 146 ] level3int rep = nS.size();
+ [Lines 146 - 146 ] level3int rep = nS.size()
+ [Lines 146 - 146 ] level3rep = nS.size()
+ [Lines 146 - 146 ] level3int
+ [Lines 146 - 146 ] level3rep
+ [Lines 146 - 146 ] level3nS.size()
+ [Lines 146 - 146 ] level3nS
+ [Lines 146 - 146 ] level3nS
+ [Lines 146 - 146 ] level3size
+ [Lines 147 - 147 ] level3nS.remove(part[2]);
+ [Lines 147 - 147 ] level3nS.remove(part[2])
+ [Lines 147 - 147 ] level3nS
+ [Lines 147 - 147 ] level3nS
+ [Lines 147 - 147 ] level3remove
+ [Lines 147 - 147 ] level3part[2]
+ [Lines 147 - 147 ] level3part
+ [Lines 147 - 147 ] level3part
+ [Lines 147 - 147 ] level32
+ [Lines 148 - 148 ] level3this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+ [Lines 148 - 148 ] level3this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep))
+ [Lines 148 - 148 ] level3this.peer
+ [Lines 148 - 148 ] level3this
+ [Lines 148 - 148 ] level3peer
+ [Lines 148 - 148 ] level3BS
+ [Lines 148 - 148 ] level3"PUTCHUNK"
+ [Lines 148 - 148 ] level3Integer.toString(Peer.getPeerID())
+ [Lines 148 - 148 ] level3Integer
+ [Lines 148 - 148 ] level3Integer
+ [Lines 148 - 148 ] level3toString
+ [Lines 148 - 148 ] level3Peer.getPeerID()
+ [Lines 148 - 148 ] level3Peer
+ [Lines 148 - 148 ] level3Peer
+ [Lines 148 - 148 ] level3getPeerID
+ [Lines 148 - 148 ] level3part[3]
+ [Lines 148 - 148 ] level3part
+ [Lines 148 - 148 ] level3part
+ [Lines 148 - 148 ] level33
+ [Lines 148 - 148 ] level3part[4]
+ [Lines 148 - 148 ] level3part
+ [Lines 148 - 148 ] level3part
+ [Lines 148 - 148 ] level34
+ [Lines 148 - 148 ] level3Integer.toString(rep)
+ [Lines 148 - 148 ] level3Integer
+ [Lines 148 - 148 ] level3Integer
+ [Lines 148 - 148 ] level3toString
+ [Lines 148 - 148 ] level3rep
+ [Lines 148 - 148 ] level3rep
+ [Lines 247 - 259 ] if (this.nreps.containsKey(id)) {
+    System.out.println("HAS A KEY");
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(id);
+    HashSet<Integer> nS = new HashSet<Integer>();
+    nmap.put(chunkNo, nS);
+    this.nreps.put(id, nmap);
+} else {
+    System.out.println("HAS NO KEY");
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = new ConcurrentHashMap<String, HashSet<Integer>>();
+    HashSet<Integer> nS = new HashSet<Integer>();
+    nmap.put(chunkNo, nS);
+    this.nreps.put(id, nmap);
+}
+ [Lines 247 - 247 ] level3this.nreps
+ [Lines 247 - 247 ] level3this
+ [Lines 247 - 247 ] level3nreps
+ [Lines 247 - 247 ] level3containsKey
+ [Lines 247 - 247 ] level3id
+ [Lines 247 - 247 ] level3id
+ [Lines 248 - 248 ] level3System.out.println("HAS A KEY");
+ [Lines 248 - 248 ] level3System.out.println("HAS A KEY")
+ [Lines 248 - 248 ] level3System.out
+ [Lines 248 - 248 ] level3System
+ [Lines 248 - 248 ] level3System
+ [Lines 248 - 248 ] level3out
+ [Lines 248 - 248 ] level3println
+ [Lines 248 - 248 ] level3"HAS A KEY"
+ [Lines 249 - 249 ] level3ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(id);
+ [Lines 249 - 249 ] level3ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(id)
+ [Lines 249 - 249 ] level3nmap = this.nreps.get(id)
+ [Lines 249 - 249 ] level3ConcurrentHashMap<String, HashSet<Integer>>
+ [Lines 249 - 249 ] level3ConcurrentHashMap
+ [Lines 249 - 249 ] level3String
+ [Lines 249 - 249 ] level3String
+ [Lines 249 - 249 ] level3HashSet<Integer>
+ [Lines 249 - 249 ] level3HashSet
+ [Lines 249 - 249 ] level3Integer
+ [Lines 249 - 249 ] level3Integer
+ [Lines 249 - 249 ] level3nmap
+ [Lines 249 - 249 ] level3this.nreps.get(id)
+ [Lines 249 - 249 ] level3this.nreps
+ [Lines 249 - 249 ] level3this
+ [Lines 249 - 249 ] level3nreps
+ [Lines 249 - 249 ] level3get
+ [Lines 249 - 249 ] level3id
+ [Lines 249 - 249 ] level3id
+ [Lines 250 - 250 ] level3HashSet<Integer> nS = new HashSet<Integer>();
+ [Lines 250 - 250 ] level3HashSet<Integer> nS = new HashSet<Integer>()
+ [Lines 250 - 250 ] level3nS = new HashSet<Integer>()
+ [Lines 250 - 250 ] level3HashSet<Integer>
+ [Lines 250 - 250 ] level3HashSet
+ [Lines 250 - 250 ] level3Integer
+ [Lines 250 - 250 ] level3Integer
+ [Lines 250 - 250 ] level3nS
+ [Lines 250 - 250 ] level3new HashSet<Integer>()
+ [Lines 250 - 250 ] level3HashSet<Integer>
+ [Lines 250 - 250 ] level3HashSet
+ [Lines 250 - 250 ] level3Integer
+ [Lines 250 - 250 ] level3Integer
+ [Lines 251 - 251 ] level3nmap.put(chunkNo, nS);
+ [Lines 251 - 251 ] level3nmap.put(chunkNo, nS)
+ [Lines 251 - 251 ] level3nmap
+ [Lines 251 - 251 ] level3nmap
+ [Lines 251 - 251 ] level3put
+ [Lines 251 - 251 ] level3chunkNo
+ [Lines 251 - 251 ] level3chunkNo
+ [Lines 251 - 251 ] level3nS
+ [Lines 251 - 251 ] level3nS
+ [Lines 252 - 252 ] level3this.nreps.put(id, nmap);
+ [Lines 252 - 252 ] level3this.nreps.put(id, nmap)
+ [Lines 252 - 252 ] level3this.nreps
+ [Lines 252 - 252 ] level3this
+ [Lines 252 - 252 ] level3nreps
+ [Lines 252 - 252 ] level3put
+ [Lines 252 - 252 ] level3id
+ [Lines 252 - 252 ] level3id
+ [Lines 252 - 252 ] level3nmap
+ [Lines 252 - 252 ] level3nmap
+ [Lines 254 - 254 ] level3System.out.println("HAS NO KEY");
+ [Lines 254 - 254 ] level3System.out.println("HAS NO KEY")
+ [Lines 254 - 254 ] level3System.out
+ [Lines 254 - 254 ] level3System
+ [Lines 254 - 254 ] level3System
+ [Lines 254 - 254 ] level3out
+ [Lines 254 - 254 ] level3println
+ [Lines 254 - 254 ] level3"HAS NO KEY"
+ [Lines 255 - 255 ] level3ConcurrentHashMap<String, HashSet<Integer>> nmap = new ConcurrentHashMap<String, HashSet<Integer>>();
+ [Lines 255 - 255 ] level3ConcurrentHashMap<String, HashSet<Integer>> nmap = new ConcurrentHashMap<String, HashSet<Integer>>()
+ [Lines 255 - 255 ] level3nmap = new ConcurrentHashMap<String, HashSet<Integer>>()
+ [Lines 255 - 255 ] level3ConcurrentHashMap<String, HashSet<Integer>>
+ [Lines 255 - 255 ] level3ConcurrentHashMap
+ [Lines 255 - 255 ] level3String
+ [Lines 255 - 255 ] level3String
+ [Lines 255 - 255 ] level3HashSet<Integer>
+ [Lines 255 - 255 ] level3HashSet
+ [Lines 255 - 255 ] level3Integer
+ [Lines 255 - 255 ] level3Integer
+ [Lines 255 - 255 ] level3nmap
+ [Lines 255 - 255 ] level3new ConcurrentHashMap<String, HashSet<Integer>>()
+ [Lines 255 - 255 ] level3ConcurrentHashMap<String, HashSet<Integer>>
+ [Lines 255 - 255 ] level3ConcurrentHashMap
+ [Lines 255 - 255 ] level3String
+ [Lines 255 - 255 ] level3String
+ [Lines 255 - 255 ] level3HashSet<Integer>
+ [Lines 255 - 255 ] level3HashSet
+ [Lines 255 - 255 ] level3Integer
+ [Lines 255 - 255 ] level3Integer
+ [Lines 256 - 256 ] level3HashSet<Integer> nS = new HashSet<Integer>();
+ [Lines 256 - 256 ] level3HashSet<Integer> nS = new HashSet<Integer>()
+ [Lines 256 - 256 ] level3nS = new HashSet<Integer>()
+ [Lines 256 - 256 ] level3HashSet<Integer>
+ [Lines 256 - 256 ] level3HashSet
+ [Lines 256 - 256 ] level3Integer
+ [Lines 256 - 256 ] level3Integer
+ [Lines 256 - 256 ] level3nS
+ [Lines 256 - 256 ] level3new HashSet<Integer>()
+ [Lines 256 - 256 ] level3HashSet<Integer>
+ [Lines 256 - 256 ] level3HashSet
+ [Lines 256 - 256 ] level3Integer
+ [Lines 256 - 256 ] level3Integer
+ [Lines 257 - 257 ] level3nmap.put(chunkNo, nS);
+ [Lines 257 - 257 ] level3nmap.put(chunkNo, nS)
+ [Lines 257 - 257 ] level3nmap
+ [Lines 257 - 257 ] level3nmap
+ [Lines 257 - 257 ] level3put
+ [Lines 257 - 257 ] level3chunkNo
+ [Lines 257 - 257 ] level3chunkNo
+ [Lines 257 - 257 ] level3nS
+ [Lines 257 - 257 ] level3nS
+ [Lines 258 - 258 ] level3this.nreps.put(id, nmap);
+ [Lines 258 - 258 ] level3this.nreps.put(id, nmap)
+ [Lines 258 - 258 ] level3this.nreps
+ [Lines 258 - 258 ] level3this
+ [Lines 258 - 258 ] level3nreps
+ [Lines 258 - 258 ] level3put
+ [Lines 258 - 258 ] level3id
+ [Lines 258 - 258 ] level3id
+ [Lines 258 - 258 ] level3nmap
+ [Lines 258 - 258 ] level3nmap
+ [Lines 142 - 151 ] if (Integer.parseInt(part[1]) != Peer.getPeerID()) {
+    if (this.nreps.containsKey(part[3])) {
+        ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+        HashSet<Integer> nS = nmap.get(part[4]);
+        int rep = nS.size();
+        nS.remove(part[2]);
+        this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+    }
+}
+ [Lines 142 - 142 ] level 3 Integer.parseInt(part[1])
+ [Lines 142 - 142 ] level 3 Integer
+ [Lines 142 - 142 ] level 3 Integer
+ [Lines 142 - 142 ] level 3 parseInt
+ [Lines 142 - 142 ] level 3 part[1]
+ [Lines 142 - 142 ] level 3 part
+ [Lines 142 - 142 ] level 3 part
+ [Lines 142 - 142 ] level 3 1
+ [Lines 142 - 142 ] level 3 Peer.getPeerID()
+ [Lines 142 - 142 ] level 3 Peer
+ [Lines 142 - 142 ] level 3 Peer
+ [Lines 142 - 142 ] level 3 getPeerID
+ [Lines 143 - 150 ] level 3 if (this.nreps.containsKey(part[3])) {
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+    HashSet<Integer> nS = nmap.get(part[4]);
+    int rep = nS.size();
+    nS.remove(part[2]);
+    this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+}
+ [Lines 143 - 143 ] level 3 this.nreps.containsKey(part[3])
+ [Lines 143 - 143 ] level 3 this.nreps
+ [Lines 143 - 143 ] level 3 this
+ [Lines 143 - 143 ] level 3 nreps
+ [Lines 143 - 143 ] level 3 containsKey
+ [Lines 143 - 143 ] level 3 part[3]
+ [Lines 143 - 143 ] level 3 part
+ [Lines 143 - 143 ] level 3 part
+ [Lines 143 - 143 ] level 3 3
+ [Lines 143 - 150 ] level 3 {
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+    HashSet<Integer> nS = nmap.get(part[4]);
+    int rep = nS.size();
+    nS.remove(part[2]);
+    this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+}
+ [Lines 144 - 144 ] level 3 ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+ [Lines 144 - 144 ] level 3 ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3])
+ [Lines 144 - 144 ] level 3 nmap = this.nreps.get(part[3])
+ [Lines 144 - 144 ] level 3 ConcurrentHashMap<String, HashSet<Integer>>
+ [Lines 144 - 144 ] level 3 ConcurrentHashMap
+ [Lines 144 - 144 ] level 3 String
+ [Lines 144 - 144 ] level 3 String
+ [Lines 144 - 144 ] level 3 HashSet<Integer>
+ [Lines 144 - 144 ] level 3 HashSet
+ [Lines 144 - 144 ] level 3 Integer
+ [Lines 144 - 144 ] level 3 Integer
+ [Lines 144 - 144 ] level 3 nmap
+ [Lines 144 - 144 ] level 3 this.nreps.get(part[3])
+ [Lines 144 - 144 ] level 3 this.nreps
+ [Lines 144 - 144 ] level 3 this
+ [Lines 144 - 144 ] level 3 nreps
+ [Lines 144 - 144 ] level 3 get
+ [Lines 144 - 144 ] level 3 part[3]
+ [Lines 144 - 144 ] level 3 part
+ [Lines 144 - 144 ] level 3 part
+ [Lines 144 - 144 ] level 3 3
+ [Lines 145 - 145 ] level 3 HashSet<Integer> nS = nmap.get(part[4]);
+ [Lines 145 - 145 ] level 3 HashSet<Integer> nS = nmap.get(part[4])
+ [Lines 145 - 145 ] level 3 nS = nmap.get(part[4])
+ [Lines 145 - 145 ] level 3 HashSet<Integer>
+ [Lines 145 - 145 ] level 3 HashSet
+ [Lines 145 - 145 ] level 3 Integer
+ [Lines 145 - 145 ] level 3 Integer
+ [Lines 145 - 145 ] level 3 nS
+ [Lines 145 - 145 ] level 3 nmap.get(part[4])
+ [Lines 145 - 145 ] level 3 nmap
+ [Lines 145 - 145 ] level 3 nmap
+ [Lines 145 - 145 ] level 3 get
+ [Lines 145 - 145 ] level 3 part[4]
+ [Lines 145 - 145 ] level 3 part
+ [Lines 145 - 145 ] level 3 part
+ [Lines 145 - 145 ] level 3 4
+ [Lines 146 - 146 ] level 3 int rep = nS.size();
+ [Lines 146 - 146 ] level 3 int rep = nS.size()
+ [Lines 146 - 146 ] level 3 rep = nS.size()
+ [Lines 146 - 146 ] level 3 int
+ [Lines 146 - 146 ] level 3 rep
+ [Lines 146 - 146 ] level 3 nS.size()
+ [Lines 146 - 146 ] level 3 nS
+ [Lines 146 - 146 ] level 3 nS
+ [Lines 146 - 146 ] level 3 size
+ [Lines 147 - 147 ] level 3 nS.remove(part[2]);
+ [Lines 147 - 147 ] level 3 nS.remove(part[2])
+ [Lines 147 - 147 ] level 3 nS
+ [Lines 147 - 147 ] level 3 nS
+ [Lines 147 - 147 ] level 3 remove
+ [Lines 147 - 147 ] level 3 part[2]
+ [Lines 147 - 147 ] level 3 part
+ [Lines 147 - 147 ] level 3 part
+ [Lines 147 - 147 ] level 3 2
+ [Lines 148 - 148 ] level 3 this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+ [Lines 148 - 148 ] level 3 this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep))
+ [Lines 148 - 148 ] level 3 this.peer
+ [Lines 148 - 148 ] level 3 this
+ [Lines 148 - 148 ] level 3 peer
+ [Lines 148 - 148 ] level 3 BS
+ [Lines 148 - 148 ] level 3 "PUTCHUNK"
+ [Lines 148 - 148 ] level 3 Integer.toString(Peer.getPeerID())
+ [Lines 148 - 148 ] level 3 Integer
+ [Lines 148 - 148 ] level 3 Integer
+ [Lines 148 - 148 ] level 3 toString
+ [Lines 148 - 148 ] level 3 Peer.getPeerID()
+ [Lines 148 - 148 ] level 3 Peer
+ [Lines 148 - 148 ] level 3 Peer
+ [Lines 148 - 148 ] level 3 getPeerID
+ [Lines 148 - 148 ] level 3 part[3]
+ [Lines 148 - 148 ] level 3 part
+ [Lines 148 - 148 ] level 3 part
+ [Lines 148 - 148 ] level 3 3
+ [Lines 148 - 148 ] level 3 part[4]
+ [Lines 148 - 148 ] level 3 part
+ [Lines 148 - 148 ] level 3 part
+ [Lines 148 - 148 ] level 3 4
+ [Lines 148 - 148 ] level 3 Integer.toString(rep)
+ [Lines 148 - 148 ] level 3 Integer
+ [Lines 148 - 148 ] level 3 Integer
+ [Lines 148 - 148 ] level 3 toString
+ [Lines 148 - 148 ] level 3 rep
+ [Lines 148 - 148 ] level 3 rep
+ [Lines 247 - 259 ] if (this.nreps.containsKey(id)) {
+    System.out.println("HAS A KEY");
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(id);
+    HashSet<Integer> nS = new HashSet<Integer>();
+    nmap.put(chunkNo, nS);
+    this.nreps.put(id, nmap);
+} else {
+    System.out.println("HAS NO KEY");
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = new ConcurrentHashMap<String, HashSet<Integer>>();
+    HashSet<Integer> nS = new HashSet<Integer>();
+    nmap.put(chunkNo, nS);
+    this.nreps.put(id, nmap);
+}
+ [Lines 247 - 247 ] level 3 this.nreps
+ [Lines 247 - 247 ] level 3 this
+ [Lines 247 - 247 ] level 3 nreps
+ [Lines 247 - 247 ] level 3 containsKey
+ [Lines 247 - 247 ] level 3 id
+ [Lines 247 - 247 ] level 3 id
+ [Lines 248 - 248 ] level 3 System.out.println("HAS A KEY");
+ [Lines 248 - 248 ] level 3 System.out.println("HAS A KEY")
+ [Lines 248 - 248 ] level 3 System.out
+ [Lines 248 - 248 ] level 3 System
+ [Lines 248 - 248 ] level 3 System
+ [Lines 248 - 248 ] level 3 out
+ [Lines 248 - 248 ] level 3 println
+ [Lines 248 - 248 ] level 3 "HAS A KEY"
+ [Lines 249 - 249 ] level 3 ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(id);
+ [Lines 249 - 249 ] level 3 ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(id)
+ [Lines 249 - 249 ] level 3 nmap = this.nreps.get(id)
+ [Lines 249 - 249 ] level 3 ConcurrentHashMap<String, HashSet<Integer>>
+ [Lines 249 - 249 ] level 3 ConcurrentHashMap
+ [Lines 249 - 249 ] level 3 String
+ [Lines 249 - 249 ] level 3 String
+ [Lines 249 - 249 ] level 3 HashSet<Integer>
+ [Lines 249 - 249 ] level 3 HashSet
+ [Lines 249 - 249 ] level 3 Integer
+ [Lines 249 - 249 ] level 3 Integer
+ [Lines 249 - 249 ] level 3 nmap
+ [Lines 249 - 249 ] level 3 this.nreps.get(id)
+ [Lines 249 - 249 ] level 3 this.nreps
+ [Lines 249 - 249 ] level 3 this
+ [Lines 249 - 249 ] level 3 nreps
+ [Lines 249 - 249 ] level 3 get
+ [Lines 249 - 249 ] level 3 id
+ [Lines 249 - 249 ] level 3 id
+ [Lines 250 - 250 ] level 3 HashSet<Integer> nS = new HashSet<Integer>();
+ [Lines 250 - 250 ] level 3 HashSet<Integer> nS = new HashSet<Integer>()
+ [Lines 250 - 250 ] level 3 nS = new HashSet<Integer>()
+ [Lines 250 - 250 ] level 3 HashSet<Integer>
+ [Lines 250 - 250 ] level 3 HashSet
+ [Lines 250 - 250 ] level 3 Integer
+ [Lines 250 - 250 ] level 3 Integer
+ [Lines 250 - 250 ] level 3 nS
+ [Lines 250 - 250 ] level 3 new HashSet<Integer>()
+ [Lines 250 - 250 ] level 3 HashSet<Integer>
+ [Lines 250 - 250 ] level 3 HashSet
+ [Lines 250 - 250 ] level 3 Integer
+ [Lines 250 - 250 ] level 3 Integer
+ [Lines 251 - 251 ] level 3 nmap.put(chunkNo, nS);
+ [Lines 251 - 251 ] level 3 nmap.put(chunkNo, nS)
+ [Lines 251 - 251 ] level 3 nmap
+ [Lines 251 - 251 ] level 3 nmap
+ [Lines 251 - 251 ] level 3 put
+ [Lines 251 - 251 ] level 3 chunkNo
+ [Lines 251 - 251 ] level 3 chunkNo
+ [Lines 251 - 251 ] level 3 nS
+ [Lines 251 - 251 ] level 3 nS
+ [Lines 252 - 252 ] level 3 this.nreps.put(id, nmap);
+ [Lines 252 - 252 ] level 3 this.nreps.put(id, nmap)
+ [Lines 252 - 252 ] level 3 this.nreps
+ [Lines 252 - 252 ] level 3 this
+ [Lines 252 - 252 ] level 3 nreps
+ [Lines 252 - 252 ] level 3 put
+ [Lines 252 - 252 ] level 3 id
+ [Lines 252 - 252 ] level 3 id
+ [Lines 252 - 252 ] level 3 nmap
+ [Lines 252 - 252 ] level 3 nmap
+ [Lines 254 - 254 ] level 3 System.out.println("HAS NO KEY");
+ [Lines 254 - 254 ] level 3 System.out.println("HAS NO KEY")
+ [Lines 254 - 254 ] level 3 System.out
+ [Lines 254 - 254 ] level 3 System
+ [Lines 254 - 254 ] level 3 System
+ [Lines 254 - 254 ] level 3 out
+ [Lines 254 - 254 ] level 3 println
+ [Lines 254 - 254 ] level 3 "HAS NO KEY"
+ [Lines 255 - 255 ] level 3 ConcurrentHashMap<String, HashSet<Integer>> nmap = new ConcurrentHashMap<String, HashSet<Integer>>();
+ [Lines 255 - 255 ] level 3 ConcurrentHashMap<String, HashSet<Integer>> nmap = new ConcurrentHashMap<String, HashSet<Integer>>()
+ [Lines 255 - 255 ] level 3 nmap = new ConcurrentHashMap<String, HashSet<Integer>>()
+ [Lines 255 - 255 ] level 3 ConcurrentHashMap<String, HashSet<Integer>>
+ [Lines 255 - 255 ] level 3 ConcurrentHashMap
+ [Lines 255 - 255 ] level 3 String
+ [Lines 255 - 255 ] level 3 String
+ [Lines 255 - 255 ] level 3 HashSet<Integer>
+ [Lines 255 - 255 ] level 3 HashSet
+ [Lines 255 - 255 ] level 3 Integer
+ [Lines 255 - 255 ] level 3 Integer
+ [Lines 255 - 255 ] level 3 nmap
+ [Lines 255 - 255 ] level 3 new ConcurrentHashMap<String, HashSet<Integer>>()
+ [Lines 255 - 255 ] level 3 ConcurrentHashMap<String, HashSet<Integer>>
+ [Lines 255 - 255 ] level 3 ConcurrentHashMap
+ [Lines 255 - 255 ] level 3 String
+ [Lines 255 - 255 ] level 3 String
+ [Lines 255 - 255 ] level 3 HashSet<Integer>
+ [Lines 255 - 255 ] level 3 HashSet
+ [Lines 255 - 255 ] level 3 Integer
+ [Lines 255 - 255 ] level 3 Integer
+ [Lines 256 - 256 ] level 3 HashSet<Integer> nS = new HashSet<Integer>();
+ [Lines 256 - 256 ] level 3 HashSet<Integer> nS = new HashSet<Integer>()
+ [Lines 256 - 256 ] level 3 nS = new HashSet<Integer>()
+ [Lines 256 - 256 ] level 3 HashSet<Integer>
+ [Lines 256 - 256 ] level 3 HashSet
+ [Lines 256 - 256 ] level 3 Integer
+ [Lines 256 - 256 ] level 3 Integer
+ [Lines 256 - 256 ] level 3 nS
+ [Lines 256 - 256 ] level 3 new HashSet<Integer>()
+ [Lines 256 - 256 ] level 3 HashSet<Integer>
+ [Lines 256 - 256 ] level 3 HashSet
+ [Lines 256 - 256 ] level 3 Integer
+ [Lines 256 - 256 ] level 3 Integer
+ [Lines 257 - 257 ] level 3 nmap.put(chunkNo, nS);
+ [Lines 257 - 257 ] level 3 nmap.put(chunkNo, nS)
+ [Lines 257 - 257 ] level 3 nmap
+ [Lines 257 - 257 ] level 3 nmap
+ [Lines 257 - 257 ] level 3 put
+ [Lines 257 - 257 ] level 3 chunkNo
+ [Lines 257 - 257 ] level 3 chunkNo
+ [Lines 257 - 257 ] level 3 nS
+ [Lines 257 - 257 ] level 3 nS
+ [Lines 258 - 258 ] level 3 this.nreps.put(id, nmap);
+ [Lines 258 - 258 ] level 3 this.nreps.put(id, nmap)
+ [Lines 258 - 258 ] level 3 this.nreps
+ [Lines 258 - 258 ] level 3 this
+ [Lines 258 - 258 ] level 3 nreps
+ [Lines 258 - 258 ] level 3 put
+ [Lines 258 - 258 ] level 3 id
+ [Lines 258 - 258 ] level 3 id
+ [Lines 258 - 258 ] level 3 nmap
+ [Lines 258 - 258 ] level 3 nmap
+ [Lines 142 - 151 ] if (Integer.parseInt(part[1]) != Peer.getPeerID()) {
+    if (this.nreps.containsKey(part[3])) {
+        ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+        HashSet<Integer> nS = nmap.get(part[4]);
+        int rep = nS.size();
+        nS.remove(part[2]);
+        this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+    }
+}
+ [Lines 142 - 142 ] level 2 Integer.parseInt(part[1])
+ [Lines 142 - 142 ] level 3 Integer
+ [Lines 142 - 142 ] level 4 Integer
+ [Lines 142 - 142 ] level 3 parseInt
+ [Lines 142 - 142 ] level 3 part[1]
+ [Lines 142 - 142 ] level 4 part
+ [Lines 142 - 142 ] level 5 part
+ [Lines 142 - 142 ] level 4 1
+ [Lines 142 - 142 ] level 2 Peer.getPeerID()
+ [Lines 142 - 142 ] level 3 Peer
+ [Lines 142 - 142 ] level 4 Peer
+ [Lines 142 - 142 ] level 3 getPeerID
+ [Lines 143 - 150 ] level 2 if (this.nreps.containsKey(part[3])) {
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+    HashSet<Integer> nS = nmap.get(part[4]);
+    int rep = nS.size();
+    nS.remove(part[2]);
+    this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+}
+ [Lines 143 - 143 ] level 3 this.nreps.containsKey(part[3])
+ [Lines 143 - 143 ] level 4 this.nreps
+ [Lines 143 - 143 ] level 5 this
+ [Lines 143 - 143 ] level 5 nreps
+ [Lines 143 - 143 ] level 4 containsKey
+ [Lines 143 - 143 ] level 4 part[3]
+ [Lines 143 - 143 ] level 5 part
+ [Lines 143 - 143 ] level 6 part
+ [Lines 143 - 143 ] level 5 3
+ [Lines 143 - 150 ] level 3 {
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+    HashSet<Integer> nS = nmap.get(part[4]);
+    int rep = nS.size();
+    nS.remove(part[2]);
+    this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+}
+ [Lines 144 - 144 ] level 4 ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+ [Lines 144 - 144 ] level 5 ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3])
+ [Lines 144 - 144 ] level 6 nmap = this.nreps.get(part[3])
+ [Lines 144 - 144 ] level 7 ConcurrentHashMap<String, HashSet<Integer>>
+ [Lines 144 - 144 ] level 8 ConcurrentHashMap
+ [Lines 144 - 144 ] level 8 String
+ [Lines 144 - 144 ] level 9 String
+ [Lines 144 - 144 ] level 8 HashSet<Integer>
+ [Lines 144 - 144 ] level 9 HashSet
+ [Lines 144 - 144 ] level 9 Integer
+ [Lines 144 - 144 ] level 10 Integer
+ [Lines 144 - 144 ] level 7 nmap
+ [Lines 144 - 144 ] level 7 this.nreps.get(part[3])
+ [Lines 144 - 144 ] level 8 this.nreps
+ [Lines 144 - 144 ] level 9 this
+ [Lines 144 - 144 ] level 9 nreps
+ [Lines 144 - 144 ] level 8 get
+ [Lines 144 - 144 ] level 8 part[3]
+ [Lines 144 - 144 ] level 9 part
+ [Lines 144 - 144 ] level 10 part
+ [Lines 144 - 144 ] level 9 3
+ [Lines 145 - 145 ] level 4 HashSet<Integer> nS = nmap.get(part[4]);
+ [Lines 145 - 145 ] level 5 HashSet<Integer> nS = nmap.get(part[4])
+ [Lines 145 - 145 ] level 6 nS = nmap.get(part[4])
+ [Lines 145 - 145 ] level 7 HashSet<Integer>
+ [Lines 145 - 145 ] level 8 HashSet
+ [Lines 145 - 145 ] level 8 Integer
+ [Lines 145 - 145 ] level 9 Integer
+ [Lines 145 - 145 ] level 7 nS
+ [Lines 145 - 145 ] level 7 nmap.get(part[4])
+ [Lines 145 - 145 ] level 8 nmap
+ [Lines 145 - 145 ] level 9 nmap
+ [Lines 145 - 145 ] level 8 get
+ [Lines 145 - 145 ] level 8 part[4]
+ [Lines 145 - 145 ] level 9 part
+ [Lines 145 - 145 ] level 10 part
+ [Lines 145 - 145 ] level 9 4
+ [Lines 146 - 146 ] level 4 int rep = nS.size();
+ [Lines 146 - 146 ] level 5 int rep = nS.size()
+ [Lines 146 - 146 ] level 6 rep = nS.size()
+ [Lines 146 - 146 ] level 7 int
+ [Lines 146 - 146 ] level 7 rep
+ [Lines 146 - 146 ] level 7 nS.size()
+ [Lines 146 - 146 ] level 8 nS
+ [Lines 146 - 146 ] level 9 nS
+ [Lines 146 - 146 ] level 8 size
+ [Lines 147 - 147 ] level 4 nS.remove(part[2]);
+ [Lines 147 - 147 ] level 5 nS.remove(part[2])
+ [Lines 147 - 147 ] level 6 nS
+ [Lines 147 - 147 ] level 7 nS
+ [Lines 147 - 147 ] level 6 remove
+ [Lines 147 - 147 ] level 6 part[2]
+ [Lines 147 - 147 ] level 7 part
+ [Lines 147 - 147 ] level 8 part
+ [Lines 147 - 147 ] level 7 2
+ [Lines 148 - 148 ] level 4 this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+ [Lines 148 - 148 ] level 5 this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep))
+ [Lines 148 - 148 ] level 6 this.peer
+ [Lines 148 - 148 ] level 7 this
+ [Lines 148 - 148 ] level 7 peer
+ [Lines 148 - 148 ] level 6 BS
+ [Lines 148 - 148 ] level 6 "PUTCHUNK"
+ [Lines 148 - 148 ] level 6 Integer.toString(Peer.getPeerID())
+ [Lines 148 - 148 ] level 7 Integer
+ [Lines 148 - 148 ] level 8 Integer
+ [Lines 148 - 148 ] level 7 toString
+ [Lines 148 - 148 ] level 7 Peer.getPeerID()
+ [Lines 148 - 148 ] level 8 Peer
+ [Lines 148 - 148 ] level 9 Peer
+ [Lines 148 - 148 ] level 8 getPeerID
+ [Lines 148 - 148 ] level 6 part[3]
+ [Lines 148 - 148 ] level 7 part
+ [Lines 148 - 148 ] level 8 part
+ [Lines 148 - 148 ] level 7 3
+ [Lines 148 - 148 ] level 6 part[4]
+ [Lines 148 - 148 ] level 7 part
+ [Lines 148 - 148 ] level 8 part
+ [Lines 148 - 148 ] level 7 4
+ [Lines 148 - 148 ] level 6 Integer.toString(rep)
+ [Lines 148 - 148 ] level 7 Integer
+ [Lines 148 - 148 ] level 8 Integer
+ [Lines 148 - 148 ] level 7 toString
+ [Lines 148 - 148 ] level 7 rep
+ [Lines 148 - 148 ] level 8 rep
+ [Lines 247 - 259 ] if (this.nreps.containsKey(id)) {
+    System.out.println("HAS A KEY");
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(id);
+    HashSet<Integer> nS = new HashSet<Integer>();
+    nmap.put(chunkNo, nS);
+    this.nreps.put(id, nmap);
+} else {
+    System.out.println("HAS NO KEY");
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = new ConcurrentHashMap<String, HashSet<Integer>>();
+    HashSet<Integer> nS = new HashSet<Integer>();
+    nmap.put(chunkNo, nS);
+    this.nreps.put(id, nmap);
+}
+ [Lines 247 - 247 ] level 2 this.nreps
+ [Lines 247 - 247 ] level 3 this
+ [Lines 247 - 247 ] level 3 nreps
+ [Lines 247 - 247 ] level 2 containsKey
+ [Lines 247 - 247 ] level 2 id
+ [Lines 247 - 247 ] level 3 id
+ [Lines 248 - 248 ] level 2 System.out.println("HAS A KEY");
+ [Lines 248 - 248 ] level 3 System.out.println("HAS A KEY")
+ [Lines 248 - 248 ] level 4 System.out
+ [Lines 248 - 248 ] level 5 System
+ [Lines 248 - 248 ] level 6 System
+ [Lines 248 - 248 ] level 5 out
+ [Lines 248 - 248 ] level 4 println
+ [Lines 248 - 248 ] level 4 "HAS A KEY"
+ [Lines 249 - 249 ] level 2 ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(id);
+ [Lines 249 - 249 ] level 3 ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(id)
+ [Lines 249 - 249 ] level 4 nmap = this.nreps.get(id)
+ [Lines 249 - 249 ] level 5 ConcurrentHashMap<String, HashSet<Integer>>
+ [Lines 249 - 249 ] level 6 ConcurrentHashMap
+ [Lines 249 - 249 ] level 6 String
+ [Lines 249 - 249 ] level 7 String
+ [Lines 249 - 249 ] level 6 HashSet<Integer>
+ [Lines 249 - 249 ] level 7 HashSet
+ [Lines 249 - 249 ] level 7 Integer
+ [Lines 249 - 249 ] level 8 Integer
+ [Lines 249 - 249 ] level 5 nmap
+ [Lines 249 - 249 ] level 5 this.nreps.get(id)
+ [Lines 249 - 249 ] level 6 this.nreps
+ [Lines 249 - 249 ] level 7 this
+ [Lines 249 - 249 ] level 7 nreps
+ [Lines 249 - 249 ] level 6 get
+ [Lines 249 - 249 ] level 6 id
+ [Lines 249 - 249 ] level 7 id
+ [Lines 250 - 250 ] level 2 HashSet<Integer> nS = new HashSet<Integer>();
+ [Lines 250 - 250 ] level 3 HashSet<Integer> nS = new HashSet<Integer>()
+ [Lines 250 - 250 ] level 4 nS = new HashSet<Integer>()
+ [Lines 250 - 250 ] level 5 HashSet<Integer>
+ [Lines 250 - 250 ] level 6 HashSet
+ [Lines 250 - 250 ] level 6 Integer
+ [Lines 250 - 250 ] level 7 Integer
+ [Lines 250 - 250 ] level 5 nS
+ [Lines 250 - 250 ] level 5 new HashSet<Integer>()
+ [Lines 250 - 250 ] level 6 HashSet<Integer>
+ [Lines 250 - 250 ] level 7 HashSet
+ [Lines 250 - 250 ] level 7 Integer
+ [Lines 250 - 250 ] level 8 Integer
+ [Lines 251 - 251 ] level 2 nmap.put(chunkNo, nS);
+ [Lines 251 - 251 ] level 3 nmap.put(chunkNo, nS)
+ [Lines 251 - 251 ] level 4 nmap
+ [Lines 251 - 251 ] level 5 nmap
+ [Lines 251 - 251 ] level 4 put
+ [Lines 251 - 251 ] level 4 chunkNo
+ [Lines 251 - 251 ] level 5 chunkNo
+ [Lines 251 - 251 ] level 4 nS
+ [Lines 251 - 251 ] level 5 nS
+ [Lines 252 - 252 ] level 2 this.nreps.put(id, nmap);
+ [Lines 252 - 252 ] level 3 this.nreps.put(id, nmap)
+ [Lines 252 - 252 ] level 4 this.nreps
+ [Lines 252 - 252 ] level 5 this
+ [Lines 252 - 252 ] level 5 nreps
+ [Lines 252 - 252 ] level 4 put
+ [Lines 252 - 252 ] level 4 id
+ [Lines 252 - 252 ] level 5 id
+ [Lines 252 - 252 ] level 4 nmap
+ [Lines 252 - 252 ] level 5 nmap
+ [Lines 254 - 254 ] level 2 System.out.println("HAS NO KEY");
+ [Lines 254 - 254 ] level 3 System.out.println("HAS NO KEY")
+ [Lines 254 - 254 ] level 4 System.out
+ [Lines 254 - 254 ] level 5 System
+ [Lines 254 - 254 ] level 6 System
+ [Lines 254 - 254 ] level 5 out
+ [Lines 254 - 254 ] level 4 println
+ [Lines 254 - 254 ] level 4 "HAS NO KEY"
+ [Lines 255 - 255 ] level 2 ConcurrentHashMap<String, HashSet<Integer>> nmap = new ConcurrentHashMap<String, HashSet<Integer>>();
+ [Lines 255 - 255 ] level 3 ConcurrentHashMap<String, HashSet<Integer>> nmap = new ConcurrentHashMap<String, HashSet<Integer>>()
+ [Lines 255 - 255 ] level 4 nmap = new ConcurrentHashMap<String, HashSet<Integer>>()
+ [Lines 255 - 255 ] level 5 ConcurrentHashMap<String, HashSet<Integer>>
+ [Lines 255 - 255 ] level 6 ConcurrentHashMap
+ [Lines 255 - 255 ] level 6 String
+ [Lines 255 - 255 ] level 7 String
+ [Lines 255 - 255 ] level 6 HashSet<Integer>
+ [Lines 255 - 255 ] level 7 HashSet
+ [Lines 255 - 255 ] level 7 Integer
+ [Lines 255 - 255 ] level 8 Integer
+ [Lines 255 - 255 ] level 5 nmap
+ [Lines 255 - 255 ] level 5 new ConcurrentHashMap<String, HashSet<Integer>>()
+ [Lines 255 - 255 ] level 6 ConcurrentHashMap<String, HashSet<Integer>>
+ [Lines 255 - 255 ] level 7 ConcurrentHashMap
+ [Lines 255 - 255 ] level 7 String
+ [Lines 255 - 255 ] level 8 String
+ [Lines 255 - 255 ] level 7 HashSet<Integer>
+ [Lines 255 - 255 ] level 8 HashSet
+ [Lines 255 - 255 ] level 8 Integer
+ [Lines 255 - 255 ] level 9 Integer
+ [Lines 256 - 256 ] level 2 HashSet<Integer> nS = new HashSet<Integer>();
+ [Lines 256 - 256 ] level 3 HashSet<Integer> nS = new HashSet<Integer>()
+ [Lines 256 - 256 ] level 4 nS = new HashSet<Integer>()
+ [Lines 256 - 256 ] level 5 HashSet<Integer>
+ [Lines 256 - 256 ] level 6 HashSet
+ [Lines 256 - 256 ] level 6 Integer
+ [Lines 256 - 256 ] level 7 Integer
+ [Lines 256 - 256 ] level 5 nS
+ [Lines 256 - 256 ] level 5 new HashSet<Integer>()
+ [Lines 256 - 256 ] level 6 HashSet<Integer>
+ [Lines 256 - 256 ] level 7 HashSet
+ [Lines 256 - 256 ] level 7 Integer
+ [Lines 256 - 256 ] level 8 Integer
+ [Lines 257 - 257 ] level 2 nmap.put(chunkNo, nS);
+ [Lines 257 - 257 ] level 3 nmap.put(chunkNo, nS)
+ [Lines 257 - 257 ] level 4 nmap
+ [Lines 257 - 257 ] level 5 nmap
+ [Lines 257 - 257 ] level 4 put
+ [Lines 257 - 257 ] level 4 chunkNo
+ [Lines 257 - 257 ] level 5 chunkNo
+ [Lines 257 - 257 ] level 4 nS
+ [Lines 257 - 257 ] level 5 nS
+ [Lines 258 - 258 ] level 2 this.nreps.put(id, nmap);
+ [Lines 258 - 258 ] level 3 this.nreps.put(id, nmap)
+ [Lines 258 - 258 ] level 4 this.nreps
+ [Lines 258 - 258 ] level 5 this
+ [Lines 258 - 258 ] level 5 nreps
+ [Lines 258 - 258 ] level 4 put
+ [Lines 258 - 258 ] level 4 id
+ [Lines 258 - 258 ] level 5 id
+ [Lines 258 - 258 ] level 4 nmap
+ [Lines 258 - 258 ] level 5 nmap
+ [Lines 142 - 151 ] if (Integer.parseInt(part[1]) != Peer.getPeerID()) {
+    if (this.nreps.containsKey(part[3])) {
+        ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+        HashSet<Integer> nS = nmap.get(part[4]);
+        int rep = nS.size();
+        nS.remove(part[2]);
+        this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+    }
+}
+ [Lines 142 - 142 ] level 2 Integer.parseInt(part[1]) != Peer.getPeerID()
+ [Lines 142 - 142 ] level 3 Integer.parseInt(part[1])
+ [Lines 142 - 142 ] level 4 Integer
+ [Lines 142 - 142 ] level 5 Integer
+ [Lines 142 - 142 ] level 4 parseInt
+ [Lines 142 - 142 ] level 4 part[1]
+ [Lines 142 - 142 ] level 5 part
+ [Lines 142 - 142 ] level 6 part
+ [Lines 142 - 142 ] level 5 1
+ [Lines 142 - 142 ] level 3 Peer.getPeerID()
+ [Lines 142 - 142 ] level 4 Peer
+ [Lines 142 - 142 ] level 5 Peer
+ [Lines 142 - 142 ] level 4 getPeerID
+ [Lines 142 - 151 ] level 2 {
+    if (this.nreps.containsKey(part[3])) {
+        ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+        HashSet<Integer> nS = nmap.get(part[4]);
+        int rep = nS.size();
+        nS.remove(part[2]);
+        this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+    }
+}
+ [Lines 143 - 150 ] level 3 if (this.nreps.containsKey(part[3])) {
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+    HashSet<Integer> nS = nmap.get(part[4]);
+    int rep = nS.size();
+    nS.remove(part[2]);
+    this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+}
+ [Lines 143 - 143 ] level 4 this.nreps.containsKey(part[3])
+ [Lines 143 - 143 ] level 5 this.nreps
+ [Lines 143 - 143 ] level 6 this
+ [Lines 143 - 143 ] level 6 nreps
+ [Lines 143 - 143 ] level 5 containsKey
+ [Lines 143 - 143 ] level 5 part[3]
+ [Lines 143 - 143 ] level 6 part
+ [Lines 143 - 143 ] level 7 part
+ [Lines 143 - 143 ] level 6 3
+ [Lines 143 - 150 ] level 4 {
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+    HashSet<Integer> nS = nmap.get(part[4]);
+    int rep = nS.size();
+    nS.remove(part[2]);
+    this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+}
+ [Lines 144 - 144 ] level 5 ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3]);
+ [Lines 144 - 144 ] level 6 ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(part[3])
+ [Lines 144 - 144 ] level 7 nmap = this.nreps.get(part[3])
+ [Lines 144 - 144 ] level 8 ConcurrentHashMap<String, HashSet<Integer>>
+ [Lines 144 - 144 ] level 9 ConcurrentHashMap
+ [Lines 144 - 144 ] level 9 String
+ [Lines 144 - 144 ] level 10 String
+ [Lines 144 - 144 ] level 9 HashSet<Integer>
+ [Lines 144 - 144 ] level 10 HashSet
+ [Lines 144 - 144 ] level 10 Integer
+ [Lines 144 - 144 ] level 11 Integer
+ [Lines 144 - 144 ] level 8 nmap
+ [Lines 144 - 144 ] level 8 this.nreps.get(part[3])
+ [Lines 144 - 144 ] level 9 this.nreps
+ [Lines 144 - 144 ] level 10 this
+ [Lines 144 - 144 ] level 10 nreps
+ [Lines 144 - 144 ] level 9 get
+ [Lines 144 - 144 ] level 9 part[3]
+ [Lines 144 - 144 ] level 10 part
+ [Lines 144 - 144 ] level 11 part
+ [Lines 144 - 144 ] level 10 3
+ [Lines 145 - 145 ] level 5 HashSet<Integer> nS = nmap.get(part[4]);
+ [Lines 145 - 145 ] level 6 HashSet<Integer> nS = nmap.get(part[4])
+ [Lines 145 - 145 ] level 7 nS = nmap.get(part[4])
+ [Lines 145 - 145 ] level 8 HashSet<Integer>
+ [Lines 145 - 145 ] level 9 HashSet
+ [Lines 145 - 145 ] level 9 Integer
+ [Lines 145 - 145 ] level 10 Integer
+ [Lines 145 - 145 ] level 8 nS
+ [Lines 145 - 145 ] level 8 nmap.get(part[4])
+ [Lines 145 - 145 ] level 9 nmap
+ [Lines 145 - 145 ] level 10 nmap
+ [Lines 145 - 145 ] level 9 get
+ [Lines 145 - 145 ] level 9 part[4]
+ [Lines 145 - 145 ] level 10 part
+ [Lines 145 - 145 ] level 11 part
+ [Lines 145 - 145 ] level 10 4
+ [Lines 146 - 146 ] level 5 int rep = nS.size();
+ [Lines 146 - 146 ] level 6 int rep = nS.size()
+ [Lines 146 - 146 ] level 7 rep = nS.size()
+ [Lines 146 - 146 ] level 8 int
+ [Lines 146 - 146 ] level 8 rep
+ [Lines 146 - 146 ] level 8 nS.size()
+ [Lines 146 - 146 ] level 9 nS
+ [Lines 146 - 146 ] level 10 nS
+ [Lines 146 - 146 ] level 9 size
+ [Lines 147 - 147 ] level 5 nS.remove(part[2]);
+ [Lines 147 - 147 ] level 6 nS.remove(part[2])
+ [Lines 147 - 147 ] level 7 nS
+ [Lines 147 - 147 ] level 8 nS
+ [Lines 147 - 147 ] level 7 remove
+ [Lines 147 - 147 ] level 7 part[2]
+ [Lines 147 - 147 ] level 8 part
+ [Lines 147 - 147 ] level 9 part
+ [Lines 147 - 147 ] level 8 2
+ [Lines 148 - 148 ] level 5 this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep));
+ [Lines 148 - 148 ] level 6 this.peer.BS("PUTCHUNK", Integer.toString(Peer.getPeerID()), part[3], part[4], Integer.toString(rep))
+ [Lines 148 - 148 ] level 7 this.peer
+ [Lines 148 - 148 ] level 8 this
+ [Lines 148 - 148 ] level 8 peer
+ [Lines 148 - 148 ] level 7 BS
+ [Lines 148 - 148 ] level 7 "PUTCHUNK"
+ [Lines 148 - 148 ] level 7 Integer.toString(Peer.getPeerID())
+ [Lines 148 - 148 ] level 8 Integer
+ [Lines 148 - 148 ] level 9 Integer
+ [Lines 148 - 148 ] level 8 toString
+ [Lines 148 - 148 ] level 8 Peer.getPeerID()
+ [Lines 148 - 148 ] level 9 Peer
+ [Lines 148 - 148 ] level 10 Peer
+ [Lines 148 - 148 ] level 9 getPeerID
+ [Lines 148 - 148 ] level 7 part[3]
+ [Lines 148 - 148 ] level 8 part
+ [Lines 148 - 148 ] level 9 part
+ [Lines 148 - 148 ] level 8 3
+ [Lines 148 - 148 ] level 7 part[4]
+ [Lines 148 - 148 ] level 8 part
+ [Lines 148 - 148 ] level 9 part
+ [Lines 148 - 148 ] level 8 4
+ [Lines 148 - 148 ] level 7 Integer.toString(rep)
+ [Lines 148 - 148 ] level 8 Integer
+ [Lines 148 - 148 ] level 9 Integer
+ [Lines 148 - 148 ] level 8 toString
+ [Lines 148 - 148 ] level 8 rep
+ [Lines 148 - 148 ] level 9 rep
+ [Lines 247 - 259 ] if (this.nreps.containsKey(id)) {
+    System.out.println("HAS A KEY");
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(id);
+    HashSet<Integer> nS = new HashSet<Integer>();
+    nmap.put(chunkNo, nS);
+    this.nreps.put(id, nmap);
+} else {
+    System.out.println("HAS NO KEY");
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = new ConcurrentHashMap<String, HashSet<Integer>>();
+    HashSet<Integer> nS = new HashSet<Integer>();
+    nmap.put(chunkNo, nS);
+    this.nreps.put(id, nmap);
+}
+ [Lines 247 - 247 ] level 2 this.nreps.containsKey(id)
+ [Lines 247 - 247 ] level 3 this.nreps
+ [Lines 247 - 247 ] level 4 this
+ [Lines 247 - 247 ] level 4 nreps
+ [Lines 247 - 247 ] level 3 containsKey
+ [Lines 247 - 247 ] level 3 id
+ [Lines 247 - 247 ] level 4 id
+ [Lines 247 - 252 ] level 2 {
+    System.out.println("HAS A KEY");
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(id);
+    HashSet<Integer> nS = new HashSet<Integer>();
+    nmap.put(chunkNo, nS);
+    this.nreps.put(id, nmap);
+}
+ [Lines 248 - 248 ] level 3 System.out.println("HAS A KEY");
+ [Lines 248 - 248 ] level 4 System.out.println("HAS A KEY")
+ [Lines 248 - 248 ] level 5 System.out
+ [Lines 248 - 248 ] level 6 System
+ [Lines 248 - 248 ] level 7 System
+ [Lines 248 - 248 ] level 6 out
+ [Lines 248 - 248 ] level 5 println
+ [Lines 248 - 248 ] level 5 "HAS A KEY"
+ [Lines 249 - 249 ] level 3 ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(id);
+ [Lines 249 - 249 ] level 4 ConcurrentHashMap<String, HashSet<Integer>> nmap = this.nreps.get(id)
+ [Lines 249 - 249 ] level 5 nmap = this.nreps.get(id)
+ [Lines 249 - 249 ] level 6 ConcurrentHashMap<String, HashSet<Integer>>
+ [Lines 249 - 249 ] level 7 ConcurrentHashMap
+ [Lines 249 - 249 ] level 7 String
+ [Lines 249 - 249 ] level 8 String
+ [Lines 249 - 249 ] level 7 HashSet<Integer>
+ [Lines 249 - 249 ] level 8 HashSet
+ [Lines 249 - 249 ] level 8 Integer
+ [Lines 249 - 249 ] level 9 Integer
+ [Lines 249 - 249 ] level 6 nmap
+ [Lines 249 - 249 ] level 6 this.nreps.get(id)
+ [Lines 249 - 249 ] level 7 this.nreps
+ [Lines 249 - 249 ] level 8 this
+ [Lines 249 - 249 ] level 8 nreps
+ [Lines 249 - 249 ] level 7 get
+ [Lines 249 - 249 ] level 7 id
+ [Lines 249 - 249 ] level 8 id
+ [Lines 250 - 250 ] level 3 HashSet<Integer> nS = new HashSet<Integer>();
+ [Lines 250 - 250 ] level 4 HashSet<Integer> nS = new HashSet<Integer>()
+ [Lines 250 - 250 ] level 5 nS = new HashSet<Integer>()
+ [Lines 250 - 250 ] level 6 HashSet<Integer>
+ [Lines 250 - 250 ] level 7 HashSet
+ [Lines 250 - 250 ] level 7 Integer
+ [Lines 250 - 250 ] level 8 Integer
+ [Lines 250 - 250 ] level 6 nS
+ [Lines 250 - 250 ] level 6 new HashSet<Integer>()
+ [Lines 250 - 250 ] level 7 HashSet<Integer>
+ [Lines 250 - 250 ] level 8 HashSet
+ [Lines 250 - 250 ] level 8 Integer
+ [Lines 250 - 250 ] level 9 Integer
+ [Lines 251 - 251 ] level 3 nmap.put(chunkNo, nS);
+ [Lines 251 - 251 ] level 4 nmap.put(chunkNo, nS)
+ [Lines 251 - 251 ] level 5 nmap
+ [Lines 251 - 251 ] level 6 nmap
+ [Lines 251 - 251 ] level 5 put
+ [Lines 251 - 251 ] level 5 chunkNo
+ [Lines 251 - 251 ] level 6 chunkNo
+ [Lines 251 - 251 ] level 5 nS
+ [Lines 251 - 251 ] level 6 nS
+ [Lines 252 - 252 ] level 3 this.nreps.put(id, nmap);
+ [Lines 252 - 252 ] level 4 this.nreps.put(id, nmap)
+ [Lines 252 - 252 ] level 5 this.nreps
+ [Lines 252 - 252 ] level 6 this
+ [Lines 252 - 252 ] level 6 nreps
+ [Lines 252 - 252 ] level 5 put
+ [Lines 252 - 252 ] level 5 id
+ [Lines 252 - 252 ] level 6 id
+ [Lines 252 - 252 ] level 5 nmap
+ [Lines 252 - 252 ] level 6 nmap
+ [Lines 253 - 259 ] level 2 {
+    System.out.println("HAS NO KEY");
+    ConcurrentHashMap<String, HashSet<Integer>> nmap = new ConcurrentHashMap<String, HashSet<Integer>>();
+    HashSet<Integer> nS = new HashSet<Integer>();
+    nmap.put(chunkNo, nS);
+    this.nreps.put(id, nmap);
+}
+ [Lines 254 - 254 ] level 3 System.out.println("HAS NO KEY");
+ [Lines 254 - 254 ] level 4 System.out.println("HAS NO KEY")
+ [Lines 254 - 254 ] level 5 System.out
+ [Lines 254 - 254 ] level 6 System
+ [Lines 254 - 254 ] level 7 System
+ [Lines 254 - 254 ] level 6 out
+ [Lines 254 - 254 ] level 5 println
+ [Lines 254 - 254 ] level 5 "HAS NO KEY"
+ [Lines 255 - 255 ] level 3 ConcurrentHashMap<String, HashSet<Integer>> nmap = new ConcurrentHashMap<String, HashSet<Integer>>();
+ [Lines 255 - 255 ] level 4 ConcurrentHashMap<String, HashSet<Integer>> nmap = new ConcurrentHashMap<String, HashSet<Integer>>()
+ [Lines 255 - 255 ] level 5 nmap = new ConcurrentHashMap<String, HashSet<Integer>>()
+ [Lines 255 - 255 ] level 6 ConcurrentHashMap<String, HashSet<Integer>>
+ [Lines 255 - 255 ] level 7 ConcurrentHashMap
+ [Lines 255 - 255 ] level 7 String
+ [Lines 255 - 255 ] level 8 String
+ [Lines 255 - 255 ] level 7 HashSet<Integer>
+ [Lines 255 - 255 ] level 8 HashSet
+ [Lines 255 - 255 ] level 8 Integer
+ [Lines 255 - 255 ] level 9 Integer
+ [Lines 255 - 255 ] level 6 nmap
+ [Lines 255 - 255 ] level 6 new ConcurrentHashMap<String, HashSet<Integer>>()
+ [Lines 255 - 255 ] level 7 ConcurrentHashMap<String, HashSet<Integer>>
+ [Lines 255 - 255 ] level 8 ConcurrentHashMap
+ [Lines 255 - 255 ] level 8 String
+ [Lines 255 - 255 ] level 9 String
+ [Lines 255 - 255 ] level 8 HashSet<Integer>
+ [Lines 255 - 255 ] level 9 HashSet
+ [Lines 255 - 255 ] level 9 Integer
+ [Lines 255 - 255 ] level 10 Integer
+ [Lines 256 - 256 ] level 3 HashSet<Integer> nS = new HashSet<Integer>();
+ [Lines 256 - 256 ] level 4 HashSet<Integer> nS = new HashSet<Integer>()
+ [Lines 256 - 256 ] level 5 nS = new HashSet<Integer>()
+ [Lines 256 - 256 ] level 6 HashSet<Integer>
+ [Lines 256 - 256 ] level 7 HashSet
+ [Lines 256 - 256 ] level 7 Integer
+ [Lines 256 - 256 ] level 8 Integer
+ [Lines 256 - 256 ] level 6 nS
+ [Lines 256 - 256 ] level 6 new HashSet<Integer>()
+ [Lines 256 - 256 ] level 7 HashSet<Integer>
+ [Lines 256 - 256 ] level 8 HashSet
+ [Lines 256 - 256 ] level 8 Integer
+ [Lines 256 - 256 ] level 9 Integer
+ [Lines 257 - 257 ] level 3 nmap.put(chunkNo, nS);
+ [Lines 257 - 257 ] level 4 nmap.put(chunkNo, nS)
+ [Lines 257 - 257 ] level 5 nmap
+ [Lines 257 - 257 ] level 6 nmap
+ [Lines 257 - 257 ] level 5 put
+ [Lines 257 - 257 ] level 5 chunkNo
+ [Lines 257 - 257 ] level 6 chunkNo
+ [Lines 257 - 257 ] level 5 nS
+ [Lines 257 - 257 ] level 6 nS
+ [Lines 258 - 258 ] level 3 this.nreps.put(id, nmap);
+ [Lines 258 - 258 ] level 4 this.nreps.put(id, nmap)
+ [Lines 258 - 258 ] level 5 this.nreps
+ [Lines 258 - 258 ] level 6 this
+ [Lines 258 - 258 ] level 6 nreps
+ [Lines 258 - 258 ] level 5 put
+ [Lines 258 - 258 ] level 5 id
+ [Lines 258 - 258 ] level 6 id
+ [Lines 258 - 258 ] level 5 nmap
+ [Lines 258 - 258 ] level 6 nmap
+ [Lines 3 - 5 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 3 - 3 ] level 2 _at_x == 2
+ [Lines 3 - 3 ] level 3 _at_x
+ [Lines 3 - 3 ] level 4 _at_x
+ [Lines 3 - 3 ] level 3 2
+ [Lines 3 - 5 ] level 2 {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 3 _at_x = a;
+ [Lines 4 - 4 ] level 4 _at_x = a
+ [Lines 4 - 4 ] level 5 _at_x
+ [Lines 4 - 4 ] level 6 _at_x
+ [Lines 4 - 4 ] level 5 a
+ [Lines 4 - 4 ] level 6 a
+ [Lines 8 - 10 ] if (_at_y) {
+    _at_a = _at_a + 1;
+}
+ [Lines 8 - 8 ] level 2 _at_y
+ [Lines 8 - 8 ] level 3 _at_y
+ [Lines 8 - 10 ] level 2 {
+    _at_a = _at_a + 1;
+}
+ [Lines 9 - 9 ] level 3 _at_a = _at_a + 1;
+ [Lines 9 - 9 ] level 4 _at_a = _at_a + 1
+ [Lines 9 - 9 ] level 5 _at_a
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 5 _at_a + 1
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 7 _at_a
+ [Lines 9 - 9 ] level 6 1
+ [Lines 3 - 5 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 3 - 3 ] level 2 _at_x == 2
+ [Lines 3 - 3 ] level 3 _at_x
+ [Lines 3 - 3 ] level 4 _at_x
+ [Lines 3 - 3 ] level 3 2
+ [Lines 3 - 5 ] level 2 {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 3 _at_x = a;
+ [Lines 4 - 4 ] level 4 _at_x = a
+ [Lines 4 - 4 ] level 5 _at_x
+ [Lines 4 - 4 ] level 6 _at_x
+ [Lines 4 - 4 ] level 5 a
+ [Lines 4 - 4 ] level 6 a
+ [Lines 8 - 10 ] if (_at_y) {
+    _at_a = _at_a + 1;
+}
+ [Lines 8 - 8 ] level 2 _at_y
+ [Lines 8 - 8 ] level 3 _at_y
+ [Lines 8 - 10 ] level 2 {
+    _at_a = _at_a + 1;
+}
+ [Lines 9 - 9 ] level 3 _at_a = _at_a + 1;
+ [Lines 9 - 9 ] level 4 _at_a = _at_a + 1
+ [Lines 9 - 9 ] level 5 _at_a
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 5 _at_a + 1
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 7 _at_a
+ [Lines 9 - 9 ] level 6 1
+ [Lines 3 - 5 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 3 - 3 ] level 2 _at_x == 2
+ [Lines 3 - 3 ] level 3 _at_x
+ [Lines 3 - 3 ] level 4 _at_x
+ [Lines 3 - 3 ] level 3 2
+ [Lines 3 - 5 ] level 2 {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 3 _at_x = a;
+ [Lines 4 - 4 ] level 4 _at_x = a
+ [Lines 4 - 4 ] level 5 _at_x
+ [Lines 4 - 4 ] level 6 _at_x
+ [Lines 4 - 4 ] level 5 a
+ [Lines 4 - 4 ] level 6 a
+ [Lines 8 - 10 ] if (_at_y) {
+    _at_a = _at_a + 1;
+}
+ [Lines 8 - 8 ] level 2 _at_y
+ [Lines 8 - 8 ] level 3 _at_y
+ [Lines 8 - 10 ] level 2 {
+    _at_a = _at_a + 1;
+}
+ [Lines 9 - 9 ] level 3 _at_a = _at_a + 1;
+ [Lines 9 - 9 ] level 4 _at_a = _at_a + 1
+ [Lines 9 - 9 ] level 5 _at_a
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 5 _at_a + 1
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 7 _at_a
+ [Lines 9 - 9 ] level 6 1
+ [Lines 3 - 5 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 3 - 3 ] level 2 _at_x == 2
+ [Lines 3 - 3 ] level 3 _at_x
+ [Lines 3 - 3 ] level 4 _at_x
+ [Lines 3 - 3 ] level 3 2
+ [Lines 3 - 5 ] level 2 {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 3 _at_x = a;
+ [Lines 4 - 4 ] level 4 _at_x = a
+ [Lines 4 - 4 ] level 5 _at_x
+ [Lines 4 - 4 ] level 6 _at_x
+ [Lines 4 - 4 ] level 5 a
+ [Lines 4 - 4 ] level 6 a
+ [Lines 8 - 10 ] if (_at_y) {
+    _at_a = _at_a + 1;
+}
+ [Lines 8 - 8 ] level 2 _at_y
+ [Lines 8 - 8 ] level 3 _at_y
+ [Lines 8 - 10 ] level 2 {
+    _at_a = _at_a + 1;
+}
+ [Lines 9 - 9 ] level 3 _at_a = _at_a + 1;
+ [Lines 9 - 9 ] level 4 _at_a = _at_a + 1
+ [Lines 9 - 9 ] level 5 _at_a
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 5 _at_a + 1
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 7 _at_a
+ [Lines 9 - 9 ] level 6 1
+ [Lines 3 - 5 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 3 - 3 ] level 2 _at_x == 2
+ [Lines 3 - 3 ] level 3 _at_x
+ [Lines 3 - 3 ] level 4 _at_x
+ [Lines 3 - 3 ] level 3 2
+ [Lines 3 - 5 ] level 2 {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 3 _at_x = a;
+ [Lines 4 - 4 ] level 4 _at_x = a
+ [Lines 4 - 4 ] level 5 _at_x
+ [Lines 4 - 4 ] level 6 _at_x
+ [Lines 4 - 4 ] level 5 a
+ [Lines 4 - 4 ] level 6 a
+ [Lines 8 - 10 ] if (_at_y) {
+    _at_a = _at_a + 1;
+}
+ [Lines 8 - 8 ] level 2 _at_y
+ [Lines 8 - 8 ] level 3 _at_y
+ [Lines 8 - 10 ] level 2 {
+    _at_a = _at_a + 1;
+}
+ [Lines 9 - 9 ] level 3 _at_a = _at_a + 1;
+ [Lines 9 - 9 ] level 4 _at_a = _at_a + 1
+ [Lines 9 - 9 ] level 5 _at_a
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 5 _at_a + 1
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 7 _at_a
+ [Lines 9 - 9 ] level 6 1
+ [Lines 3 - 5 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 3 - 3 ] level 2 _at_x == 2
+ [Lines 3 - 3 ] level 3 _at_x
+ [Lines 3 - 3 ] level 4 _at_x
+ [Lines 3 - 3 ] level 3 2
+ [Lines 3 - 5 ] level 2 {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 3 _at_x = a;
+ [Lines 4 - 4 ] level 4 _at_x = a
+ [Lines 4 - 4 ] level 5 _at_x
+ [Lines 4 - 4 ] level 6 _at_x
+ [Lines 4 - 4 ] level 5 a
+ [Lines 4 - 4 ] level 6 a
+ [Lines 8 - 10 ] if (_at_y) {
+    _at_a = _at_a + x;
+}
+ [Lines 8 - 8 ] level 2 _at_y
+ [Lines 8 - 8 ] level 3 _at_y
+ [Lines 8 - 10 ] level 2 {
+    _at_a = _at_a + x;
+}
+ [Lines 9 - 9 ] level 3 _at_a = _at_a + x;
+ [Lines 9 - 9 ] level 4 _at_a = _at_a + x
+ [Lines 9 - 9 ] level 5 _at_a
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 5 _at_a + x
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 7 _at_a
+ [Lines 9 - 9 ] level 6 x
+ [Lines 9 - 9 ] level 7 x
+ [Lines 3 - 5 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 3 - 3 ] level 4 _at_x
+ [Lines 3 - 5 ] level 2 {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 3 _at_x = a;
+ [Lines 4 - 4 ] level 6 _at_x
+ [Lines 4 - 4 ] level 6 a
+ [Lines 8 - 10 ] if (_at_y) {
+    _at_a = _at_a + x;
+}
+ [Lines 8 - 8 ] level 3 _at_y
+ [Lines 8 - 10 ] level 2 {
+    _at_a = _at_a + x;
+}
+ [Lines 9 - 9 ] level 3 _at_a = _at_a + x;
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 7 _at_a
+ [Lines 9 - 9 ] level 7 x
+ [Lines 3 - 5 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 3 - 3 ] level 2 _at_x == 2
+ [Lines 3 - 3 ] level 3 _at_x
+ [Lines 3 - 3 ] level 4 _at_x
+ [Lines 3 - 3 ] level 3 2
+ [Lines 4 - 4 ] level 4 _at_x = a
+ [Lines 4 - 4 ] level 5 _at_x
+ [Lines 4 - 4 ] level 6 _at_x
+ [Lines 4 - 4 ] level 5 a
+ [Lines 4 - 4 ] level 6 a
+ [Lines 8 - 10 ] if (_at_y) {
+    _at_a = _at_a + x;
+}
+ [Lines 8 - 8 ] level 2 _at_y
+ [Lines 8 - 8 ] level 3 _at_y
+ [Lines 9 - 9 ] level 4 _at_a = _at_a + x
+ [Lines 9 - 9 ] level 5 _at_a
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 5 _at_a + x
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 7 _at_a
+ [Lines 9 - 9 ] level 6 x
+ [Lines 9 - 9 ] level 7 x
+ [Lines 3 - 5 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 3 - 3 ] level 2 _at_x == 2
+ [Lines 3 - 3 ] level 3 _at_x
+ [Lines 3 - 3 ] level 4 _at_x
+ [Lines 3 - 3 ] level 3 2
+ [Lines 4 - 4 ] level 4 _at_x = a
+ [Lines 4 - 4 ] level 5 _at_x
+ [Lines 4 - 4 ] level 6 _at_x
+ [Lines 4 - 4 ] level 5 a
+ [Lines 4 - 4 ] level 6 a
+ [Lines 8 - 11 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 8 - 8 ] level 2 _at_y
+ [Lines 8 - 8 ] level 3 _at_y
+ [Lines 9 - 9 ] level 4 _at_a = _at_a + x
+ [Lines 9 - 9 ] level 5 _at_a
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 5 _at_a + x
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 7 _at_a
+ [Lines 9 - 9 ] level 6 x
+ [Lines 9 - 9 ] level 7 x
+ [Lines 10 - 10 ] level 4 System.out.println("aiai")
+ [Lines 10 - 10 ] level 5 System.out
+ [Lines 10 - 10 ] level 6 System
+ [Lines 10 - 10 ] level 7 System
+ [Lines 10 - 10 ] level 6 out
+ [Lines 10 - 10 ] level 5 println
+ [Lines 10 - 10 ] level 5 "aiai"
+ [Lines 3 - 5 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 3 - 3 ] level 2 _at_x == 2
+ [Lines 3 - 3 ] level 3 _at_x
+ [Lines 3 - 3 ] level 4 _at_x
+ [Lines 3 - 3 ] level 3 2
+ [Lines 3 - 5 ] level 2 {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 4 _at_x = a
+ [Lines 4 - 4 ] level 5 _at_x
+ [Lines 4 - 4 ] level 6 _at_x
+ [Lines 4 - 4 ] level 5 a
+ [Lines 4 - 4 ] level 6 a
+ [Lines 8 - 11 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 8 - 8 ] level 2 _at_y
+ [Lines 8 - 8 ] level 3 _at_y
+ [Lines 8 - 11 ] level 2 {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 9 - 9 ] level 4 _at_a = _at_a + x
+ [Lines 9 - 9 ] level 5 _at_a
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 5 _at_a + x
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 7 _at_a
+ [Lines 9 - 9 ] level 6 x
+ [Lines 9 - 9 ] level 7 x
+ [Lines 10 - 10 ] level 4 System.out.println("aiai")
+ [Lines 10 - 10 ] level 5 System.out
+ [Lines 10 - 10 ] level 6 System
+ [Lines 10 - 10 ] level 7 System
+ [Lines 10 - 10 ] level 6 out
+ [Lines 10 - 10 ] level 5 println
+ [Lines 10 - 10 ] level 5 "aiai"
+ [Lines 3 - 5 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 3 - 3 ] level 3 _at_x
+ [Lines 3 - 3 ] level 4 _at_x
+ [Lines 3 - 3 ] level 3 2
+ [Lines 3 - 5 ] level 2 {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 5 _at_x
+ [Lines 4 - 4 ] level 6 _at_x
+ [Lines 4 - 4 ] level 5 a
+ [Lines 4 - 4 ] level 6 a
+ [Lines 8 - 11 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 8 - 8 ] level 2 _at_y
+ [Lines 8 - 8 ] level 3 _at_y
+ [Lines 8 - 11 ] level 2 {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 9 - 9 ] level 5 _at_a
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 7 _at_a
+ [Lines 9 - 9 ] level 6 x
+ [Lines 9 - 9 ] level 7 x
+ [Lines 10 - 10 ] level 4 System.out.println("aiai")
+ [Lines 10 - 10 ] level 5 System.out
+ [Lines 10 - 10 ] level 6 System
+ [Lines 10 - 10 ] level 7 System
+ [Lines 10 - 10 ] level 6 out
+ [Lines 10 - 10 ] level 5 println
+ [Lines 10 - 10 ] level 5 "aiai"
+ [Lines 14 - 17 ] if (_at_z == _at_h + 2) {
+    _at_a = i;
+}
+ [Lines 14 - 14 ] level 3 _at_z
+ [Lines 14 - 14 ] level 4 _at_z
+ [Lines 14 - 14 ] level 4 _at_h
+ [Lines 14 - 14 ] level 5 _at_h
+ [Lines 14 - 14 ] level 4 2
+ [Lines 14 - 17 ] level 2 {
+    _at_a = i;
+}
+ [Lines 15 - 15 ] level 5 _at_a
+ [Lines 15 - 15 ] level 6 _at_a
+ [Lines 15 - 15 ] level 5 i
+ [Lines 15 - 15 ] level 6 i
+ [Lines 3 - 5 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 3 - 3 ] level 3 _at_x
+ [Lines 3 - 3 ] level 3 2
+ [Lines 3 - 5 ] level 2 {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 5 _at_x
+ [Lines 4 - 4 ] level 5 a
+ [Lines 8 - 11 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 8 - 8 ] level 2 _at_y
+ [Lines 8 - 11 ] level 2 {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 9 - 9 ] level 5 _at_a
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 6 x
+ [Lines 10 - 10 ] level 4 System.out.println("aiai")
+ [Lines 10 - 10 ] level 5 System.out
+ [Lines 10 - 10 ] level 6 System
+ [Lines 10 - 10 ] level 5 "aiai"
+ [Lines 14 - 17 ] if (_at_z == _at_h + 2) {
+    _at_a = i;
+}
+ [Lines 14 - 14 ] level 3 _at_z
+ [Lines 14 - 14 ] level 4 _at_h
+ [Lines 14 - 14 ] level 4 2
+ [Lines 14 - 17 ] level 2 {
+    _at_a = i;
+}
+ [Lines 15 - 15 ] level 5 _at_a
+ [Lines 15 - 15 ] level 5 i
