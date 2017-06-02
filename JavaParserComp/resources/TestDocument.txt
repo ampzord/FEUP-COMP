@@ -1536,3 +1536,528 @@
 }
  [Lines 15 - 15 ] level 5 _at_a
  [Lines 15 - 15 ] level 5 i
+ [Lines 3 - 5 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 3 - 3 ] level 3 _at_x
+ [Lines 3 - 3 ] level 3 2
+ [Lines 3 - 5 ] level 2 {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 5 _at_x
+ [Lines 4 - 4 ] level 5 a
+ [Lines 8 - 11 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 8 - 8 ] level 2 _at_y
+ [Lines 8 - 11 ] level 2 {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 9 - 9 ] level 5 _at_a
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 6 x
+ [Lines 10 - 10 ] level 4 System.out.println("aiai")
+ [Lines 10 - 10 ] level 5 System.out
+ [Lines 10 - 10 ] level 6 System
+ [Lines 10 - 10 ] level 5 "aiai"
+ [Lines 14 - 17 ] if (_at_z == _at_h + 2) {
+    _at_a = i;
+}
+ [Lines 14 - 14 ] level 3 _at_z
+ [Lines 14 - 14 ] level 4 _at_h
+ [Lines 14 - 14 ] level 4 2
+ [Lines 14 - 17 ] level 2 {
+    _at_a = i;
+}
+ [Lines 15 - 15 ] level 5 _at_a
+ [Lines 15 - 15 ] level 5 i
+ [Lines 3 - 5 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 3 - 3 ] level 3 _at_x
+ [Lines 3 - 3 ] level 3 2
+ [Lines 3 - 5 ] level 2 {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 5 _at_x
+ [Lines 4 - 4 ] level 5 a
+ [Lines 8 - 11 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 8 - 8 ] level 2 _at_y
+ [Lines 8 - 11 ] level 2 {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 9 - 9 ] level 5 _at_a
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 6 x
+ [Lines 10 - 10 ] level 4 System.out.println("aiai")
+ [Lines 10 - 10 ] level 5 System.out
+ [Lines 10 - 10 ] level 6 System
+ [Lines 10 - 10 ] level 5 "aiai"
+ [Lines 14 - 17 ] if (_at_z == _at_h + 2) {
+    _at_a = i;
+}
+ [Lines 14 - 14 ] level 3 _at_z
+ [Lines 14 - 14 ] level 4 _at_h
+ [Lines 14 - 14 ] level 4 2
+ [Lines 14 - 17 ] level 2 {
+    _at_a = i;
+}
+ [Lines 15 - 15 ] level 5 _at_a
+ [Lines 15 - 15 ] level 5 i
+ [Lines 3 - 5 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 3 - 3 ] level 3 _at_x
+ [Lines 3 - 3 ] level 3 2
+ [Lines 3 - 5 ] level 2 {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 5 _at_x
+ [Lines 4 - 4 ] level 5 a
+ [Lines 8 - 11 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 8 - 8 ] level 2 _at_y
+ [Lines 8 - 11 ] level 2 {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 9 - 9 ] level 5 _at_a
+ [Lines 9 - 9 ] level 6 _at_a
+ [Lines 9 - 9 ] level 6 x
+ [Lines 10 - 10 ] level 4 System.out.println("aiai")
+ [Lines 10 - 10 ] level 5 System.out
+ [Lines 10 - 10 ] level 6 System
+ [Lines 10 - 10 ] level 5 "aiai"
+ [Lines 14 - 17 ] if (_at_z == _at_h + 2) {
+    _at_a = i;
+}
+ [Lines 14 - 14 ] level 3 _at_z
+ [Lines 14 - 14 ] level 4 _at_h
+ [Lines 14 - 14 ] level 4 2
+ [Lines 14 - 17 ] level 2 {
+    _at_a = i;
+}
+ [Lines 15 - 15 ] level 5 _at_a
+ [Lines 15 - 15 ] level 5 i
+ [Lines 4 - 6 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 3 _at_x
+ [Lines 4 - 4 ] level 3 2
+ [Lines 4 - 6 ] level 2 {
+    _at_x = a;
+}
+ [Lines 5 - 5 ] level 5 _at_x
+ [Lines 5 - 5 ] level 5 a
+ [Lines 7 - 9 ] if (x == 2) {
+}
+ [Lines 7 - 7 ] level 3 x
+ [Lines 7 - 7 ] level 3 2
+ [Lines 7 - 9 ] level 2 {
+}
+ [Lines 12 - 15 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 12 - 12 ] level 2 _at_y
+ [Lines 12 - 15 ] level 2 {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 13 - 13 ] level 5 _at_a
+ [Lines 13 - 13 ] level 6 _at_a
+ [Lines 13 - 13 ] level 6 x
+ [Lines 14 - 14 ] level 4 System.out.println("aiai")
+ [Lines 14 - 14 ] level 5 System.out
+ [Lines 14 - 14 ] level 6 System
+ [Lines 14 - 14 ] level 5 "aiai"
+ [Lines 18 - 21 ] if (_at_z == _at_h + 2) {
+    _at_a = i;
+}
+ [Lines 18 - 18 ] level 3 _at_z
+ [Lines 18 - 18 ] level 4 _at_h
+ [Lines 18 - 18 ] level 4 2
+ [Lines 18 - 21 ] level 2 {
+    _at_a = i;
+}
+ [Lines 19 - 19 ] level 5 _at_a
+ [Lines 19 - 19 ] level 5 i
+ [Lines 4 - 6 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 3 _at_x
+ [Lines 4 - 4 ] level 3 2
+ [Lines 4 - 6 ] level 2 {
+    _at_x = a;
+}
+ [Lines 5 - 5 ] level 5 _at_x
+ [Lines 5 - 5 ] level 5 a
+ [Lines 7 - 9 ] if (x == 2) {
+}
+ [Lines 7 - 7 ] level 3 x
+ [Lines 7 - 7 ] level 3 2
+ [Lines 7 - 9 ] level 2 {
+}
+ [Lines 12 - 15 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 12 - 12 ] level 2 _at_y
+ [Lines 12 - 15 ] level 2 {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 13 - 13 ] level 5 _at_a
+ [Lines 13 - 13 ] level 6 _at_a
+ [Lines 13 - 13 ] level 6 x
+ [Lines 14 - 14 ] level 4 System.out.println("aiai")
+ [Lines 14 - 14 ] level 5 System.out
+ [Lines 14 - 14 ] level 6 System
+ [Lines 14 - 14 ] level 5 "aiai"
+ [Lines 18 - 21 ] if (_at_z == _at_h + 2) {
+    _at_a = i;
+}
+ [Lines 18 - 18 ] level 3 _at_z
+ [Lines 18 - 18 ] level 4 _at_h
+ [Lines 18 - 18 ] level 4 2
+ [Lines 18 - 21 ] level 2 {
+    _at_a = i;
+}
+ [Lines 19 - 19 ] level 5 _at_a
+ [Lines 19 - 19 ] level 5 i
+ [Lines 4 - 6 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 3 _at_x
+ [Lines 4 - 4 ] level 3 2
+ [Lines 4 - 6 ] level 2 {
+    _at_x = a;
+}
+ [Lines 5 - 5 ] level 5 _at_x
+ [Lines 5 - 5 ] level 5 a
+ [Lines 7 - 9 ] if (x == 2) {
+}
+ [Lines 7 - 7 ] level 3 x
+ [Lines 7 - 7 ] level 3 2
+ [Lines 7 - 9 ] level 2 {
+}
+ [Lines 12 - 15 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 12 - 12 ] level 2 _at_y
+ [Lines 12 - 15 ] level 2 {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 13 - 13 ] level 5 _at_a
+ [Lines 13 - 13 ] level 6 _at_a
+ [Lines 13 - 13 ] level 6 x
+ [Lines 14 - 14 ] level 4 System.out.println("aiai")
+ [Lines 14 - 14 ] level 5 System.out
+ [Lines 14 - 14 ] level 6 System
+ [Lines 14 - 14 ] level 5 "aiai"
+ [Lines 18 - 21 ] if (_at_z == _at_h + 2) {
+    _at_a = i;
+}
+ [Lines 18 - 18 ] level 3 _at_z
+ [Lines 18 - 18 ] level 4 _at_h
+ [Lines 18 - 18 ] level 4 2
+ [Lines 18 - 21 ] level 2 {
+    _at_a = i;
+}
+ [Lines 19 - 19 ] level 5 _at_a
+ [Lines 19 - 19 ] level 5 i
+ [Lines 4 - 6 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 3 _at_x
+ [Lines 4 - 4 ] level 3 2
+ [Lines 4 - 6 ] level 2 {
+    _at_x = a;
+}
+ [Lines 5 - 5 ] level 5 _at_x
+ [Lines 5 - 5 ] level 5 a
+ [Lines 7 - 9 ] if (x == 2) {
+}
+ [Lines 7 - 7 ] level 3 x
+ [Lines 7 - 7 ] level 3 2
+ [Lines 7 - 9 ] level 2 {
+}
+ [Lines 12 - 15 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 12 - 12 ] level 2 _at_y
+ [Lines 12 - 15 ] level 2 {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 13 - 13 ] level 5 _at_a
+ [Lines 13 - 13 ] level 6 _at_a
+ [Lines 13 - 13 ] level 6 x
+ [Lines 14 - 14 ] level 4 System.out.println("aiai")
+ [Lines 14 - 14 ] level 5 System.out
+ [Lines 14 - 14 ] level 6 System
+ [Lines 14 - 14 ] level 5 "aiai"
+ [Lines 18 - 21 ] if (_at_z == _at_h + 2) {
+    _at_a = i;
+}
+ [Lines 18 - 18 ] level 3 _at_z
+ [Lines 18 - 18 ] level 4 _at_h
+ [Lines 18 - 18 ] level 4 2
+ [Lines 18 - 21 ] level 2 {
+    _at_a = i;
+}
+ [Lines 19 - 19 ] level 5 _at_a
+ [Lines 19 - 19 ] level 5 i
+ [Lines 4 - 6 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 3 _at_x
+ [Lines 4 - 4 ] level 3 2
+ [Lines 4 - 6 ] level 2 {
+    _at_x = a;
+}
+ [Lines 5 - 5 ] level 5 _at_x
+ [Lines 5 - 5 ] level 5 a
+ [Lines 7 - 9 ] if (x == 2) {
+}
+ [Lines 7 - 7 ] level 3 x
+ [Lines 7 - 7 ] level 3 2
+ [Lines 7 - 9 ] level 2 {
+}
+ [Lines 12 - 15 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 12 - 12 ] level 2 _at_y
+ [Lines 12 - 15 ] level 2 {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 13 - 13 ] level 5 _at_a
+ [Lines 13 - 13 ] level 6 _at_a
+ [Lines 13 - 13 ] level 6 x
+ [Lines 14 - 14 ] level 4 System.out.println("aiai")
+ [Lines 14 - 14 ] level 5 System.out
+ [Lines 14 - 14 ] level 6 System
+ [Lines 14 - 14 ] level 5 "aiai"
+ [Lines 18 - 21 ] if (_at_z == _at_h + 2) {
+    _at_a = i;
+}
+ [Lines 18 - 18 ] level 3 _at_z
+ [Lines 18 - 18 ] level 4 _at_h
+ [Lines 18 - 18 ] level 4 2
+ [Lines 18 - 21 ] level 2 {
+    _at_a = i;
+}
+ [Lines 19 - 19 ] level 5 _at_a
+ [Lines 19 - 19 ] level 5 i
+ [Lines 4 - 6 ] if (_at_x == 2 && _at_x != 3) {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 4 _at_x
+ [Lines 4 - 4 ] level 4 2
+ [Lines 4 - 4 ] level 4 _at_x
+ [Lines 4 - 4 ] level 4 3
+ [Lines 4 - 6 ] level 2 {
+    _at_x = a;
+}
+ [Lines 5 - 5 ] level 5 _at_x
+ [Lines 5 - 5 ] level 5 a
+ [Lines 7 - 9 ] if (x == 2) {
+}
+ [Lines 7 - 7 ] level 3 x
+ [Lines 7 - 7 ] level 3 2
+ [Lines 7 - 9 ] level 2 {
+}
+ [Lines 12 - 15 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 12 - 12 ] level 2 _at_y
+ [Lines 12 - 15 ] level 2 {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 13 - 13 ] level 5 _at_a
+ [Lines 13 - 13 ] level 6 _at_a
+ [Lines 13 - 13 ] level 6 x
+ [Lines 14 - 14 ] level 4 System.out.println("aiai")
+ [Lines 14 - 14 ] level 5 System.out
+ [Lines 14 - 14 ] level 6 System
+ [Lines 14 - 14 ] level 5 "aiai"
+ [Lines 18 - 21 ] if (_at_z == _at_h + 2) {
+    _at_a = i;
+}
+ [Lines 18 - 18 ] level 3 _at_z
+ [Lines 18 - 18 ] level 4 _at_h
+ [Lines 18 - 18 ] level 4 2
+ [Lines 18 - 21 ] level 2 {
+    _at_a = i;
+}
+ [Lines 19 - 19 ] level 5 _at_a
+ [Lines 19 - 19 ] level 5 i
+ [Lines 4 - 6 ] if (_at_x == 2 && _at_x != 3) {
+    _at_x = a;
+}
+ [Lines 4 - 6 ] level 2 {
+    _at_x = a;
+}
+ [Lines 7 - 9 ] if (x == 2) {
+}
+ [Lines 7 - 9 ] level 2 {
+}
+ [Lines 12 - 15 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 12 - 12 ] level 2 _at_y
+ [Lines 12 - 15 ] level 2 {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 18 - 21 ] if (_at_z == _at_h + 2) {
+    _at_a = i;
+}
+ [Lines 18 - 21 ] level 2 {
+    _at_a = i;
+}
+ [Lines 4 - 6 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 3 _at_x
+ [Lines 4 - 4 ] level 3 2
+ [Lines 4 - 6 ] level 2 {
+    _at_x = a;
+}
+ [Lines 5 - 5 ] level 5 _at_x
+ [Lines 5 - 5 ] level 5 a
+ [Lines 7 - 9 ] if (x == 2) {
+}
+ [Lines 7 - 7 ] level 3 x
+ [Lines 7 - 7 ] level 3 2
+ [Lines 7 - 9 ] level 2 {
+}
+ [Lines 12 - 15 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 12 - 12 ] level 2 _at_y
+ [Lines 12 - 15 ] level 2 {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 13 - 13 ] level 5 _at_a
+ [Lines 13 - 13 ] level 6 _at_a
+ [Lines 13 - 13 ] level 6 x
+ [Lines 14 - 14 ] level 4 System.out.println("aiai")
+ [Lines 14 - 14 ] level 5 System.out
+ [Lines 14 - 14 ] level 6 System
+ [Lines 14 - 14 ] level 5 "aiai"
+ [Lines 18 - 21 ] if (_at_z == _at_h + 2) {
+    _at_a = i;
+}
+ [Lines 18 - 18 ] level 3 _at_z
+ [Lines 18 - 18 ] level 4 _at_h
+ [Lines 18 - 18 ] level 4 2
+ [Lines 18 - 21 ] level 2 {
+    _at_a = i;
+}
+ [Lines 19 - 19 ] level 5 _at_a
+ [Lines 19 - 19 ] level 5 i
+ [Lines 4 - 6 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 3 _at_x
+ [Lines 4 - 4 ] level 3 2
+ [Lines 4 - 6 ] level 2 {
+    _at_x = a;
+}
+ [Lines 5 - 5 ] level 5 _at_x
+ [Lines 5 - 5 ] level 5 a
+ [Lines 7 - 9 ] if (x == 2) {
+}
+ [Lines 7 - 7 ] level 3 x
+ [Lines 7 - 7 ] level 3 2
+ [Lines 7 - 9 ] level 2 {
+}
+ [Lines 12 - 15 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 12 - 12 ] level 2 _at_y
+ [Lines 12 - 15 ] level 2 {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 13 - 13 ] level 5 _at_a
+ [Lines 13 - 13 ] level 6 _at_a
+ [Lines 13 - 13 ] level 6 x
+ [Lines 14 - 14 ] level 4 System.out.println("aiai")
+ [Lines 14 - 14 ] level 5 System.out
+ [Lines 14 - 14 ] level 6 System
+ [Lines 14 - 14 ] level 5 "aiai"
+ [Lines 18 - 21 ] if (_at_z == _at_h + 2) {
+    _at_a = i;
+}
+ [Lines 18 - 18 ] level 3 _at_z
+ [Lines 18 - 18 ] level 4 _at_h
+ [Lines 18 - 18 ] level 4 2
+ [Lines 18 - 21 ] level 2 {
+    _at_a = i;
+}
+ [Lines 19 - 19 ] level 5 _at_a
+ [Lines 19 - 19 ] level 5 i
+ [Lines 4 - 6 ] if (_at_x == 2) {
+    _at_x = a;
+}
+ [Lines 4 - 4 ] level 3 NameExpr _at_x
+ [Lines 4 - 4 ] level 3 IntegerLiteralExpr 2
+ [Lines 4 - 6 ] level 2 BlockStmt {
+    _at_x = a;
+}
+ [Lines 5 - 5 ] level 5 NameExpr _at_x
+ [Lines 5 - 5 ] level 5 NameExpr a
+ [Lines 7 - 9 ] if (x == 2) {
+}
+ [Lines 7 - 7 ] level 3 NameExpr x
+ [Lines 7 - 7 ] level 3 IntegerLiteralExpr 2
+ [Lines 7 - 9 ] level 2 BlockStmt {
+}
+ [Lines 12 - 15 ] if (_at_y) {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 12 - 12 ] level 2 NameExpr _at_y
+ [Lines 12 - 15 ] level 2 BlockStmt {
+    _at_a = _at_a + x;
+    System.out.println("aiai");
+}
+ [Lines 13 - 13 ] level 5 NameExpr _at_a
+ [Lines 13 - 13 ] level 6 NameExpr _at_a
+ [Lines 13 - 13 ] level 6 NameExpr x
+ [Lines 14 - 14 ] level 4 MethodCallExpr System.out.println("aiai")
+ [Lines 14 - 14 ] level 5 FieldAccessExpr System.out
+ [Lines 14 - 14 ] level 6 NameExpr System
+ [Lines 14 - 14 ] level 5 StringLiteralExpr "aiai"
+ [Lines 18 - 21 ] if (_at_z == _at_h + 2) {
+    _at_a = i;
+}
+ [Lines 18 - 18 ] level 3 NameExpr _at_z
+ [Lines 18 - 18 ] level 4 NameExpr _at_h
+ [Lines 18 - 18 ] level 4 IntegerLiteralExpr 2
+ [Lines 18 - 21 ] level 2 BlockStmt {
+    _at_a = i;
+}
+ [Lines 19 - 19 ] level 5 NameExpr _at_a
+ [Lines 19 - 19 ] level 5 NameExpr i

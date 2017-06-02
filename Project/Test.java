@@ -1,7 +1,11 @@
 public class Pattern {
-	void p1() {		
+	void p1(int _at_x) {
+		_at_x = x + 2;
 		if (_at_x == 2) {
 			_at_x = a;
+		}
+		if(x == 2){
+			
 		}
 	}
 	void p2() {		

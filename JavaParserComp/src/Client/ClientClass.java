@@ -2,6 +2,7 @@ package Client;
 import java.io.File;
 import java.io.IOException;
 
+import Finders.PatFinder;
 import Finders.forFind;
 import Finders.ifFind;
 import Finders.whileFind;
@@ -15,29 +16,24 @@ public class ClientClass {
 		}
 		String path1 = args[0];
 		String path2 = args[1];
-		String requestType = args[2];
+		String path3 = args[2];
 		
 		File fileToParse = new File(path1);
+		File fileToCompare = new File(path3);
 		File file = new File(path2);
+		
 		if(!file.exists()){
 			file.createNewFile();
 		}
 		
 		if(fileToParse.exists()){
-			switch(requestType){
-			case("If"):
-				ifFind ifFinder = new ifFind(file,fileToParse);
-				ifFinder.getAllIfs();
-				break;
-			case("While"):
-				whileFind whileFinder = new whileFind(file,fileToParse);
-				whileFinder.getAllWhiles();
-				break;
-			case("For"):
-				forFind forFinder = new forFind(file,fileToParse);
-				forFinder.getAllFors();
-				break;
-			}
+			
+			//ifFind ifFinder = new ifFind(file,fileToParse);
+			//ifFinder.getAllIfs();
+			PatFinder pF = new PatFinder(fileToParse);
+			pF.findPattern();
+			
+			
 		
 		}else{
 			System.err.println("File to parse does not exist");

@@ -7,7 +7,13 @@ import java.util.ArrayList;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.Node;
+import com.github.javaparser.ast.expr.AssignExpr;
+import com.github.javaparser.ast.expr.BinaryExpr;
+import com.github.javaparser.ast.expr.Expression;
+import com.github.javaparser.ast.expr.SimpleName;
+import com.github.javaparser.ast.stmt.ExpressionStmt;
 import com.github.javaparser.ast.stmt.IfStmt;
+import com.github.javaparser.ast.stmt.Statement;
 
 import Iterators.NodeIterator;
 
@@ -29,13 +35,17 @@ public class ifFind {
                 @Override
                 public boolean handle(Node node) {
                     if (node instanceof IfStmt) {
+                    	//System.out.println(node.getMetaModel());
                     	String rtext = " [Lines " + node.getBegin().get().line
                                 + " - " + node.getEnd().get().line + " ] " + node;
                         System.out.println(rtext);
                         allReturnText.add(rtext);
-                        getNestedIfs(node,allReturnText);
+                        getAllChildren(node,allReturnText,2);
                         return false;
                     } else {
+                    	String rtext = " [Lines " + node.getBegin().get().line
+                                + " - " + node.getEnd().get().line + " ] " + " nope " + node;
+                        System.out.println(rtext);  
                     	
                         return true;
                     }
@@ -76,6 +86,56 @@ public class ifFind {
 		
 		return aList;
 	}
+	
+	public ArrayList<String> getAllChildren(Node node,ArrayList<String> aList, int level ){
+	
+		int newlevel = level + 1;
+		for(int i =0; i< node.getChildNodes().size(); i++){
+			
+			Node newNode = node.getChildNodes().get(i);
+				
+				
+				
+				if(newNode instanceof ExpressionStmt ){
+					ExpressionStmt Bexpr = (ExpressionStmt) newNode;
+					String rtext2 = " [Lines " + newNode.getBegin().get().line
+	                        + " - " + newNode.getEnd().get().line + " ] " + "level " +level + " opr " + Bexpr;
+					System.out.println(rtext2);
+					
+				}
+				else if(newNode instanceof BinaryExpr){
+					BinaryExpr Bexpr = (BinaryExpr) newNode;
+					String rtext2 = " [Lines " + newNode.getBegin().get().line
+	                        + " - " + newNode.getEnd().get().line + " ] " + "level " +level + " binExpr " + Bexpr;
+					System.out.println(rtext2);
+				}else if(newNode instanceof AssignExpr){
+					AssignExpr Bexpr = (AssignExpr) newNode;
+					String rtext2 = " [Lines " + newNode.getBegin().get().line
+	                        + " - " + newNode.getEnd().get().line + " ] " + "level " +level + " " + newNode.getClass().getSimpleName()  + " " + Bexpr;
+					System.out.println(rtext2);
+					
+				}else if(newNode instanceof SimpleName){
+					SimpleName Bexpr = (SimpleName) newNode;
+					String rtext2 = " [Lines " + newNode.getBegin().get().line
+	                        + " - " + newNode.getEnd().get().line + " ] " + "level " +level + " " + newNode.getClass().getSimpleName()  + " " + Bexpr;
+					System.out.println(rtext2);
+					
+				}else{
+				
+					String rtext = " [Lines " + newNode.getBegin().get().line
+	                        + " - " + newNode.getEnd().get().line + " ] " + "level " +level + " " + newNode.getClass().getSimpleName()  + " " + newNode;
+					System.out.println(rtext);
+					aList.add(rtext);
+				}
+				getAllChildren(newNode,aList,newlevel);
+			
+			}
+		return aList;
+	}
+	
+	
+	
+	
 	
 	
 	public File getFile(){
