@@ -185,42 +185,33 @@ void Pattern(): {/*@bgen(jjtree) Pattern */
 }
 
 void UnaryAssignmentSpecial() : {/*@bgen(jjtree) UnaryAssignmentSpecial */
-                                  ASTUnaryAssignmentSpecial jjtn000 = new ASTUnaryAssignmentSpecial(JJTUNARYASSIGNMENTSPECIAL);
-                                  boolean jjtc000 = true;
-                                  jjtree.openNodeScope(jjtn000);
-/*@egen*/ Token t1; }
+  ASTUnaryAssignmentSpecial jjtn000 = new ASTUnaryAssignmentSpecial(JJTUNARYASSIGNMENTSPECIAL);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);
+/*@egen*/}
 {/*@bgen(jjtree) UnaryAssignmentSpecial */
-    try {
+        try {
 /*@egen*/
-    (
-      t1 = < VARIABLE > | t1= < IDENTIFIER >
-    )
-    { jjtn000.jjtSetValue(t1.image); } Operator() < SEMI_COLON >
-    |
-    Operator()
-    (
-      t1 = < VARIABLE > | t1= < IDENTIFIER >
-    )
-    { jjtn000.jjtSetValue(t1.image); } < SEMI_COLON >/*@bgen(jjtree)*/
-    } catch (Throwable jjte000) {
-      if (jjtc000) {
-        jjtree.clearNodeScope(jjtn000);
-        jjtc000 = false;
-      } else {
-        jjtree.popNode();
-      }
-      if (jjte000 instanceof RuntimeException) {
-        throw (RuntimeException)jjte000;
-      }
-      if (jjte000 instanceof ParseException) {
-        throw (ParseException)jjte000;
-      }
-      throw (Error)jjte000;
-    } finally {
-      if (jjtc000) {
-        jjtree.closeNodeScope(jjtn000, true);
-      }
-    }
+	UnaryExpression() < SEMI_COLON >/*@bgen(jjtree)*/
+        } catch (Throwable jjte000) {
+          if (jjtc000) {
+            jjtree.clearNodeScope(jjtn000);
+            jjtc000 = false;
+          } else {
+            jjtree.popNode();
+          }
+          if (jjte000 instanceof RuntimeException) {
+            throw (RuntimeException)jjte000;
+          }
+          if (jjte000 instanceof ParseException) {
+            throw (ParseException)jjte000;
+          }
+          throw (Error)jjte000;
+        } finally {
+          if (jjtc000) {
+            jjtree.closeNodeScope(jjtn000, true);
+          }
+        }
 /*@egen*/
 }
 
@@ -234,10 +225,10 @@ void Assignment() : {/*@bgen(jjtree) Assignment */
 /*@egen*/
     (      t1 = < VARIABLE > | t1= < IDENTIFIER >
     )
-    { jjtn000.jjtSetValue(t1.image); }
+    { jjtn000.setAssignee(t1.image); }
     (      t2=< ASSIGN > | t2=< MINUS_EQUAL > | t2=< PLUS_EQUAL > | t2=< MULT_EQUAL > | t2=< DIV_EQUAL >
     )
-    { jjtn000.jjtSetValue(t2.image); }
+    { jjtn000.setOperator(t2.image); }
      Expression() < SEMI_COLON >/*@bgen(jjtree)*/
     } catch (Throwable jjte000) {
       if (jjtc000) {
@@ -475,3 +466,27 @@ void Operator(): {/*@bgen(jjtree) Operator */
   }
 /*@egen*/
 }
+/*
+void Operator_Unary(): { Token t; }
+{
+	(	  t = < INCREMENT > | t=< DECREMENT >
+	)
+	{ jjtThis.jjtSetValue(t.image); }
+}
+
+void Operator_Binary(): { Token t; }
+{
+	(
+	  t = < INCREMENT > | t=< DECREMENT >
+	)
+	{ jjtThis.jjtSetValue(t.image); }
+}
+
+void Operator_Assignment(): { Token t2; }
+{
+	(
+	t2=< ASSIGN > | t2=< MINUS_EQUAL > | t2=< PLUS_EQUAL > | t2=< MULT_EQUAL > | t2=< DIV_EQUAL >
+	)
+	{ jjtThis.jjtSetValue(t.image); }
+}
+*/

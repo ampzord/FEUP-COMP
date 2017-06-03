@@ -97,28 +97,19 @@ void Pattern(): { Token t;}
   	Block()
 }
 
-void UnaryAssignmentSpecial() : { Token t1; }
+void UnaryAssignmentSpecial() : {}
 {
-    (
-      t1 = < VARIABLE > | t1= < IDENTIFIER >
-    )
-    { jjtThis.jjtSetValue(t1.image); } Operator() < SEMI_COLON >
-    |
-    Operator()
-    (
-      t1 = < VARIABLE > | t1= < IDENTIFIER >
-    )
-    { jjtThis.jjtSetValue(t1.image); } < SEMI_COLON >
+	UnaryExpression() < SEMI_COLON >
 }
 
 void Assignment() : {Token t1,t2; }
 {
     (      t1 = < VARIABLE > | t1= < IDENTIFIER >
     )
-    { jjtThis.jjtSetValue(t1.image); }
+    { jjtThis.setAssignee(t1.image); }
     (      t2=< ASSIGN > | t2=< MINUS_EQUAL > | t2=< PLUS_EQUAL > | t2=< MULT_EQUAL > | t2=< DIV_EQUAL >
     )
-    { jjtThis.jjtSetValue(t2.image); }
+    { jjtThis.setOperator(t2.image); }
      Expression() < SEMI_COLON >
 }
 
@@ -172,3 +163,27 @@ void Operator(): { Token t; }
   )
       { jjtThis.jjtSetValue(t.image); }
 }
+/*
+void Operator_Unary(): { Token t; }
+{
+	(	  t = < INCREMENT > | t=< DECREMENT >
+	)
+	{ jjtThis.jjtSetValue(t.image); }
+}
+
+void Operator_Binary(): { Token t; }
+{
+	(
+	  t = < INCREMENT > | t=< DECREMENT >
+	)
+	{ jjtThis.jjtSetValue(t.image); }
+}
+
+void Operator_Assignment(): { Token t2; }
+{
+	(
+	t2=< ASSIGN > | t2=< MINUS_EQUAL > | t2=< PLUS_EQUAL > | t2=< MULT_EQUAL > | t2=< DIV_EQUAL >
+	)
+	{ jjtThis.jjtSetValue(t.image); }
+}
+*/
