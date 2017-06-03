@@ -1,17 +1,20 @@
 Pattern p1 {
 	if(@x == 2) {
-		@x = a;
+		foo(@x);
+		@x = +1;
+		@x = @x + @yt;
 	}
 }
 
 Pattern p2 {
-	if (@y) {
-		@a = @a + 1;
+	if (!@y) {
+		@x *= @y + 1;
+		@x += @y + @q;
 	}
 }
 
 Pattern p3 {
 	while(@z == @h) {
-		@a = i;
+		@x++;
 	}
 }

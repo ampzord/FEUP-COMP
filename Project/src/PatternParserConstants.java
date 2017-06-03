@@ -27,33 +27,47 @@ public interface PatternParserConstants {
   /** RegularExpression Id. */
   int SEMI_COLON = 13;
   /** RegularExpression Id. */
-  int ASSIGN = 14;
+  int NEGATION = 14;
   /** RegularExpression Id. */
-  int EQUALS = 15;
+  int ASSIGN = 15;
   /** RegularExpression Id. */
-  int NOT_EQUALS = 16;
+  int EQUALS = 16;
   /** RegularExpression Id. */
-  int PLUS = 17;
+  int NOT_EQUALS = 17;
   /** RegularExpression Id. */
-  int MINUS = 18;
+  int PLUS_EQUAL = 18;
   /** RegularExpression Id. */
-  int INCREMENT = 19;
+  int MINUS_EQUAL = 19;
   /** RegularExpression Id. */
-  int DECREMENT = 20;
+  int DIV_EQUAL = 20;
   /** RegularExpression Id. */
-  int GREATER_EQUAL = 21;
+  int MULT_EQUAL = 21;
   /** RegularExpression Id. */
-  int GREATER = 22;
+  int PLUS = 22;
   /** RegularExpression Id. */
-  int LESSER_EQUAL = 23;
+  int MINUS = 23;
   /** RegularExpression Id. */
-  int LESSER = 24;
+  int INCREMENT = 24;
   /** RegularExpression Id. */
-  int INTEGER = 25;
+  int DECREMENT = 25;
   /** RegularExpression Id. */
-  int IDENTIFIER = 26;
+  int GREATER_EQUAL = 26;
   /** RegularExpression Id. */
-  int VARIABLE = 27;
+  int GREATER = 27;
+  /** RegularExpression Id. */
+  int LESSER_EQUAL = 28;
+  /** RegularExpression Id. */
+  int LESSER = 29;
+  /** RegularExpression Id. */
+  int REMAINDER = 30;
+  /** RegularExpression Id. */
+  int COMMA = 31;
+  /** RegularExpression Id. */
+  int INTEGER = 32;
+  /** RegularExpression Id. */
+  int IDENTIFIER = 33;
+  /** RegularExpression Id. */
+  int VARIABLE = 34;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -74,9 +88,14 @@ public interface PatternParserConstants {
     "\"}\"",
     "\"else\"",
     "\";\"",
+    "\"!\"",
     "\"=\"",
     "\"==\"",
     "\"!=\"",
+    "\"+=\"",
+    "\"-=\"",
+    "\"/=\"",
+    "\"*=\"",
     "\"+\"",
     "\"-\"",
     "\"++\"",
@@ -85,6 +104,8 @@ public interface PatternParserConstants {
     "\">\"",
     "\"<=\"",
     "\"<\"",
+    "\"%\"",
+    "\",\"",
     "<INTEGER>",
     "<IDENTIFIER>",
     "<VARIABLE>",

@@ -54,6 +54,10 @@ TOKEN :
 	| < ASSIGN			  : "=" >
 	| < EQUALS			  : "==" >
 	| < NOT_EQUALS		  : "!=" >
+	| < PLUS_EQUAL        : "+=" >
+	| < MINUS_EQUAL       : "-=" >
+	| < DIV_EQUAL         : "/=" >
+	| < MULT_EQUAL        : "*=" >
 	| < PLUS              : "+" >
     | < MINUS             : "-" >
     | < INCREMENT         : "++" >
@@ -62,6 +66,8 @@ TOKEN :
     | < GREATER		      : ">" >
     | < LESSER_EQUAL      : "<=" >
     | < LESSER			  : "<" >
+    | < REMAINDER         : "%" >
+    | < COMMA             : "," >
 	| < INTEGER           : (["0"-"9"])+ >
 	| < IDENTIFIER        : ([ "a"-"z", "A"-"Z" ]) ([ "a"-"z", "A"-"Z", "0"-"9" ])* >
 	| < VARIABLE          : ("@" <IDENTIFIER> )>
@@ -78,11 +84,12 @@ ASTStart Start() : {}
 	}
 }
 
-//TODO add functions foo(arg1,arg2) - "(" [Expression()("," Expression())*] ")"
-/*void Function(): { }
+void Function(): { Token t;}
 {
-  
-}*/
+  t = < IDENTIFIER >
+  { jjtThis.jjtSetValue(t.image); }
+  < PARENTHESIS_OPEN > [Expression()(< COMMA > Expression())*] < PARENTHESIS_CLOSE > < SEMI_COLON >
+}
 
 void Pattern(): { Token t;}
 {
@@ -90,17 +97,29 @@ void Pattern(): { Token t;}
   	Block()
 }
 
-void Assignment() : {Token t; }
+void UnaryAssignmentSpecial() : { }
 {
-    (      t = < VARIABLE > | t= < IDENTIFIER >
-    )  
-    { jjtThis.jjtSetValue(t.image); }
-    < ASSIGN > Expression() < SEMI_COLON >
+    (      Operator() Operand() < SEMI_COLON >
+    )
+     |
+    (       Operand() Operator() < SEMI_COLON >
+	)
+}
+
+void Assignment() : {Token t1,t2; }
+{
+    (      t1 = < VARIABLE > | t1= < IDENTIFIER >
+    )
+    { jjtThis.jjtSetValue(t1.image); }
+    (      t2=< ASSIGN > | t2=< MINUS_EQUAL > | t2=< PLUS_EQUAL > | t2=< MULT_EQUAL > | t2=< DIV_EQUAL >
+    )
+    { jjtThis.jjtSetValue(t2.image); }
+     Expression() < SEMI_COLON >
 }
 
 void Statement() #void : { }
 {
-	IfStatement() | WhileStatement() | Assignment()
+	  IfStatement() | WhileStatement() | LOOKAHEAD(Assignment()) Assignment() | LOOKAHEAD(Function())Function() |  UnaryAssignmentSpecial()
 }
 
 void IfStatement() : { }
@@ -118,9 +137,9 @@ void Expression() #void: { }
     LOOKAHEAD(BinaryExpression()) BinaryExpression() |  LOOKAHEAD(UnaryExpression()) UnaryExpression() | Operand()
 }
  
-void UnaryExpression() : { } //TODO Is there any problem that we can do INTEGER + Operator ?
-							 // Because Operator includes integer also - 5++ would be a valid operation and it isn't..
-    Operand() Operator() //| Operator() Operand()
+void UnaryExpression() : { } 
+{							
+	Operator() Operand() | Operand() Operator()
 }
  
 void BinaryExpression() : { }
@@ -143,8 +162,8 @@ void Operand(): { Token t;}
 void Operator(): { Token t; }
 {
   (
-   t= < PLUS > | t=< MINUS > | t=< INCREMENT > | t=< DECREMENT > | t=< NOT_EQUALS > | t=< EQUALS >
-   | t=< GREATER > |t=< GREATER_EQUAL > | t=<LESSER > | t=< LESSER_EQUAL > | t=< NEGATION >
+   t= < PLUS > | t=< MINUS > | t=< NOT_EQUALS > | t=< EQUALS > | t =< REMAINDER > | t=< INCREMENT > | t=< DECREMENT > | t=< NEGATION >
+   | t=< GREATER > |t=< GREATER_EQUAL > | t=<LESSER > | t=< LESSER_EQUAL > | t=< PLUS_EQUAL > | t=< MINUS_EQUAL > | t=< MULT_EQUAL > | t=< DIV_EQUAL >
   )
       { jjtThis.jjtSetValue(t.image); }
 }

@@ -9,10 +9,10 @@ class ASTAssignment extends SimpleNode {
   public ASTAssignment(PatternParser p, int id) {
     super(p, id);
   }
-
+  
   public String generateJava() {
 		SimpleNode expr = (SimpleNode) jjtGetChild(0);
-		return "\t" + value.toString().replace("@", "_at_") + " = " + expr.generateJava() + ";\n";
+		return "\t" + value.toString().replace("@", "_at_") + expr.generateJava() + ";\n";
 	}
 }
 /* JavaCC - OriginalChecksum=b46d9c98d7fcf9337c8e142f48933236 (do not edit this line) */

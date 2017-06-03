@@ -9,6 +9,12 @@ class ASTUnaryExpression extends SimpleNode {
   public ASTUnaryExpression(PatternParser p, int id) {
     super(p, id);
   }
-
+  
+	@Override
+	public String generateJava() {
+		SimpleNode left = (SimpleNode) jjtGetChild(0);
+		SimpleNode right = (SimpleNode) jjtGetChild(1);
+		return left.generateJava() + right.generateJava();
+	}
 }
 /* JavaCC - OriginalChecksum=1d9d3c76fa2c66a455cf349dfe945de4 (do not edit this line) */
