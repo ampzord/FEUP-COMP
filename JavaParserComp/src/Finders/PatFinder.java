@@ -97,7 +97,7 @@ public class PatFinder {
 			
 			Node newNode = parentNode.getChildNodes().get(i);
 			if(newNode.toString().contains("_at_")){
-				pObject newObject = new pObject(newNode,false,true,false,grandpaPObject);
+				pObject newObject = new pObject(newNode,false,false,true,grandpaPObject);
 				array.add(newObject);
 			}
 			
@@ -108,6 +108,8 @@ public class PatFinder {
 	public ArrayList<pObject> getArray(){
 		return array;
 	}
+	
+	
 }
 
 

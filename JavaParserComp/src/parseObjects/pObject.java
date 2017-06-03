@@ -17,6 +17,7 @@ public class pObject {
 		container = wSt;
 		isCond = cond;
 		inBody = body;
+		bodyOf = null;
 	}
 	
 	public pObject(Node node, boolean wSt,boolean cond, boolean body, pObject st){
@@ -45,6 +46,10 @@ public class pObject {
 
 	public Node getNode() {
 		return node;
+	}
+
+	public pObject getBodyOf() {
+		return bodyOf;
 	}
 	
 	

@@ -1,11 +1,14 @@
 package Client;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
+import Finders.PatComparator;
 import Finders.PatFinder;
 import Finders.forFind;
 import Finders.ifFind;
 import Finders.whileFind;
+import parseObjects.pObject;
 public class ClientClass {
 
 	
@@ -28,11 +31,11 @@ public class ClientClass {
 		
 		if(fileToParse.exists()){
 			
-			//ifFind ifFinder = new ifFind(file,fileToParse);
-			//ifFinder.getAllIfs();
+			
 			PatFinder pF = new PatFinder(fileToParse);
 			pF.findPattern();
-			
+			PatComparator pC = new PatComparator(fileToCompare, pF.getArray());		
+			pC.findOccasions();
 			
 		
 		}else{

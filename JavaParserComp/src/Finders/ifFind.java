@@ -22,9 +22,11 @@ public class ifFind {
 	private File fileToParse;
 	private File file;
 	
+	
 	public ifFind(File file, File fileToParse){
 		this.file = file;
 		this.fileToParse = fileToParse;
+		
 	}
 	
 	public ArrayList<String> getAllIfs() throws IOException{
@@ -60,6 +62,8 @@ public class ifFind {
 			out.append(allReturnText.get(i) + '\n');
 		}
 		out.close();
+		
+		
 		
 		return allReturnText;
 	}
@@ -132,7 +136,6 @@ public class ifFind {
 			}
 		return aList;
 	}
-	
 	
 	
 	
