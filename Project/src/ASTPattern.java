@@ -11,14 +11,8 @@ public class ASTPattern extends SimpleNode {
 
 	@Override
 	public String generateJava() {
-		// TODO Auto-generated method stub
 		String s = "\tvoid " + this.value + "() {";
 		for (int i = 0; i < jjtGetNumChildren(); i++) {
-			/*
-			 * if (i == 0) { s += n.generateJava(); } else if (i ==
-			 * jjtGetNumChildren()) { s += n.generateJava(); } else { s += "\t"
-			 * + n.generateJava(); }
-			 */
 			SimpleNode n = (SimpleNode) jjtGetChild(i);
 			s += "\t\t" + n.generateJava();
 		}

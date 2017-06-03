@@ -1,20 +1,21 @@
 Pattern p1 {
 	if(@x == 2) {
 		foo(@x);
-		@x = +1;
-		@x = @x + @yt;
 	}
 }
 
 Pattern p2 {
 	if (!@y) {
-		@x *= @y + 1;
-		@x += @y + @q;
+		@x = @z + @y;
 	}
 }
 
 Pattern p3 {
 	while(@z == @h) {
 		@x++;
+		++@x;
+		
+		@x>;
+		@x = @z >= @y;
 	}
 }
