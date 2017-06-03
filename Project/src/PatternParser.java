@@ -168,11 +168,29 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
 
   static final public void UnaryAssignmentSpecial() throws ParseException {
                                  /*@bgen(jjtree) UnaryAssignmentSpecial */
-  ASTUnaryAssignmentSpecial jjtn000 = new ASTUnaryAssignmentSpecial(JJTUNARYASSIGNMENTSPECIAL);
-  boolean jjtc000 = true;
-  jjtree.openNodeScope(jjtn000);
+                                  ASTUnaryAssignmentSpecial jjtn000 = new ASTUnaryAssignmentSpecial(JJTUNARYASSIGNMENTSPECIAL);
+                                  boolean jjtc000 = true;
+                                  jjtree.openNodeScope(jjtn000);Token t1;
     try {
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case IDENTIFIER:
+      case VARIABLE:
+        switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+        case VARIABLE:
+          t1 = jj_consume_token(VARIABLE);
+          break;
+        case IDENTIFIER:
+          t1 = jj_consume_token(IDENTIFIER);
+          break;
+        default:
+          jj_la1[3] = jj_gen;
+          jj_consume_token(-1);
+          throw new ParseException();
+        }
+      jjtn000.jjtSetValue(t1.image);
+        Operator();
+        jj_consume_token(SEMI_COLON);
+        break;
       case NEGATION:
       case EQUALS:
       case NOT_EQUALS:
@@ -190,18 +208,23 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
       case LESSER:
       case REMAINDER:
         Operator();
-        Operand();
-        jj_consume_token(SEMI_COLON);
-        break;
-      case INTEGER:
-      case IDENTIFIER:
-      case VARIABLE:
-        Operand();
-        Operator();
+        switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+        case VARIABLE:
+          t1 = jj_consume_token(VARIABLE);
+          break;
+        case IDENTIFIER:
+          t1 = jj_consume_token(IDENTIFIER);
+          break;
+        default:
+          jj_la1[4] = jj_gen;
+          jj_consume_token(-1);
+          throw new ParseException();
+        }
+      jjtn000.jjtSetValue(t1.image);
         jj_consume_token(SEMI_COLON);
         break;
       default:
-        jj_la1[3] = jj_gen;
+        jj_la1[5] = jj_gen;
         jj_consume_token(-1);
         throw new ParseException();
       }
@@ -240,7 +263,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
         t1 = jj_consume_token(IDENTIFIER);
         break;
       default:
-        jj_la1[4] = jj_gen;
+        jj_la1[6] = jj_gen;
         jj_consume_token(-1);
         throw new ParseException();
       }
@@ -262,7 +285,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
         t2 = jj_consume_token(DIV_EQUAL);
         break;
       default:
-        jj_la1[5] = jj_gen;
+        jj_la1[7] = jj_gen;
         jj_consume_token(-1);
         throw new ParseException();
       }
@@ -299,7 +322,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
       WhileStatement();
       break;
     default:
-      jj_la1[6] = jj_gen;
+      jj_la1[8] = jj_gen;
       if (jj_2_1(2147483647)) {
         Assignment();
       } else if (jj_2_2(2147483647)) {
@@ -322,13 +345,12 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
         case LESSER_EQUAL:
         case LESSER:
         case REMAINDER:
-        case INTEGER:
         case IDENTIFIER:
         case VARIABLE:
           UnaryAssignmentSpecial();
           break;
         default:
-          jj_la1[7] = jj_gen;
+          jj_la1[9] = jj_gen;
           jj_consume_token(-1);
           throw new ParseException();
         }
@@ -353,7 +375,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
         Block();
         break;
       default:
-        jj_la1[8] = jj_gen;
+        jj_la1[10] = jj_gen;
         ;
       }
     } catch (Throwable jjte000) {
@@ -422,7 +444,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
         Operand();
         break;
       default:
-        jj_la1[9] = jj_gen;
+        jj_la1[11] = jj_gen;
         jj_consume_token(-1);
         throw new ParseException();
       }
@@ -462,7 +484,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
         Operator();
         break;
       default:
-        jj_la1[10] = jj_gen;
+        jj_la1[12] = jj_gen;
         jj_consume_token(-1);
         throw new ParseException();
       }
@@ -545,13 +567,12 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
         case LESSER_EQUAL:
         case LESSER:
         case REMAINDER:
-        case INTEGER:
         case IDENTIFIER:
         case VARIABLE:
           ;
           break;
         default:
-          jj_la1[11] = jj_gen;
+          jj_la1[13] = jj_gen;
           break label_3;
         }
         Statement();
@@ -595,7 +616,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
         t = jj_consume_token(INTEGER);
         break;
       default:
-        jj_la1[12] = jj_gen;
+        jj_la1[14] = jj_gen;
         jj_consume_token(-1);
         throw new ParseException();
       }
@@ -665,7 +686,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
         t = jj_consume_token(DIV_EQUAL);
         break;
       default:
-        jj_la1[13] = jj_gen;
+        jj_la1[15] = jj_gen;
         jj_consume_token(-1);
         throw new ParseException();
       }
@@ -729,14 +750,14 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
     return false;
   }
 
-  static private boolean jj_3R_17() {
-    if (jj_scan_token(COMMA)) return true;
-    if (jj_3R_8()) return true;
+  static private boolean jj_3_2() {
+    if (jj_3R_5()) return true;
     return false;
   }
 
-  static private boolean jj_3_2() {
-    if (jj_3R_5()) return true;
+  static private boolean jj_3R_17() {
+    if (jj_scan_token(COMMA)) return true;
+    if (jj_3R_8()) return true;
     return false;
   }
 
@@ -831,6 +852,11 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
     return false;
   }
 
+  static private boolean jj_3_4() {
+    if (jj_3R_7()) return true;
+    return false;
+  }
+
   static private boolean jj_3R_9() {
     if (jj_3R_8()) return true;
     Token xsp;
@@ -838,11 +864,6 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
       xsp = jj_scanpos;
       if (jj_3R_17()) { jj_scanpos = xsp; break; }
     }
-    return false;
-  }
-
-  static private boolean jj_3_4() {
-    if (jj_3R_7()) return true;
     return false;
   }
 
@@ -914,7 +935,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
   static private Token jj_scanpos, jj_lastpos;
   static private int jj_la;
   static private int jj_gen;
-  static final private int[] jj_la1 = new int[14];
+  static final private int[] jj_la1 = new int[16];
   static private int[] jj_la1_0;
   static private int[] jj_la1_1;
   static {
@@ -922,10 +943,10 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
       jj_la1_init_1();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x40,0x80000000,0x7fff4000,0x7fff4000,0x0,0x3c8000,0xa0,0x7fff4000,0x1000,0x0,0x7fff4000,0x7fff40a0,0x0,0x7fff4000,};
+      jj_la1_0 = new int[] {0x40,0x80000000,0x7fff4000,0x0,0x0,0x7fff4000,0x0,0x3c8000,0xa0,0x7fff4000,0x1000,0x0,0x7fff4000,0x7fff40a0,0x0,0x7fff4000,};
    }
    private static void jj_la1_init_1() {
-      jj_la1_1 = new int[] {0x0,0x0,0x7,0x7,0x6,0x0,0x0,0x7,0x0,0x7,0x7,0x7,0x7,0x0,};
+      jj_la1_1 = new int[] {0x0,0x0,0x7,0x6,0x6,0x6,0x6,0x0,0x0,0x6,0x0,0x7,0x7,0x6,0x7,0x0,};
    }
   static final private JJCalls[] jj_2_rtns = new JJCalls[4];
   static private boolean jj_rescan = false;
@@ -949,7 +970,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 14; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 16; i++) jj_la1[i] = -1;
     for (int i = 0; i < jj_2_rtns.length; i++) jj_2_rtns[i] = new JJCalls();
   }
 
@@ -965,7 +986,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
     jj_ntk = -1;
     jjtree.reset();
     jj_gen = 0;
-    for (int i = 0; i < 14; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 16; i++) jj_la1[i] = -1;
     for (int i = 0; i < jj_2_rtns.length; i++) jj_2_rtns[i] = new JJCalls();
   }
 
@@ -983,7 +1004,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 14; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 16; i++) jj_la1[i] = -1;
     for (int i = 0; i < jj_2_rtns.length; i++) jj_2_rtns[i] = new JJCalls();
   }
 
@@ -995,7 +1016,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
     jj_ntk = -1;
     jjtree.reset();
     jj_gen = 0;
-    for (int i = 0; i < 14; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 16; i++) jj_la1[i] = -1;
     for (int i = 0; i < jj_2_rtns.length; i++) jj_2_rtns[i] = new JJCalls();
   }
 
@@ -1012,7 +1033,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 14; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 16; i++) jj_la1[i] = -1;
     for (int i = 0; i < jj_2_rtns.length; i++) jj_2_rtns[i] = new JJCalls();
   }
 
@@ -1023,7 +1044,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
     jj_ntk = -1;
     jjtree.reset();
     jj_gen = 0;
-    for (int i = 0; i < 14; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 16; i++) jj_la1[i] = -1;
     for (int i = 0; i < jj_2_rtns.length; i++) jj_2_rtns[i] = new JJCalls();
   }
 
@@ -1140,7 +1161,7 @@ public class PatternParser/*@bgen(jjtree)*/implements PatternParserTreeConstants
       la1tokens[jj_kind] = true;
       jj_kind = -1;
     }
-    for (int i = 0; i < 14; i++) {
+    for (int i = 0; i < 16; i++) {
       if (jj_la1[i] == jj_gen) {
         for (int j = 0; j < 32; j++) {
           if ((jj_la1_0[i] & (1<<j)) != 0) {

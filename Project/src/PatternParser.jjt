@@ -97,13 +97,18 @@ void Pattern(): { Token t;}
   	Block()
 }
 
-void UnaryAssignmentSpecial() : { }
+void UnaryAssignmentSpecial() : { Token t1; }
 {
-    (      Operator() Operand() < SEMI_COLON >
+    (
+      t1 = < VARIABLE > | t1= < IDENTIFIER >
     )
-     |
-    (       Operand() Operator() < SEMI_COLON >
-	)
+    { jjtThis.jjtSetValue(t1.image); } Operator() < SEMI_COLON >
+    |
+    Operator()
+    (
+      t1 = < VARIABLE > | t1= < IDENTIFIER >
+    )
+    { jjtThis.jjtSetValue(t1.image); } < SEMI_COLON >
 }
 
 void Assignment() : {Token t1,t2; }

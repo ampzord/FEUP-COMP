@@ -185,18 +185,23 @@ void Pattern(): {/*@bgen(jjtree) Pattern */
 }
 
 void UnaryAssignmentSpecial() : {/*@bgen(jjtree) UnaryAssignmentSpecial */
-  ASTUnaryAssignmentSpecial jjtn000 = new ASTUnaryAssignmentSpecial(JJTUNARYASSIGNMENTSPECIAL);
-  boolean jjtc000 = true;
-  jjtree.openNodeScope(jjtn000);
-/*@egen*/ }
+                                  ASTUnaryAssignmentSpecial jjtn000 = new ASTUnaryAssignmentSpecial(JJTUNARYASSIGNMENTSPECIAL);
+                                  boolean jjtc000 = true;
+                                  jjtree.openNodeScope(jjtn000);
+/*@egen*/ Token t1; }
 {/*@bgen(jjtree) UnaryAssignmentSpecial */
     try {
 /*@egen*/
-    (      Operator() Operand() < SEMI_COLON >
+    (
+      t1 = < VARIABLE > | t1= < IDENTIFIER >
     )
-     |
-     (       Operand() Operator() < SEMI_COLON >
-	)/*@bgen(jjtree)*/
+    { jjtn000.jjtSetValue(t1.image); } Operator() < SEMI_COLON >
+    |
+    Operator()
+    (
+      t1 = < VARIABLE > | t1= < IDENTIFIER >
+    )
+    { jjtn000.jjtSetValue(t1.image); } < SEMI_COLON >/*@bgen(jjtree)*/
     } catch (Throwable jjte000) {
       if (jjtc000) {
         jjtree.clearNodeScope(jjtn000);
