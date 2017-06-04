@@ -62,13 +62,13 @@ TOKEN :
 	| < MINUS_EQUAL       : "-=" >
 	| < DIV_EQUAL         : "/=" >
 	| < MULT_EQUAL        : "*=" >
+	| < LESSER_EQUAL      : "<=" >
+	| < GREATER_EQUAL	  : ">=" >
 	| < PLUS              : "+" >
     | < MINUS             : "-" >
     | < INCREMENT         : "++" >
     | < DECREMENT         : "--" >
-    | < GREATER_EQUAL	  : ">=" >
     | < GREATER		      : ">" >
-    | < LESSER_EQUAL      : "<=" >
     | < LESSER			  : "<" >
     | < REMAINDER         : "%" >
     | < COMMA             : "," >

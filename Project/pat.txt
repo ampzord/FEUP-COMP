@@ -3,6 +3,7 @@ Pattern p1 {
 		foo(@x);
 		bar(@y,@z,@s,sadas);
 		fo(x,y);
+		foo();
 	}
 }
 
