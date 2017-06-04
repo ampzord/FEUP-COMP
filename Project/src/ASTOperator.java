@@ -9,11 +9,6 @@ class ASTOperator extends SimpleNode {
   public ASTOperator(PatternParser p, int id) {
     super(p, id);
   }
-  
-  @Override
- 	public String generateJava() {
- 		return this.value.toString();
- 	}
 
 }
-/* JavaCC - OriginalChecksum=53598755986a8eae494432c7da8a2d10 (do not edit this line) */
+/* JavaCC - OriginalChecksum=02b3438b9a59d755a6e04f9b7262bbda (do not edit this line) */

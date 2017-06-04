@@ -11,63 +11,67 @@ public interface PatternParserConstants {
   /** RegularExpression Id. */
   int IF = 5;
   /** RegularExpression Id. */
-  int PATTERN = 6;
+  int DO = 6;
   /** RegularExpression Id. */
-  int WHILE = 7;
+  int PATTERN = 7;
   /** RegularExpression Id. */
-  int PARENTHESIS_OPEN = 8;
+  int WHILE = 8;
   /** RegularExpression Id. */
-  int PARENTHESIS_CLOSE = 9;
+  int PARENTHESIS_OPEN = 9;
   /** RegularExpression Id. */
-  int BRACKETS_OPEN = 10;
+  int PARENTHESIS_CLOSE = 10;
   /** RegularExpression Id. */
-  int BRACKETS_CLOSE = 11;
+  int BRACKETS_OPEN = 11;
   /** RegularExpression Id. */
-  int ELSE = 12;
+  int BRACKETS_CLOSE = 12;
   /** RegularExpression Id. */
-  int SEMI_COLON = 13;
+  int ELSE = 13;
   /** RegularExpression Id. */
-  int NEGATION = 14;
+  int SEMI_COLON = 14;
   /** RegularExpression Id. */
-  int ASSIGN = 15;
+  int NEGATION = 15;
   /** RegularExpression Id. */
-  int EQUALS = 16;
+  int ASSIGN = 16;
   /** RegularExpression Id. */
-  int NOT_EQUALS = 17;
+  int EQUALS = 17;
   /** RegularExpression Id. */
-  int PLUS_EQUAL = 18;
+  int NOT_EQUALS = 18;
   /** RegularExpression Id. */
-  int MINUS_EQUAL = 19;
+  int PLUS_EQUAL = 19;
   /** RegularExpression Id. */
-  int DIV_EQUAL = 20;
+  int MINUS_EQUAL = 20;
   /** RegularExpression Id. */
-  int MULT_EQUAL = 21;
+  int DIV_EQUAL = 21;
   /** RegularExpression Id. */
-  int PLUS = 22;
+  int MULT_EQUAL = 22;
   /** RegularExpression Id. */
-  int MINUS = 23;
+  int LESSER_EQUAL = 23;
   /** RegularExpression Id. */
-  int INCREMENT = 24;
+  int GREATER_EQUAL = 24;
   /** RegularExpression Id. */
-  int DECREMENT = 25;
+  int REMAINDER_EQUAL = 25;
   /** RegularExpression Id. */
-  int GREATER_EQUAL = 26;
+  int PLUS = 26;
   /** RegularExpression Id. */
-  int GREATER = 27;
+  int MINUS = 27;
   /** RegularExpression Id. */
-  int LESSER_EQUAL = 28;
+  int INCREMENT = 28;
   /** RegularExpression Id. */
-  int LESSER = 29;
+  int DECREMENT = 29;
   /** RegularExpression Id. */
-  int REMAINDER = 30;
+  int GREATER = 30;
   /** RegularExpression Id. */
-  int COMMA = 31;
+  int LESSER = 31;
   /** RegularExpression Id. */
-  int INTEGER = 32;
+  int REMAINDER = 32;
   /** RegularExpression Id. */
-  int IDENTIFIER = 33;
+  int COMMA = 33;
   /** RegularExpression Id. */
-  int VARIABLE = 34;
+  int INTEGER = 34;
+  /** RegularExpression Id. */
+  int IDENTIFIER = 35;
+  /** RegularExpression Id. */
+  int VARIABLE = 36;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -80,6 +84,7 @@ public interface PatternParserConstants {
     "\"\\t\"",
     "\"\\n\"",
     "\"if\"",
+    "\"do\"",
     "\"Pattern\"",
     "\"while\"",
     "\"(\"",
@@ -96,13 +101,14 @@ public interface PatternParserConstants {
     "\"-=\"",
     "\"/=\"",
     "\"*=\"",
+    "\"<=\"",
+    "\">=\"",
+    "\"%=\"",
     "\"+\"",
     "\"-\"",
     "\"++\"",
     "\"--\"",
-    "\">=\"",
     "\">\"",
-    "\"<=\"",
     "\"<\"",
     "\"%\"",
     "\",\"",

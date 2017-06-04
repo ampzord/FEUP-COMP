@@ -10,6 +10,7 @@ Pattern p1 {
 Pattern p2 {
 	if (!@y) {
 		@x = @z + @y;
+		x += 5;
 	}
 }
 
@@ -17,8 +18,12 @@ Pattern p3 {
 	while(@z == @h) {
 		@x++;
 		++@x;
-		
-		@x>;
-		@x = @z >= @y;
+		@x = -@x;
 	}
+}
+
+Pattern p4 {
+	do {
+		@x++;
+	} while(@x == @c);
 }

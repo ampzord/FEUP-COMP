@@ -9,6 +9,10 @@ class ASTOperator_Binary extends SimpleNode {
   public ASTOperator_Binary(PatternParser p, int id) {
     super(p, id);
   }
-
+  
+  @Override
+ 	public String generateJava() {
+ 		return this.value.toString();
+ 	}
 }
 /* JavaCC - OriginalChecksum=666d3dce41740b982e8310a4c6104a6a (do not edit this line) */

@@ -2,8 +2,8 @@
 /* JavaCCOptions:MULTI=true,NODE_USES_PARSER=false,VISITOR=false,TRACK_TOKENS=false,NODE_PREFIX=AST,NODE_EXTENDS=,NODE_FACTORY=,SUPPORT_CLASS_VISIBILITY_PUBLIC=true */
 public
 class ASTAssignment extends SimpleNode {
-	private String assignee;
-	private String operator;
+	//private String assignee;
+	//private String operator;
 	
   public ASTAssignment(int id) {
     super(id);
@@ -12,7 +12,7 @@ class ASTAssignment extends SimpleNode {
   public ASTAssignment(PatternParser p, int id) {
     super(p, id);
   }
-  
+  /*
   public String getAssignee() {
 	  return this.assignee;
   }
@@ -27,11 +27,12 @@ class ASTAssignment extends SimpleNode {
   
   public void setOperator(String value) {
 	  this.operator = value;
-  }
+  }*/
   
   public String generateJava() {
-	  SimpleNode expr = (SimpleNode) jjtGetChild(0);
-	  return "\t" + assignee.replace("@", "_at_") + operator + expr.generateJava() + ";\n";
+	  SimpleNode assign_operator = (SimpleNode) jjtGetChild(0);
+	  SimpleNode expr = (SimpleNode) jjtGetChild(1);
+	  return "\t" + value.toString().replace("@", "_at_") + " " + assign_operator.generateJava() + " " + expr.generateJava() + ";\n";
 	}
 }
 /* JavaCC - OriginalChecksum=b46d9c98d7fcf9337c8e142f48933236 (do not edit this line) */

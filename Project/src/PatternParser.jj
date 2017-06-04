@@ -46,6 +46,7 @@ SKIP :
 TOKEN :
 {
   	  < IF                : "if" >
+  	| < DO                : "do" >
   	| < PATTERN      	  : "Pattern" >
     | < WHILE             : "while" >
 	| < PARENTHESIS_OPEN  : "(" >
@@ -62,13 +63,14 @@ TOKEN :
 	| < MINUS_EQUAL       : "-=" >
 	| < DIV_EQUAL         : "/=" >
 	| < MULT_EQUAL        : "*=" >
+	| < LESSER_EQUAL      : "<=" >
+	| < GREATER_EQUAL	  : ">=" >
+	| < REMAINDER_EQUAL   : "%=" >
 	| < PLUS              : "+" >
     | < MINUS             : "-" >
     | < INCREMENT         : "++" >
     | < DECREMENT         : "--" >
-    | < GREATER_EQUAL	  : ">=" >
     | < GREATER		      : ">" >
-    | < LESSER_EQUAL      : "<=" >
     | < LESSER			  : "<" >
     | < REMAINDER         : "%" >
     | < COMMA             : "," >
@@ -219,17 +221,15 @@ void Assignment() : {/*@bgen(jjtree) Assignment */
                      ASTAssignment jjtn000 = new ASTAssignment(JJTASSIGNMENT);
                      boolean jjtc000 = true;
                      jjtree.openNodeScope(jjtn000);
-/*@egen*/Token t1,t2; }
+/*@egen*/Token t; }
 {/*@bgen(jjtree) Assignment */
     try {
 /*@egen*/
-    (      t1 = < VARIABLE > | t1= < IDENTIFIER >
+    (      t = < VARIABLE > | t= < IDENTIFIER >
     )
-    { jjtn000.setAssignee(t1.image); }
-    (      t2=< ASSIGN > | t2=< MINUS_EQUAL > | t2=< PLUS_EQUAL > | t2=< MULT_EQUAL > | t2=< DIV_EQUAL >
-    )
-    { jjtn000.setOperator(t2.image); }
-     Expression() < SEMI_COLON >/*@bgen(jjtree)*/
+     { jjtn000.jjtSetValue(t.image); }
+
+    Operator_Assignment() Expression() < SEMI_COLON >/*@bgen(jjtree)*/
     } catch (Throwable jjte000) {
       if (jjtc000) {
         jjtree.clearNodeScope(jjtn000);
@@ -252,9 +252,40 @@ void Assignment() : {/*@bgen(jjtree) Assignment */
 /*@egen*/
 }
 
+void DoWhileStatement() : {/*@bgen(jjtree) DoWhileStatement */
+  ASTDoWhileStatement jjtn000 = new ASTDoWhileStatement(JJTDOWHILESTATEMENT);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);
+/*@egen*/ }
+{/*@bgen(jjtree) DoWhileStatement */
+        try {
+/*@egen*/
+	< DO > Block() < WHILE > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > < SEMI_COLON >/*@bgen(jjtree)*/
+        } catch (Throwable jjte000) {
+          if (jjtc000) {
+            jjtree.clearNodeScope(jjtn000);
+            jjtc000 = false;
+          } else {
+            jjtree.popNode();
+          }
+          if (jjte000 instanceof RuntimeException) {
+            throw (RuntimeException)jjte000;
+          }
+          if (jjte000 instanceof ParseException) {
+            throw (ParseException)jjte000;
+          }
+          throw (Error)jjte000;
+        } finally {
+          if (jjtc000) {
+            jjtree.closeNodeScope(jjtn000, true);
+          }
+        }
+/*@egen*/
+}
+
 void Statement()       : { }
 {
-	  IfStatement() | WhileStatement() | LOOKAHEAD(Assignment()) Assignment() | LOOKAHEAD(Function())Function() |  UnaryAssignmentSpecial()
+	  IfStatement() | WhileStatement() | LOOKAHEAD(Assignment()) Assignment() | LOOKAHEAD(Function())Function() |  UnaryAssignmentSpecial() | DoWhileStatement()
 }
 
 void IfStatement() : {/*@bgen(jjtree) IfStatement */
@@ -332,7 +363,7 @@ void UnaryExpression() : {/*@bgen(jjtree) UnaryExpression */
 {/*@bgen(jjtree) UnaryExpression */
         try {
 /*@egen*/							
-	Operator() Operand() | Operand() Operator()/*@bgen(jjtree)*/
+	Operator_Unary() Operand() | Operand() Operator_Unary()/*@bgen(jjtree)*/
         } catch (Throwable jjte000) {
           if (jjtc000) {
             jjtree.clearNodeScope(jjtn000);
@@ -363,7 +394,7 @@ void BinaryExpression() : {/*@bgen(jjtree) BinaryExpression */
 {/*@bgen(jjtree) BinaryExpression */
     try {
 /*@egen*/
-    Operand() Operator() Operand()/*@bgen(jjtree)*/
+    Operand() Operator_Binary() Operand()/*@bgen(jjtree)*/
     } catch (Throwable jjte000) {
       if (jjtc000) {
         jjtree.clearNodeScope(jjtn000);
@@ -466,27 +497,81 @@ void Operator(): {/*@bgen(jjtree) Operator */
   }
 /*@egen*/
 }
-/*
-void Operator_Unary(): { Token t; }
-{
-	(	  t = < INCREMENT > | t=< DECREMENT >
-	)
-	{ jjtThis.jjtSetValue(t.image); }
+
+void Operator_Unary(): {/*@bgen(jjtree) Operator_Unary */
+                         ASTOperator_Unary jjtn000 = new ASTOperator_Unary(JJTOPERATOR_UNARY);
+                         boolean jjtc000 = true;
+                         jjtree.openNodeScope(jjtn000);
+/*@egen*/ Token t; }
+{/*@bgen(jjtree) Operator_Unary */
+        try {
+/*@egen*/
+	(	  t = < INCREMENT > | t=< DECREMENT > | t=< PLUS > | t= < MINUS > | t=< NEGATION >
+	)/*@bgen(jjtree)*/
+        {
+          jjtree.closeNodeScope(jjtn000, true);
+          jjtc000 = false;
+        }
+/*@egen*/
+	{ jjtn000.jjtSetValue(t.image); }/*@bgen(jjtree)*/
+        } finally {
+          if (jjtc000) {
+            jjtree.closeNodeScope(jjtn000, true);
+          }
+        }
+/*@egen*/
 }
 
-void Operator_Binary(): { Token t; }
-{
+
+void Operator_Binary(): {/*@bgen(jjtree) Operator_Binary */
+                          ASTOperator_Binary jjtn000 = new ASTOperator_Binary(JJTOPERATOR_BINARY);
+                          boolean jjtc000 = true;
+                          jjtree.openNodeScope(jjtn000);
+/*@egen*/ Token t; }
+{/*@bgen(jjtree) Operator_Binary */
+        try {
+/*@egen*/
 	(
-	  t = < INCREMENT > | t=< DECREMENT >
-	)
-	{ jjtThis.jjtSetValue(t.image); }
+	 t= < PLUS > | t=< MINUS > | t=< NOT_EQUALS > | t=< EQUALS > | t =< REMAINDER >
+	 | t=< GREATER > |t=< GREATER_EQUAL > | t=<LESSER > | t=< LESSER_EQUAL > 
+	)/*@bgen(jjtree)*/
+        {
+          jjtree.closeNodeScope(jjtn000, true);
+          jjtc000 = false;
+        }
+/*@egen*/
+	{ jjtn000.jjtSetValue(t.image); }/*@bgen(jjtree)*/
+        } finally {
+          if (jjtc000) {
+            jjtree.closeNodeScope(jjtn000, true);
+          }
+        }
+/*@egen*/
 }
 
-void Operator_Assignment(): { Token t2; }
-{
+
+void Operator_Assignment(): {/*@bgen(jjtree) Operator_Assignment */
+                              ASTOperator_Assignment jjtn000 = new ASTOperator_Assignment(JJTOPERATOR_ASSIGNMENT);
+                              boolean jjtc000 = true;
+                              jjtree.openNodeScope(jjtn000);
+/*@egen*/ Token t; }
+
+{/*@bgen(jjtree) Operator_Assignment */
+        try {
+/*@egen*/
 	(
-	t2=< ASSIGN > | t2=< MINUS_EQUAL > | t2=< PLUS_EQUAL > | t2=< MULT_EQUAL > | t2=< DIV_EQUAL >
-	)
-	{ jjtThis.jjtSetValue(t.image); }
+		t=< ASSIGN > | t=< MINUS_EQUAL > | t=< PLUS_EQUAL > | t=< MULT_EQUAL > | t=< DIV_EQUAL > | t =< REMAINDER_EQUAL >
+	)/*@bgen(jjtree)*/
+        {
+          jjtree.closeNodeScope(jjtn000, true);
+          jjtc000 = false;
+        }
+/*@egen*/
+	{ jjtn000.jjtSetValue(t.image); }/*@bgen(jjtree)*/
+        } finally {
+          if (jjtc000) {
+            jjtree.closeNodeScope(jjtn000, true);
+          }
+        }
+/*@egen*/
 }
-*/
