@@ -31,8 +31,10 @@ public class ClientClass {
 		
 		if(fileToParse.exists()){
 			
-			
+			ifFind iF = new ifFind(file,fileToParse);
+			iF.getAllIfs();
 			PatFinder pF = new PatFinder(fileToParse);
+			
 			pF.findPattern();
 			PatComparator pC = new PatComparator(fileToCompare, pF.getArray());		
 			pC.findOccasions();

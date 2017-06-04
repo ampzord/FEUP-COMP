@@ -11,6 +11,7 @@ import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.expr.NameExpr;
 import com.github.javaparser.ast.expr.SimpleName;
+import com.github.javaparser.ast.stmt.DoStmt;
 import com.github.javaparser.ast.stmt.ExpressionStmt;
 import com.github.javaparser.ast.stmt.IfStmt;
 import com.github.javaparser.ast.stmt.WhileStmt;
@@ -36,20 +37,21 @@ public class PatComparator {
 		savedReferencer = new Hashtable<String,String>();
 	}
 	
+	
+	//This function is the main one that will find all patterns stored in the array in the code 
 	public int findOccasions(){
 		
 		try {
             new NodeIterator(new NodeIterator.NodeHandler() {
                 @Override
                 public boolean handle(Node node) {
-                	//System.out.println(node.getClass().getName() + " AND " + patternArray.get(getCIndex()).getNode().getClass().getName());
                 		if (node.getClass().getName().equals(patternArray.get(getCIndex()).getNode().getClass().getName())) {
                 			
-                			if(node instanceof IfStmt || node instanceof WhileStmt){
+                			if(node instanceof IfStmt || node instanceof WhileStmt ||node instanceof DoStmt){
                 				pObject contObject = patternArray.get(getCIndex());
                 				currIndex--;
                 				separateAnalysis(node,contObject);
-                				System.out.println("Found an If! " + node);
+                				System.out.println("Found an Node with a Body and a conditional " + node);
                 			}else if(checkIfSame(node,patternArray.get(getCIndex()).getNode())){
                 				currIndex--;
                 				System.out.println("Found a match " + node);
@@ -77,6 +79,9 @@ public class PatComparator {
 		return 0;
 	}
 	
+	
+	//used to separate body from conditionals in if,whiles and do statements. 
+	//It also makes sure that no nodes that are inside bodies get treated outside, and controls the index of the array by a temporary counter.
 	private void separateAnalysis(Node parentNode,pObject container){
 		
 		List<Node> lChildren = parentNode.getChildNodes();
@@ -84,10 +89,12 @@ public class PatComparator {
 		int nToRemove = 0;
 		for(int i = 0; i< patternArray.size(); i++){
 			if(patternArray.get(i).getBodyOf() != null){
-			if(patternArray.get(i).getBodyOf().equals(container) && patternArray.get(i).isInBody()){
+				
+				if(patternArray.get(i).getBodyOf().equals(container) && patternArray.get(i).isInBody()){
 			
 				bodyStatements++;
-			}}
+				}
+			}
 		}
 		if(patternArray.get(getCIndex()).isCond() && lChildren.get(0).getClass().getName().equals(patternArray.get(getCIndex()).getNode().getClass().getName())){
 			
@@ -108,11 +115,15 @@ public class PatComparator {
 		currIndex -= nToRemove; 
 	}
 	
+	//obtains every node in body and verifies it
 	private boolean analyzeBody(Node parentNode,int statements,int adder){
+		
 		List<Node> lChildren = parentNode.getChildNodes();
-		//List<Node> patChildren = patternArray.get(currIndex).getNode().getChildNodes();
+		
 		for(int i = 0; i < lChildren.size(); i++){
+			
 			if(lChildren.get(i).getClass().getName().equals(patternArray.get(getCIndex()+adder).getNode().getClass().getName())){
+				
 				if(checkIfSame(lChildren.get(i),patternArray.get(getCIndex()+adder).getNode())){
 					
 					if(adder + 1 < patternArray.size() - 1){
@@ -132,28 +143,35 @@ public class PatComparator {
 		return true;
 	}
 	
+	//given the Pattern node, and the node that requires verifying it fully checks them to se eif they are the same. 
 	private boolean checkIfSame(Node parentNode, Node patParNode){
 		List<Node> lChildren = parentNode.getChildNodes();
 		List<Node> patChildren = patParNode.getChildNodes();
 		
 		if(lChildren.size() == patChildren.size()){
 			for(int i = 0; i < lChildren.size(); i++){
+				
 				if(!lChildren.get(i).getClass().getName().equals(patChildren.get(i).getClass().getName())){
 					return false;
 				}
 				if(lChildren.get(i).getChildNodes().size() == 0){
+					
 					if(patChildren.get(i) instanceof SimpleName && patChildren.get(i).toString().contains("_at_")){
+						
 						if(!(atReferencer.containsKey(patChildren.get(i).toString()) || atReferencer.containsKey(lChildren.get(i).toString()))){
+							
 						atReferencer.put(patChildren.get(i).toString(), lChildren.get(i).toString());
+						
 						atReferencer.put(lChildren.get(i).toString(),patChildren.get(i).toString());
 						}
 						
 						if(atReferencer.containsKey(patChildren.get(i).toString()) && atReferencer.containsKey(lChildren.get(i).toString())){
-						if(atReferencer.get(patChildren.get(i).toString()).equals(lChildren.get(i).toString())){
-							return true;
-						}else{
-							return false;
-						}
+							
+							if(atReferencer.get(patChildren.get(i).toString()).equals(lChildren.get(i).toString())){
+								return true;
+							}else{
+								return false;
+							}
 				
 						}else{
 							return false;

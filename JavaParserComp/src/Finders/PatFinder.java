@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.expr.AssignExpr;
+import com.github.javaparser.ast.stmt.DoStmt;
 import com.github.javaparser.ast.stmt.ExpressionStmt;
 import com.github.javaparser.ast.stmt.ForStmt;
 import com.github.javaparser.ast.stmt.IfStmt;
@@ -32,20 +33,13 @@ public class PatFinder {
                 @Override
                 public boolean handle(Node node) {
                 		
-                		if (node instanceof IfStmt && node.toString().contains("_at_")) {
+                		if ((node instanceof IfStmt || node instanceof WhileStmt || node instanceof DoStmt) && node.toString().contains("_at_")) {
                 			pObject nObject = new pObject(node,true,false,false);
                 			aList.add(nObject);
                 			separateNodes(nObject);
                 			return false;
                         }
-                		else if (node instanceof WhileStmt && node.toString().contains("_at_")) {
-                			
-                			pObject nObject = new pObject(node,true,false,false);
-                			aList.add(nObject);
-
-                			separateNodes(nObject);
-                            return false;
-                        } else if (node instanceof ExpressionStmt && node.toString().contains("_at_")) {
+                		else if (node instanceof ExpressionStmt && node.toString().contains("_at_")) {
                         	pObject nObject = new pObject(node,true,false,false);
                 			aList.add(nObject);
                         	return false;
