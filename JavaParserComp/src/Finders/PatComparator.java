@@ -42,7 +42,8 @@ public class PatComparator {
 	
 	//This function is the main one that will find all patterns stored in the array in the code 
 	public int findOccasions(){
-		
+		System.out.println("=====================================================");
+		System.out.println("Finding all occasions of patterns: ");
 		try {
             new NodeIterator(new NodeIterator.NodeHandler() {
                 @Override
@@ -52,18 +53,22 @@ public class PatComparator {
                 			if(node instanceof IfStmt || node instanceof WhileStmt ||node instanceof DoStmt){
                 				pObject contObject = patternArray.get(getCIndex());
                 				currIndex--;
-                				System.out.println("Found an Node with a Body and a conditional that may fit the pattern: " + node);
+                				System.out.println("Found an Node with a Body and a conditional that may fit the pattern: " +" [Lines " + node.getBegin().get().line
+                	                    + " - " + node.getEnd().get().line + " ] " + node);
                 				if(!separateAnalysis(node,contObject)){
-                					System.out.println("This node failed to fit all the patterns necessary: " + node);
+                					System.out.println("This node failed to fit all the patterns necessary: " +" [Lines " + node.getBegin().get().line
+                    	                    + " - " + node.getEnd().get().line + " ] " + node);
                 					currIndex++;
                 				}
                 				else{
-                					System.out.println("This node fits all the patterns necessary: " + node);
+                					System.out.println("This node fits all the patterns necessary: " +" [Lines " + node.getBegin().get().line
+                    	                    + " - " + node.getEnd().get().line + " ] " + node);
                     				
                 				}
                 			}else if(checkIfSame(node,patternArray.get(getCIndex()).getNode())){
                 				currIndex--;
-                				System.out.println("Found a match " + node);
+                				System.out.println("Found a match :" +" [Lines " + node.getBegin().get().line
+                	                    + " - " + node.getEnd().get().line + " ] " + node);
                 			}
                 			if(currIndex < 1){
                 				nPatterns++;
@@ -105,24 +110,29 @@ public class PatComparator {
 				}
 			}
 		}
+		
 		if(patternArray.get(getCIndex()).isCond() && Utilities.getNodeType(lChildren.get(0)).equals(patternArray.get(getCIndex()).getObjectNodeType())){
-			
+		
 			if(checkIfSame(lChildren.get(0),patternArray.get(getCIndex()).getNode())){
-			System.out.println("This conditional fits the pattern! " + lChildren.get(0));
-			nToRemove += 1;}
+				System.out.println("This conditional fits the pattern! " +" [Lines " + lChildren.get(0).getBegin().get().line
+						+ " - " + lChildren.get(0).getEnd().get().line + " ] " + lChildren.get(0));
+				nToRemove += 1;}
 			else{
 				return false;
 			}
 		}
-		if(patternArray.get(getCIndex() + nToRemove).isInBody()){
-			if(analyzeBody(lChildren.get(1),bodyStatements,nToRemove)){
-				nToRemove += bodyStatements;
-				System.out.println("This whole body fits the entire pattern! " + lChildren.get(1));
-			}
-			else{
-				return false;
-			}
 			
+		if((getCIndex() + nToRemove) < patternArray.size()){
+			if(patternArray.get(getCIndex() + nToRemove).isInBody()){
+				if(analyzeBody(lChildren.get(1),bodyStatements,nToRemove)){
+					nToRemove += bodyStatements;
+					System.out.println("This whole body fits the entire pattern! " +" [Lines " + lChildren.get(1).getBegin().get().line
+							+ " - " + lChildren.get(1).getEnd().get().line + " ] " + lChildren.get(1));
+				}
+				else{
+					return false;
+				}	
+			}
 		}
 		currIndex -= nToRemove; 
 		return true;
@@ -145,7 +155,8 @@ public class PatComparator {
 					
 					if(statements > 0){
 						statements--;
-						System.out.println("Found a analyzed match! - " + lChildren.get(i) + " " + patternArray.get(getCIndex()+adder).getNode());
+						System.out.println("Found a analyzed match! - " +" [Lines " + lChildren.get(i).getBegin().get().line
+			                    + " - " + lChildren.get(i).getEnd().get().line + " ] " + lChildren.get(i) + " fits: " + patternArray.get(getCIndex()+adder).getNode());
 					}
 				}
 			}
