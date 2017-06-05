@@ -1,6 +1,0 @@
-public class Pattern {
-	void p1() {		
-		if (_at_ == 2) {
-		}
-	}
-}
