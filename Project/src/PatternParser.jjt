@@ -1,0 +1,188 @@
+options
+{
+  LOOKAHEAD= 1;
+  MULTI=true;
+}
+ 
+PARSER_BEGIN(PatternParser)
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+ 
+public class PatternParser
+{
+  public static void main(String [] args) throws ParseException,
+  FileNotFoundException
+  {
+    if (args.length < 1)
+    {
+      System.out.println("Write the filename of the pattern file.");
+      System.exit(1);
+    }
+    //System.out.println("Reading from the file " + args[0] + "...\n");
+    PatternParser patParser = new PatternParser(new FileInputStream(args[0]));
+
+    ASTStart root = PatternParser.Start();
+    // root.dump("");
+    String code = root.generateJava();
+    System.out.println(code);
+  }
+}
+
+PARSER_END(PatternParser)
+
+SKIP :
+{
+  	" "
+	| "\r"
+	| "\t"
+	| "\n"
+}
+
+TOKEN :
+{
+  	  < IF                : "if" >
+  	| < DO                : "do" >
+  	| < PATTERN      	  : "Pattern" >
+    | < WHILE             : "while" >
+	| < PARENTHESIS_OPEN  : "(" >
+	| < PARENTHESIS_CLOSE : ")" >
+	| < BRACKETS_OPEN	  : "{" >
+	| < BRACKETS_CLOSE    : "}" >
+	| < ELSE              : "else" >
+	| < SEMI_COLON        : ";" >
+	| < NEGATION          : "!" >
+	| < ASSIGN			  : "=" >
+	| < EQUALS			  : "==" >
+	| < NOT_EQUALS		  : "!=" >
+	| < PLUS_EQUAL        : "+=" >
+	| < MINUS_EQUAL       : "-=" >
+	| < DIV_EQUAL         : "/=" >
+	| < MULT_EQUAL        : "*=" >
+	| < LESSER_EQUAL      : "<=" >
+	| < GREATER_EQUAL	  : ">=" >
+	| < REMAINDER_EQUAL   : "%=" >
+	| < PLUS              : "+" >
+    | < MINUS             : "-" >
+    | < INCREMENT         : "++" >
+    | < DECREMENT         : "--" >
+    | < GREATER		      : ">" >
+    | < LESSER			  : "<" >
+    | < REMAINDER         : "%" >
+    | < COMMA             : "," >
+	| < INTEGER           : (["0"-"9"])+ >
+	| < IDENTIFIER        : ([ "a"-"z", "A"-"Z" ]) ([ "a"-"z", "A"-"Z", "0"-"9" ])* >
+	| < VARIABLE          : ("@" <IDENTIFIER> )>
+ }
+
+
+
+ASTStart Start() : {}
+{
+	(Pattern())*
+	< EOF >
+	{
+	  return jjtThis;
+	}
+}
+
+void Function(): { Token t;}
+{
+  t = < IDENTIFIER >
+  { jjtThis.jjtSetValue(t.image); }
+  < PARENTHESIS_OPEN > [Expression()(< COMMA > Expression())*] < PARENTHESIS_CLOSE > < SEMI_COLON >
+}
+
+void Pattern(): { Token t;}
+{
+  	< PATTERN > t=< IDENTIFIER > { jjtThis.jjtSetValue(t.image); }
+  	Block()
+}
+
+void UnaryAssignmentSpecial() : {}
+{
+	UnaryExpression() < SEMI_COLON >
+}
+
+void Assignment() : {Token t; }
+{
+    (      t = < VARIABLE > | t= < IDENTIFIER >
+    )
+     { jjtThis.jjtSetValue(t.image); }
+
+    Operator_Assignment() Expression() < SEMI_COLON >
+}
+
+void DoWhileStatement() : { }
+{
+	< DO > Block() < WHILE > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > < SEMI_COLON >
+}
+
+void Statement() #void : { }
+{
+	  IfStatement() | WhileStatement() | LOOKAHEAD(Assignment()) Assignment() | LOOKAHEAD(Function())Function() |  UnaryAssignmentSpecial() | DoWhileStatement()
+}
+
+void IfStatement() : { }
+{
+	< IF > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()  [<ELSE > Block()]
+}
+
+void WhileStatement() : { }
+{
+    < WHILE > <PARENTHESIS_OPEN > Expression() < PARENTHESIS_CLOSE > Block()
+}
+
+void Expression() #void: { }
+{
+    LOOKAHEAD(BinaryExpression()) BinaryExpression() |  LOOKAHEAD(UnaryExpression()) UnaryExpression() | Operand()
+}
+ 
+void UnaryExpression() : { } 
+{							
+	Operator_Unary() Operand() | Operand() Operator_Unary()
+}
+ 
+void BinaryExpression() : { }
+{
+    Operand() Operator_Binary() Operand()
+}
+
+void Block() : { }
+{
+	< BRACKETS_OPEN > (Statement())* < BRACKETS_CLOSE >
+}
+
+void Operand(): { Token t;}
+{
+    (      t=< VARIABLE > | t=< IDENTIFIER > | t= < INTEGER >
+    )
+      { jjtThis.jjtSetValue(t.image); }
+}
+
+void Operator_Unary(): { Token t; }
+{
+	(	  t = < INCREMENT > | t=< DECREMENT > | t=< PLUS > | t= < MINUS > | t=< NEGATION >
+	)
+	{ jjtThis.jjtSetValue(t.image); }
+}
+
+
+void Operator_Binary(): { Token t; }
+{
+	(
+	 t= < PLUS > | t=< MINUS > | t=< NOT_EQUALS > | t=< EQUALS > | t =< REMAINDER >
+	 | t=< GREATER > |t=< GREATER_EQUAL > | t=<LESSER > | t=< LESSER_EQUAL > 
+	)
+	{ jjtThis.jjtSetValue(t.image); }
+}
+
+
+void Operator_Assignment(): { Token t; }
+
+{
+	(
+		t=< ASSIGN > | t=< MINUS_EQUAL > | t=< PLUS_EQUAL > | t=< MULT_EQUAL > | t=< DIV_EQUAL > | t =< REMAINDER_EQUAL >
+	)
+	{ jjtThis.jjtSetValue(t.image); }
+}
