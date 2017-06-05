@@ -66,15 +66,18 @@ public class PatComparator {
                 				else{
                 					System.out.println("This node fits all the patterns necessary: " +" [Lines " + node.getBegin().get().line
                     	                    + " - " + node.getEnd().get().line + " ] " + node);
+                					nPatterns++;
                     				
                 				}
+                				
                 			}else if(checkIfSame(node,patternArray.get(getCIndex()).getNode())){
                 				currIndex--;
                 				System.out.println("Found a match :" +" [Lines " + node.getBegin().get().line
                 	                    + " - " + node.getEnd().get().line + " ] " + node);
+                				nPatterns++;
                 			}
                 			if(currIndex < 1){
-                				nPatterns++;
+                				
                 				currIndex = patternArray.size(); 
                 			}
                             return false;
@@ -92,7 +95,6 @@ public class PatComparator {
             new RuntimeException(e);
         }
 		System.out.println("FOUND N PATTERNS : " + nPatterns);
-		System.out.println("How many left for more : " + currIndex);
 		return 0;
 	}
 	
@@ -137,7 +139,8 @@ public class PatComparator {
 				}	
 			}
 		}
-		currIndex -= nToRemove; 
+		currIndex -= nToRemove;
+		nPatterns += nToRemove;
 		return true;
 	}
 	
