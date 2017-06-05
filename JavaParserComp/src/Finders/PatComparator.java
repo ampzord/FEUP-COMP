@@ -31,7 +31,7 @@ public class PatComparator {
 	private int currIndex;
 	private File fileToCompare;	
 	private Hashtable<String,String> atReferencer;
-	private Hashtable<String,String> savedReferencer;
+	private ArrayList<String> savedReferencer;
 	
 	public PatComparator(File file, ArrayList<pObject> patternArray){
 		this.fileToCompare = file;
@@ -39,7 +39,7 @@ public class PatComparator {
 		this.nPatterns = 0;
 		this.currIndex = patternArray.size();
 		atReferencer = new Hashtable<String,String>();
-		savedReferencer = new Hashtable<String,String>();
+		savedReferencer = new ArrayList<String>();
 	}
 	
 	
@@ -179,7 +179,7 @@ public class PatComparator {
 			for(int i = 0; i < lChildren.size(); i++){
 				
 				
-				if(lChildren.get(i).getChildNodes().size() == 0 || lChildren.get(i) instanceof EnclosedExpr){
+				if(lChildren.get(i).getChildNodes().size() == 0 || lChildren.get(i) instanceof EnclosedExpr) {
 					
 					if((patChildren.get(i) instanceof SimpleName || patChildren.get(i) instanceof NameExpr) && patChildren.get(i).toString().contains("_at_")){
 						
@@ -189,6 +189,8 @@ public class PatComparator {
 						
 						atReferencer.put(lChildren.get(i).toString(),patChildren.get(i).toString());
 						
+						savedReferencer.add(patChildren.get(i).toString());
+						savedReferencer.add(lChildren.get(i).toString());
 						}
 						
 						if(atReferencer.containsKey(patChildren.get(i).toString()) && atReferencer.containsKey(lChildren.get(i).toString())){
@@ -212,6 +214,12 @@ public class PatComparator {
 						return false;
 					}
 				}else if(!checkIfSame(lChildren.get(i),patChildren.get(i))){
+
+					for(int j=0; j < savedReferencer.size(); j++){
+						atReferencer.remove(savedReferencer.get(j));
+					}
+					savedReferencer.clear();
+					
 					return false;
 				}
 					
@@ -220,8 +228,13 @@ public class PatComparator {
 			}
 		}
 		else{
+			for(int i=0; i < savedReferencer.size(); i++){
+				atReferencer.remove(savedReferencer.get(i));
+			}
+			savedReferencer.clear();
 			return false;
 		}
+		savedReferencer.clear();
 		return true;
 	}
 	
