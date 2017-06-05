@@ -1,9 +1,11 @@
 public class Stuff {
 	void p1(int x) {
-		do{
+		
+		
+		while(x == 2 && y == 3){
 			x = x + 3;
 			y = x + z;
-		} while(x == 2 && y == 3);
+		}
 		
 		
 	}

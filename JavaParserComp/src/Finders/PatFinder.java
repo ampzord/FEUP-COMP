@@ -57,10 +57,13 @@ public class PatFinder {
         }
 		
 		this.array = aList;
+		
+		System.out.println("All Patterns to find:");
+		
 		for(int i = 0; i < aList.size(); i++){
 			Node thisNode = aList.get(i).getNode();
 			
-			String rtext = " [Lines " + thisNode.getBegin().get().line
+			String rtext = "Pattern number " + (i+1) +" [Lines " + thisNode.getBegin().get().line
                     + " - " + thisNode.getEnd().get().line + " ] " + thisNode;
 			System.out.println(rtext);
 				

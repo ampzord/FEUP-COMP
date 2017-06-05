@@ -42,6 +42,9 @@ public class pObject {
 		return container;
 	}
 	
+	public String getObjectNodeType(){
+		return this.node.getClass().getName();
+	}
 	
 
 	public Node getNode() {

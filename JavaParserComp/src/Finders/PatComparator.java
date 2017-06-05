@@ -18,6 +18,8 @@ import com.github.javaparser.ast.stmt.WhileStmt;
 
 import Iterators.NodeIterator;
 import parseObjects.pObject;
+import Utils.Utilities;
+import Utils.Utilities.*;
 
 public class PatComparator {
 
@@ -45,13 +47,20 @@ public class PatComparator {
             new NodeIterator(new NodeIterator.NodeHandler() {
                 @Override
                 public boolean handle(Node node) {
-                		if (node.getClass().getName().equals(patternArray.get(getCIndex()).getNode().getClass().getName())) {
+                		if (Utilities.getNodeType(node).equals(patternArray.get(getCIndex()).getObjectNodeType())) {
                 			
                 			if(node instanceof IfStmt || node instanceof WhileStmt ||node instanceof DoStmt){
                 				pObject contObject = patternArray.get(getCIndex());
                 				currIndex--;
-                				separateAnalysis(node,contObject);
-                				System.out.println("Found an Node with a Body and a conditional " + node);
+                				System.out.println("Found an Node with a Body and a conditional that may fit the pattern: " + node);
+                				if(!separateAnalysis(node,contObject)){
+                					System.out.println("This node failed to fit all the patterns necessary: " + node);
+                					currIndex++;
+                				}
+                				else{
+                					System.out.println("This node fits all the patterns necessary: " + node);
+                    				
+                				}
                 			}else if(checkIfSame(node,patternArray.get(getCIndex()).getNode())){
                 				currIndex--;
                 				System.out.println("Found a match " + node);
@@ -82,7 +91,7 @@ public class PatComparator {
 	
 	//used to separate body from conditionals in if,whiles and do statements. 
 	//It also makes sure that no nodes that are inside bodies get treated outside, and controls the index of the array by a temporary counter.
-	private void separateAnalysis(Node parentNode,pObject container){
+	private boolean separateAnalysis(Node parentNode,pObject container){
 		
 		List<Node> lChildren = parentNode.getChildNodes();
 		int bodyStatements = 0;
@@ -96,23 +105,27 @@ public class PatComparator {
 				}
 			}
 		}
-		if(patternArray.get(getCIndex()).isCond() && lChildren.get(0).getClass().getName().equals(patternArray.get(getCIndex()).getNode().getClass().getName())){
+		if(patternArray.get(getCIndex()).isCond() && Utilities.getNodeType(lChildren.get(0)).equals(patternArray.get(getCIndex()).getObjectNodeType())){
 			
 			if(checkIfSame(lChildren.get(0),patternArray.get(getCIndex()).getNode())){
-			System.out.println("Found a Cond! " + lChildren.get(0));
+			System.out.println("This conditional fits the pattern! " + lChildren.get(0));
 			nToRemove += 1;}
 			else{
-				return;
+				return false;
 			}
 		}
 		if(patternArray.get(getCIndex() + nToRemove).isInBody()){
 			if(analyzeBody(lChildren.get(1),bodyStatements,nToRemove)){
 				nToRemove += bodyStatements;
-				System.out.println("Found a Bod! " + lChildren.get(1));
+				System.out.println("This whole body fits the entire pattern! " + lChildren.get(1));
+			}
+			else{
+				return false;
 			}
 			
 		}
 		currIndex -= nToRemove; 
+		return true;
 	}
 	
 	//obtains every node in body and verifies it
@@ -122,7 +135,7 @@ public class PatComparator {
 		
 		for(int i = 0; i < lChildren.size(); i++){
 			
-			if(lChildren.get(i).getClass().getName().equals(patternArray.get(getCIndex()+adder).getNode().getClass().getName())){
+			if(Utilities.getNodeType(lChildren.get(i)).equals(patternArray.get(getCIndex()+adder).getObjectNodeType())){
 				
 				if(checkIfSame(lChildren.get(i),patternArray.get(getCIndex()+adder).getNode())){
 					
@@ -151,7 +164,7 @@ public class PatComparator {
 		if(lChildren.size() == patChildren.size()){
 			for(int i = 0; i < lChildren.size(); i++){
 				
-				if(!lChildren.get(i).getClass().getName().equals(patChildren.get(i).getClass().getName())){
+				if(!Utilities.getNodeType(lChildren.get(i)).equals(Utilities.getNodeType(patChildren.get(i)))){
 					return false;
 				}
 				if(lChildren.get(i).getChildNodes().size() == 0){
