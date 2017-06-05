@@ -3,9 +3,8 @@ public class Pattern {
 		
 
 		
-		while(1)
-		{
-			
+		if(_at_a == _at_x * _at_x){
+			_at_a = _at_x + _at_b;
 		}
 		
 		

@@ -9,6 +9,9 @@ import java.util.List;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.Node;
+import com.github.javaparser.ast.expr.EnclosedExpr;
+import com.github.javaparser.ast.expr.Expression;
+import com.github.javaparser.ast.expr.Name;
 import com.github.javaparser.ast.expr.NameExpr;
 import com.github.javaparser.ast.expr.SimpleName;
 import com.github.javaparser.ast.stmt.DoStmt;
@@ -175,18 +178,17 @@ public class PatComparator {
 		if(lChildren.size() == patChildren.size()){
 			for(int i = 0; i < lChildren.size(); i++){
 				
-				if(!Utilities.getNodeType(lChildren.get(i)).equals(Utilities.getNodeType(patChildren.get(i)))){
-					return false;
-				}
-				if(lChildren.get(i).getChildNodes().size() == 0){
+				
+				if(lChildren.get(i).getChildNodes().size() == 0 || lChildren.get(i) instanceof EnclosedExpr){
 					
-					if(patChildren.get(i) instanceof SimpleName && patChildren.get(i).toString().contains("_at_")){
+					if((patChildren.get(i) instanceof SimpleName || patChildren.get(i) instanceof NameExpr) && patChildren.get(i).toString().contains("_at_")){
 						
 						if(!(atReferencer.containsKey(patChildren.get(i).toString()) || atReferencer.containsKey(lChildren.get(i).toString()))){
 							
 						atReferencer.put(patChildren.get(i).toString(), lChildren.get(i).toString());
 						
 						atReferencer.put(lChildren.get(i).toString(),patChildren.get(i).toString());
+						
 						}
 						
 						if(atReferencer.containsKey(patChildren.get(i).toString()) && atReferencer.containsKey(lChildren.get(i).toString())){
@@ -202,6 +204,8 @@ public class PatComparator {
 						}
 					}
 					else if(patChildren.get(i).toString().equals(lChildren.get(i).toString())){
+						return true;
+					}else if(patChildren.get(i).toString().equals(lChildren.get(i).toString())){
 						return true;
 					}
 					else{
